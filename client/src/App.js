@@ -14,10 +14,19 @@ import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Login from './components/login/Login';
 import Signup from './components/signup/Signup';
-
-
+import Profile from './components/profile/profile'
 
 const theme = createMuiTheme({
+	overrides: {
+		MuiTableCell: {
+			body: {
+				fontSize:18
+			},
+			head: {
+				fontSize:16
+			}
+		}
+	},
 	typography: {
     	useNextVariants: true,
   	},
@@ -27,7 +36,7 @@ const theme = createMuiTheme({
 	},
 	status: {
 		danger: 'orange',
-	},
+	}
 });
 
 class App extends Component {
@@ -41,6 +50,7 @@ class App extends Component {
 	      				<Route path="/" exact component={Landing} />
 	      				<Route path="/login" exact component={Login} />
 	      				<Route path="/signup" exact component={Signup} />
+	      				<Route path="/profile" exact component={Profile} />
 	      			</div>
 	      		</div>
 	    	</MuiThemeProvider>
