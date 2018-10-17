@@ -1,9 +1,168 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-export default class AddEducation extends Component {
+// Component Imports
+import TextInput from './profile-inputs/text-input';
+
+// Material UI Imports
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import { withStyles } from '@material-ui/core/styles';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import green from '@material-ui/core/colors/green';
+import Checkbox from '@material-ui/core/Checkbox';
+
+
+
+const styles = (theme) => ({
+	icon: {
+		fontSize:30,
+		display:'flex',
+		height:'100%',
+		justifyContent: 'center',
+		alignItems:'center',
+		opacity:'0.5'
+	},
+	margin: {
+		paddingTop: theme.spacing.unit*2,
+		paddingBottom: theme.spacing.unit*4,
+	},
+	root: {
+	    color: green[600],
+	    '&$checked': {
+	      color: green[500],
+	    },
+	},
+	checked: {},
+})
+
+class AddExperience extends Component {
+	state = {
+		school:'',
+		degree:'',
+		fieldofstudy:'',
+		fromdate: '',
+		todate: '',
+		current: false,
+		desc:''
+	}
+
+	handleChangeEditProfile = (e, profile) => {
+		this.setState({ [profile]: e.target.value })
+		console.log(this.state)
+	}
+
 	render() {
+		const {classes} = this.props
 		return (
-			<div></div>
+			<Grid container>
+				<Grid className={classes.margin}  container justify="center">
+					<Grid item xs={6}>
+						<Grid item xs={4}>
+							<Button
+							component={Link}
+							to={{
+								pathname:'/profile'
+							}}
+							fullWidth
+			        		size="large"
+			        		variant="outlined" 
+			        		color="secondary">
+	        				Return to Profile
+	      					</Button>
+	      				</Grid>
+					</Grid>
+				</Grid>
+				<Grid item xs={12}>
+					<Typography align="center" color="primary" variant="h4">
+	           				Add Your Education
+	          		</Typography>
+	          		<Typography align="center" color="primary" variant="h6">
+	           				Add any school, bootcamp, etc that you have attended
+	          		</Typography>
+				</Grid>
+				<TextInput 
+					id="school"
+					name="school"
+					label="* School or Bootcamp"
+					value={this.state.school}
+					handleChange = {(e) => this.handleChangeEditProfile(e, 'school')}
+				/>
+				<TextInput 
+					id="degree"
+					name="degree"
+					label="* Degree or Certificate"
+					value={this.state.degree}
+					handleChange = {(e) => this.handleChangeEditProfile(e, 'degree')}
+				/>
+				<TextInput 
+					id="fieldofstudy"
+					name="fieldofstudy"
+					label="fieldofstudy"
+					value={this.state.fieldofstudy}
+					handleChange = {(e) => this.handleChangeEditProfile(e, 'fieldofstudy')}
+				/>
+				<TextInput 
+					id="fromdate"
+					name="fromdate"
+					value={this.state.fromdate}
+					handleChange = {(e) => this.handleChangeEditProfile(e, 'fromdate')}
+					subtitle="From Date"
+					type='date'
+					justifysub="left"
+				/>
+				<TextInput 
+					id="todate"
+					name="todate"
+					value={this.state.todate}
+					handleChange = {(e) => this.handleChangeEditProfile(e, 'todate')}
+					subtitle="To Date"
+					type='date'
+					justifysub="left"
+				/>
+				<Grid container justify="center">
+					<Grid item xs={6}>
+						<FormControlLabel
+				          control={
+				            <Checkbox
+				              checked={this.state.checkedG}
+				              // onChange={this.handleChange('checkedG')}
+				              value=""
+				              classes={{
+				                root: classes.root,
+				                checked: classes.checked,
+				              }}
+				            />
+				          }
+				          label="Currently Studying"
+				        />
+					</Grid>	
+				</Grid>
+				<TextInput 
+					id="desc"
+					name="desc"
+					label="Program Description"
+					value={this.state.desc}
+					handleChange = {(e) => this.handleChangeEditProfile(e, 'desc')}
+					textfield
+					subtitle="Some of your responsibilities"
+					justifysub="left"
+				/>
+				<Grid container justify="center">
+					<Grid item xs={6}  className={classes.margin} >
+						<Button
+						fullWidth
+		        		size="large"
+		        		variant="extendedFab" 
+		        		color="primary">
+        				Tell us about your experience
+      					</Button>
+					</Grid>
+				</Grid>
+			</Grid>
 		);
 	}
 }
+
+export default withStyles(styles)(AddExperience);
