@@ -51,17 +51,19 @@ const Landing = (props) => {
            				Create a developer profile/portfolio, share posts and get help from other developers.
           			</Typography>
           			<div>
-          				<Button variant="extendedFab" color="primary" className={classes.button}>
+          				<Button component={Link} 
+	      						to={{
+      								pathname: '/signup',
+      							}} 
+      							variant="extendedFab" size="large" color="primary" className={classes.button}>
         					Signup 
       					</Button>
 	      					<Button 
 	      						component={Link} 
 	      						to={{
       								pathname: '/login',
-      								hash:'#',
-      								search: '?quick-submit=true'
       							}} 
-      							variant="extendedFab" color="secondary"className={classes.button}>
+      							variant="extendedFab" size="large" color="secondary"className={classes.button}>
 	        					Login
 	      				</Button>
           			</div>
