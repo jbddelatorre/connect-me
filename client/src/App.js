@@ -3,7 +3,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import purple from '@material-ui/core/colors/purple';
 import green from '@material-ui/core/colors/green';
 
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import blue from '@material-ui/core/colors/blue';
 import pink from '@material-ui/core/colors/pink';
@@ -34,12 +34,7 @@ const theme = createMuiTheme({
 			head: {
 				fontSize:16
 			}
-		},
-		MuiButton: {
-			root: {
-				marginTop:15
-			}
-		},
+		}
 	},
 	typography: {
     	useNextVariants: true,
@@ -74,8 +69,9 @@ class App extends Component {
 	    	<MuiThemeProvider theme={theme}>
 	      		<div className="App">
 	      			<Navbar />
+	      			<Switch>
 	      			<Route path="/" exact component={Landing} />
-	      			<div style={{marginTop: 60, padding:30}}>
+	      			<div style={{marginTop: 80, padding:'30 30px 0 30px'}}>
 	      				<Route path="/login" exact component={Login} />
 	      				<Route path="/signup" exact component={Signup} />
 	      				<Route path="/profile" exact component={Profile} />
@@ -83,6 +79,7 @@ class App extends Component {
 	      				<Route path="/profile/add-experience" exact component={AddExperience} />
 	      				<Route path="/profile/add-education" exact component={AddEducation} />
 	      			</div>
+	      			</Switch>
 	      		</div>
 	    	</MuiThemeProvider>
 	    </BrowserRouter>

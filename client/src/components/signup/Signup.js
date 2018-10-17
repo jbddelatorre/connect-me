@@ -8,6 +8,7 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Person from '@material-ui/icons/Person';
+import Grid from '@material-ui/core/Grid';
 
 const styles = {
 	root: {
@@ -30,6 +31,8 @@ export default class Signup extends Component {
 
 	render() {
 		return (
+			<Grid container justify="center">
+			<Grid item xs={8}>
 			<List>
 				<ListItem>
 					<Typography align="center" color="primary" variant="h6">
@@ -105,6 +108,8 @@ export default class Signup extends Component {
       				</Button>
 		        </ListItem>
 			</List>
+			</Grid>
+			</Grid>
 		);
 	}
 }

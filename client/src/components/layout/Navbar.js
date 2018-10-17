@@ -25,8 +25,8 @@ const styles = (theme) => ({
 const NavBar = (props) => {
   const { classes } = props;
   return (
-    <div className={classes.root}>
-      <AppBar style={{backgroundColor:pink[500]}}>
+    
+      <AppBar>
         <Toolbar>
             <Typography style={{textDecoration: 'none'}}component={Link} to='/' className={classes.type} color="inherit" variant="h5" gutterBottom>
               DevConnector
@@ -36,7 +36,7 @@ const NavBar = (props) => {
           </Typography>
         </Toolbar>
       </AppBar>
-    </div>
+    
   );
 }
 

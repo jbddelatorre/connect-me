@@ -17,7 +17,9 @@ import ProfileTable from './profile-table';
 
 const styles = (theme) => ({
 	root: {
-		padding:50
+		paddingLeft: theme.spacing.unit*8,
+		paddingRight: theme.spacing.unit*8,
+		paddingTop: theme.spacing.unit,
 	},
 	out:{
 		marginLeft:theme.spacing.unit,
@@ -34,7 +36,7 @@ class Profile extends Component {
 	render() {
 		const { classes } = this.props
 		return (
-			<Grid className={classes.root} container spacing={24}>
+			<Grid className={classes.root} container>
 				<Grid className={classes.container} container spacing={24}>
 					<Grid item xs={12}>
 						<Typography align="left" color="primary" variant="h4">
@@ -91,13 +93,15 @@ class Profile extends Component {
 						header={['School', 'Degree', 'Years', 'Action']}
 						data = ""
 					/>
-					<Button
+					<Grid item xs={4}>
+						<Button
 							style={{backgroundColor:'pink'}}
 			        		size="large"
 			        		variant="contained" 
 			        		color="default">
 	        				Delete my account
-	      			</Button>
+	      				</Button>
+					</Grid>
 				</Grid>
 			</Grid>
 		);

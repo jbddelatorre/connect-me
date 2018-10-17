@@ -13,7 +13,10 @@ import Button from '@material-ui/core/Button';
 const styles = {
 	root: {
 		marginBottom: 30
-	}
+	},
+  tablecell: {
+    textAlign:'center'
+  }
 }
 
 export default(props) => {
@@ -27,20 +30,21 @@ export default(props) => {
   				<TableHead>
   					<TableRow >
   						{header.map(h => (
-							<TableCell key={h}>{h}</TableCell>
+							<TableCell style={styles.tablecell} key={h}>{h}</TableCell>
   							))}
   					</TableRow>
   				</TableHead>
   				<TableBody>
   					<TableRow>
-  						<TableCell>Tech guy</TableCell>
-  						<TableCell>Senior developer</TableCell>
-  						<TableCell>2010-2018</TableCell>
-  						<TableCell>
+  						<TableCell style={styles.tablecell}>Tech guy</TableCell>
+  						<TableCell style={styles.tablecell}>Senior developer</TableCell>
+  						<TableCell style={styles.tablecell}>2010-2018</TableCell>
+  						<TableCell style={styles.tablecell}>
   							<Button
 				        		size="medium"
 				        		variant="contained" 
-				        		color="secondary">
+				        		color="secondary"
+                    fullWidth>
 		        				Delete
 		      				</Button>
   						</TableCell>
