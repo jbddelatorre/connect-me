@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 // Component Imports
 import TextInput from './profile-inputs/text-input';
+import SocialMedia from './profile-inputs/social-media';
 
 // Material UI Imports
 import Typography from '@material-ui/core/Typography';
@@ -9,8 +10,24 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
+import { withStyles } from '@material-ui/core/styles';
 
-export default class EditProfile extends Component {
+//Import Icons
+import Icon from '@material-ui/core/Icon';
+
+
+const styles = {
+	icon: {
+		fontSize:30,
+		display:'flex',
+		height:'100%',
+		justifyContent: 'center',
+		alignItems:'center',
+		opacity:'0.5'
+	}
+}
+
+class EditProfile extends Component {
 	state = {
 		handle:'',
 		bio:'',
@@ -33,6 +50,7 @@ export default class EditProfile extends Component {
 	}
 
 	render() {
+		const {classes} = this.props
 		return (
 			<Grid container>
 				<Grid item xs={12}>
@@ -108,7 +126,75 @@ export default class EditProfile extends Component {
 					subtitle="Tell something about yourself"
 					textfield
 				/>
+				<SocialMedia 
+					id="twitter"
+					name="twitter"
+					label="Twitter"
+					value={this.state.twitter}
+					handleChange = {(e) => this.handleChangeEditProfile(e, 'twitter')}
+				>
+					<div className={classes.icon}>
+						<i className="fab fa-twitter"></i>
+					</div>
+				</SocialMedia>
+				<SocialMedia 
+					id="facebook"
+					name="facebook"
+					label="Facebook"
+					value={this.state.facebook}
+					handleChange = {(e) => this.handleChangeEditProfile(e, 'facebook')}
+				>
+					<div className={classes.icon}>
+						<i className="fab fa-facebook-f"></i>
+					</div>
+				</SocialMedia>
+				<SocialMedia 
+					id="linkedin"
+					name="linkedin"
+					label="LinkedIn"
+					value={this.state.linkedin}
+					handleChange = {(e) => this.handleChangeEditProfile(e, 'linkedin')}
+				>
+					<div className={classes.icon}>
+						<i className="fab fa-linkedin-in"></i>
+					</div>
+				</SocialMedia>
+				<SocialMedia 
+					id="youtube"
+					name="youtube"
+					label="YouTube"
+					value={this.state.youtube}
+					handleChange = {(e) => this.handleChangeEditProfile(e, 'youtube')}
+				>
+					<div className={classes.icon}>
+						<i className="fab fa-youtube"></i>
+					</div>
+				</SocialMedia>
+				<SocialMedia 
+					id="instagram"
+					name="instagram"
+					label="Instagram"
+					value={this.state.instagram}
+					handleChange = {(e) => this.handleChangeEditProfile(e, 'instagram')}
+				>
+					<div className={classes.icon}>
+						<i className="fab fa-instagram"></i>
+					</div>
+				</SocialMedia>
+				<Grid container justify="center">
+					<Grid item xs={6}>
+						<Button
+						fullWidth
+		        		size="large"
+		        		variant="extendedFab" 
+		        		color="primary">
+        				Edit Your Profile
+      				</Button>
+					</Grid>
+				</Grid>
 			</Grid>
 		);
 	}
 }
+
+export default withStyles(styles)(EditProfile);

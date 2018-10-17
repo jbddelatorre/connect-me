@@ -5,7 +5,9 @@ import green from '@material-ui/core/colors/green';
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
-
+import blue from '@material-ui/core/colors/blue';
+import pink from '@material-ui/core/colors/pink';
+import red from '@material-ui/core/colors/red';
 
 import './App.css';
 
@@ -19,6 +21,10 @@ import EditProfile from './components/profile/edit-profile';
 import AddExperience from './components/profile/add-experience';
 import AddEducation from './components/profile/add-education';
 
+const primary = blue
+const secondary = pink
+const tertiary = red
+
 const theme = createMuiTheme({
 	overrides: {
 		MuiTableCell: {
@@ -28,18 +34,37 @@ const theme = createMuiTheme({
 			head: {
 				fontSize:16
 			}
-		}
+		},
+		MuiButton: {
+			root: {
+				marginTop:15
+			}
+		},
 	},
 	typography: {
     	useNextVariants: true,
   	},
 	palette: {
-		primary: purple,
-		secondary: green,
+		primary: {
+	    light: primary[300],
+	    main: primary[500],
+	    dark: primary[700],
+	    contrastThreshold:3,
+	  },
+	  secondary: {
+	    light: secondary.A200,
+	    main: secondary.A400,
+	    dark: secondary.A700,
+	    contrastThreshold:3,
+	  },
+	  error: {
+	    light: tertiary[300],
+	    main: tertiary[500],
+	    dark: tertiary[700],
+	    contrastThreshold:3,
+	    tonalOffset: 0.2,
+	  },
 	},
-	status: {
-		danger: 'orange',
-	}
 });
 
 class App extends Component {

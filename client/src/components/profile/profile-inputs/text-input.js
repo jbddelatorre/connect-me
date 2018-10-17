@@ -8,12 +8,9 @@ import TextField from '@material-ui/core/TextField';
 
 export default (props) => {
 	const {id, name, label, handleChange, value, subtitle, textfield} = props;
-
-	if(textfield) {
-		console.log('asdadsaasd')
-	}
 	return (
-		<Grid item xs={12}>
+		<Grid container justify="center">
+		<Grid item xs={6}>
 			<TextField
 	          	id={id}
 	          	fullWidth
@@ -29,6 +26,7 @@ export default (props) => {
 		    <Typography align="center" color="primary" variant="subtitle1">
 	        	{subtitle}
 	        </Typography>
+		</Grid>
 		</Grid>
 	)
 };
