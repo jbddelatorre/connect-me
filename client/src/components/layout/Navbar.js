@@ -8,14 +8,22 @@ import { withStyles } from '@material-ui/core/styles';
 import {Link} from 'react-router-dom';
 // import MenuIcon from '@material-ui/icons/Menu';
 // import SearchIcon from '@material-ui/icons/Search';
+import IconButton from '@material-ui/core/IconButton';
+import People from '@material-ui/icons/People';
+
+import Button from '@material-ui/core/Button';
 
 const styles = (theme) => ({
-  root: {
+  grow: {
     flexGrow: 1,
   },
   type: {
     marginLeft: theme.spacing.unit*2,
     marginRight: theme.spacing.unit*2
+  },
+  button: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit
   }
 });
 
@@ -24,14 +32,49 @@ const NavBar = (props) => {
   const { classes } = props;
   return (
     
-      <AppBar>
-        <Toolbar>
-            <Typography style={{textDecoration: 'none'}}component={Link} to='/' className={classes.type} color="inherit" variant="h5" gutterBottom>
-              DevConnector
-            </Typography>
-          <Typography variant="h6" color="inherit" gutterBottom>
-            Developers
+      <AppBar position="absolute">
+        <Toolbar variant="regular">
+          <IconButton 
+              component={Link}
+              to={{
+                pathname:'/'
+              }}
+              className={classes.menuButton} 
+              color="inherit" 
+              aria-label="Menu">
+            <People />
+          </IconButton>
+          <Typography color="inherit" variant="h4">
+                  DevConn
           </Typography>
+          <Button
+            component={Link}
+            to={{
+              pathname:'/developers'
+            }}
+            className={classes.button}
+            size="large"
+            variant="outline" 
+            color="inherit">
+                Find Developers
+          </Button>
+          <div className={classes.grow} />
+          <div>
+            <Button 
+              variant="contained" 
+              size="large" 
+              color="primary"
+              className={classes.button}>
+              Sign Up
+            </Button>
+            <Button 
+              size="large" 
+              variant="contained"
+              color="primary"
+              className={classes.button}>
+              Log In
+              </Button>
+          </div>
         </Toolbar>
       </AppBar>
     
