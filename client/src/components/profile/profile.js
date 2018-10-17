@@ -10,7 +10,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
+import { withRouter } from 'react-router-dom';
 
+import { Link } from 'react-router-dom';
 import ProfileTable from './profile-table';
 
 const styles = (theme) => ({
@@ -31,10 +33,9 @@ const styles = (theme) => ({
 class Profile extends Component {
 	render() {
 		const { classes } = this.props
-
 		return (
 			<Grid className={classes.root} container spacing={24}>
-				<Grid className={classes.container} container spacing={20}>
+				<Grid className={classes.container} container spacing={24}>
 					<Grid item xs={12}>
 						<Typography align="left" color="primary" variant="h4">
 	           				Dashboard
@@ -47,13 +48,20 @@ class Profile extends Component {
 					</Grid>
 					<Grid item xs={12}>
 						<Button	
-							
+							component={Link}
+							to={{
+								pathname: `${this.props.match.url}/edit-profile`
+							}}
 			        		size="large"
 			        		variant="outlined" 
 			        		color="primary">
 	        				Edit Profile
 	      				</Button>
 	      				<Button
+	      					component={Link}
+							to={{
+								pathname: `${this.props.match.url}/add-experience`
+							}}
 	      					classes = {{outlined: classes.out}}
 			        		size="large"
 			        		variant="outlined" 
@@ -61,6 +69,10 @@ class Profile extends Component {
 	        				Add Experience
 	      				</Button>
 	      				<Button
+	      					component={Link}
+							to={{
+								pathname:  `${this.props.match.url}/add-education`
+							}}
 			        		size="large"
 			        		variant="outlined" 
 			        		color="primary">
@@ -68,7 +80,7 @@ class Profile extends Component {
 	      				</Button>
 					</Grid>
 				</Grid>
-				<Grid className={classes.container} container spacing={20}>
+				<Grid className={classes.container} container spacing={24}>
 					<ProfileTable 
 					    title = "Experience Credentials"
 						header={['Company', 'Title', 'Years', 'Action']}
@@ -82,7 +94,7 @@ class Profile extends Component {
 					<Button
 							style={{backgroundColor:'pink'}}
 			        		size="large"
-			        		variant="raised" 
+			        		variant="contained" 
 			        		color="default">
 	        				Delete my account
 	      			</Button>
@@ -92,4 +104,4 @@ class Profile extends Component {
 	}
 }
 
-export default withStyles(styles)(Profile);
+export default  withRouter(withStyles(styles)(Profile));

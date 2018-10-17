@@ -15,6 +15,9 @@ import Landing from './components/layout/Landing';
 import Login from './components/login/Login';
 import Signup from './components/signup/Signup';
 import Profile from './components/profile/profile'
+import EditProfile from './components/profile/edit-profile';
+import AddExperience from './components/profile/add-experience';
+import AddEducation from './components/profile/add-education';
 
 const theme = createMuiTheme({
 	overrides: {
@@ -46,11 +49,14 @@ class App extends Component {
 	    	<MuiThemeProvider theme={theme}>
 	      		<div className="App">
 	      			<Navbar />
-	      			<div style={{marginTop: 60}}>
-	      				<Route path="/" exact component={Landing} />
+	      			<Route path="/" exact component={Landing} />
+	      			<div style={{marginTop: 60, padding:30}}>
 	      				<Route path="/login" exact component={Login} />
 	      				<Route path="/signup" exact component={Signup} />
 	      				<Route path="/profile" exact component={Profile} />
+	      				<Route path="/profile/edit-profile" exact component={EditProfile} />
+	      				<Route path="/profile/add-experience" exact component={AddExperience} />
+	      				<Route path="/profile/add-education" exact component={AddEducation} />
 	      			</div>
 	      		</div>
 	    	</MuiThemeProvider>
