@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
 import Typography from '@material-ui/core/Typography';
-import ListItem from '@material-ui/core/ListItem';
 import Button from '@material-ui/core/Button';
-import pink from '@material-ui/core/colors/pink';
 
 import Image from '../../img/showcase.jpg';
 import { Link } from 'react-router-dom';

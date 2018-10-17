@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 // Component Imports
 import TextInput from './profile-inputs/text-input';
@@ -8,15 +9,11 @@ import SocialMedia from './profile-inputs/social-media';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 
-//Import Icons
-import Icon from '@material-ui/core/Icon';
 
 
-const styles = {
+const styles = (theme) => ({
 	icon: {
 		fontSize:30,
 		display:'flex',
@@ -24,8 +21,12 @@ const styles = {
 		justifyContent: 'center',
 		alignItems:'center',
 		opacity:'0.5'
+	},
+	margin: {
+		paddingTop: theme.spacing.unit*2,
+		paddingBottom: theme.spacing.unit*4,
 	}
-}
+})
 
 class EditProfile extends Component {
 	state = {
@@ -53,6 +54,23 @@ class EditProfile extends Component {
 		const {classes} = this.props
 		return (
 			<Grid container>
+				<Grid className={classes.margin}  container justify="center">
+					<Grid item xs={6}>
+						<Grid item xs={4}>
+							<Button
+							component={Link}
+							to={{
+								pathname:'/profile'
+							}}
+							fullWidth
+			        		size="large"
+			        		variant="outlined" 
+			        		color="secondary">
+	        				Return to Profile
+	      					</Button>
+	      				</Grid>
+					</Grid>
+				</Grid>
 				<Grid item xs={12}>
 					<Typography align="center" color="primary" variant="h4">
 	           				Edit Your Profile
@@ -189,7 +207,7 @@ class EditProfile extends Component {
 		        		variant="extendedFab" 
 		        		color="primary">
         				Edit Your Profile
-      				</Button>
+      					</Button>
 					</Grid>
 				</Grid>
 			</Grid>

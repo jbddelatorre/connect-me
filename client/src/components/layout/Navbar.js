@@ -4,8 +4,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import green from '@material-ui/core/colors/green';
-import pink from '@material-ui/core/colors/pink';
 
 import {Link} from 'react-router-dom';
 // import MenuIcon from '@material-ui/icons/Menu';

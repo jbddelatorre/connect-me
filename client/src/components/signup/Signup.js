@@ -3,18 +3,11 @@ import React, { Component } from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Person from '@material-ui/icons/Person';
 import Grid from '@material-ui/core/Grid';
-
-const styles = {
-	root: {
-		padding:50
-	}
-}
 
 
 export default class Signup extends Component {

@@ -1,13 +1,11 @@
 import React from 'react';
 
 //Material UI
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 
 export default (props) => {
-	const {id, name, label, handleChange, value, subtitle, textfield} = props;
+	const {id, name, label, handleChange, value} = props;
 	return (
 		<Grid container justify="center" spacing={8}>
 			<Grid item xs={1}>
@@ -18,6 +16,7 @@ export default (props) => {
 		          	id={id}
 		          	fullWidth
 		          	label={label}
+		          	name={name}
 		          	// className={classes.textField}
 		         	value={value}
 		         	onChange={handleChange}
