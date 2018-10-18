@@ -30,13 +30,16 @@ const styles = (theme) => ({
 		marginLeft:10,
 		marginRight:10,
 		fontSize:25
+	},
+	mB: {
+		marginBottom: 30
 	}
 })
 
 const LandingCard = (props) => {
 	const {classes, img, name, job, company, social} = props;
 	return (
-		<Grid container>
+		<Grid container className={classes.mB}>
 			<Grid item xs={12}>
 				<Card className={classes.card}>
 					<Grid container justify="center">

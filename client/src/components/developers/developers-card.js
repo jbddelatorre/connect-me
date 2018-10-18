@@ -1,14 +1,16 @@
 import React from 'react';
 
+//Component
+import ListItemSkills from './developer-skills-list-item';
+
 //Material UI
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+
 import Avatar from '@material-ui/core/Avatar';
-import Build from '@material-ui/icons/Build';
+
 import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import Button from '@material-ui/core/Button';
@@ -104,18 +106,8 @@ const DeveloperCard = (props) => {
 				           		Skills
 				          	</Typography>
 				          	<List className={classes.list}>
-						        <ListItem className={classes.listitem}>
-						          <Avatar>
-						            <Build />
-						          </Avatar>
-						          <ListItemText primary="Specific Skill" />
-						        </ListItem>
-						        <ListItem className={classes.listitem}>
-						          <Avatar>
-						            <Build />
-						          </Avatar>
-						          <ListItemText primary="Specific Skill" />
-						        </ListItem>
+						        <ListItemSkills skill = "SKill1"/>
+						        <ListItemSkills/>
 						    </List>
 						</Grid>
 					</Grid>

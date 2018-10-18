@@ -3,15 +3,14 @@ import { Link } from 'react-router-dom';
 
 //Components
 import LandingCard from './landing-card';
+import BioSkillsCard from './bio-skills-card';
 
 //Material UI
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
 const style = {
-	mB: {
-		marginBottom: 10
-	}
+	
 }
 
 class DeveloperProfile extends Component {
@@ -19,7 +18,7 @@ class DeveloperProfile extends Component {
 		return (
 			<Grid container justify="center">
 				<Grid item xs={10}>
-					<Grid container justify="left">
+					<Grid container justify="flex-start">
 						<Grid item xs={3}>
 							<Button
 								component={Link}
@@ -28,21 +27,20 @@ class DeveloperProfile extends Component {
 								}}
 								fullWidth
 				        		size="small"
-				        		variant="raised" 
+				        		variant="contained" 
 				        		color="secondary">
 		        				Return to Developers
 		      				</Button>
 						</Grid>
 					</Grid>
 					<LandingCard 
-						style={style.mB}
 						img=""
 						name=""
 						job=""
 						company=""
 						social=""
 					/>
-					{/*landing, bio*/}
+					<BioSkillsCard />
 					<Grid container>
 						<Grid item xs={6}>
 							
