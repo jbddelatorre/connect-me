@@ -18,6 +18,8 @@ import Profile from './components/profile/profile'
 import EditProfile from './components/profile/edit-profile';
 import AddExperience from './components/profile/add-experience';
 import AddEducation from './components/profile/add-education';
+import Developers from './components/developers/developers.js'
+
 
 const primary = blue
 const secondary = pink
@@ -76,6 +78,7 @@ class App extends Component {
 	      				<Route path="/profile/edit-profile" exact component={EditProfile} />
 	      				<Route path="/profile/add-experience" exact component={AddExperience} />
 	      				<Route path="/profile/add-education" exact component={AddEducation} />
+	      				<Route path="/developers" exact component={Developers} />
 	      			</div>
 	      			</Switch>
 	      		</div>

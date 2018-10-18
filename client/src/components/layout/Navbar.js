@@ -54,7 +54,7 @@ const NavBar = (props) => {
             }}
             className={classes.button}
             size="large"
-            variant="outline" 
+            variant="outlined" 
             color="inherit">
                 Find Developers
           </Button>
