@@ -19,7 +19,7 @@ import EditProfile from './components/profile/edit-profile';
 import AddExperience from './components/profile/add-experience';
 import AddEducation from './components/profile/add-education';
 import Developers from './components/developers/developers.js'
-
+import DeveloperProfile from './components/developers/developer-profile/developer-profile';
 
 const primary = blue
 const secondary = pink
@@ -71,7 +71,7 @@ class App extends Component {
 	      			<Navbar />
 	      			<Switch>
 	      			<Route path="/" exact component={Landing} />
-	      			<div style={{marginTop: 80, padding:'30 30px 0 30px'}}>
+	      			<div style={{marginTop: 80, paddingTop:'30px'}}>
 	      				<Route path="/login" exact component={Login} />
 	      				<Route path="/signup" exact component={Signup} />
 	      				<Route path="/profile" exact component={Profile} />
@@ -79,7 +79,8 @@ class App extends Component {
 	      				<Route path="/profile/add-experience" exact component={AddExperience} />
 	      				<Route path="/profile/add-education" exact component={AddEducation} />
 	      				<Route path="/developers" exact component={Developers} />
-	      			</div>
+	      				<Route path="/developers/id" exact component={DeveloperProfile} />
+	      				</div>
 	      			</Switch>
 	      		</div>
 	    	</MuiThemeProvider>

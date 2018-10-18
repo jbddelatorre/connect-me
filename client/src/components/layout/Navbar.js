@@ -60,14 +60,22 @@ const NavBar = (props) => {
           </Button>
           <div className={classes.grow} />
           <div>
-            <Button 
+            <Button
+              component={Link}
+              to={{
+                pathname:'/signup'
+              }} 
               variant="contained" 
               size="large" 
               color="primary"
               className={classes.button}>
               Sign Up
             </Button>
-            <Button 
+            <Button
+              component={Link}
+              to={{
+                pathname:'/login'
+              }} 
               size="large" 
               variant="contained"
               color="primary"
