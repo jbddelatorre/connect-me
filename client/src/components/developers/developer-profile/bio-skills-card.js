@@ -31,7 +31,8 @@ const styles = (theme) => ({
 	},
 	labels: {
 		marginTop: theme.spacing.unit,
-		marginBottom: theme.spacing.unit
+		marginBottom: theme.spacing.unit,
+		color: theme.palette.primary.dark
 	},
 	body: {
 		marginTop:4,
@@ -40,8 +41,6 @@ const styles = (theme) => ({
 
 })
 
-
-
 const BioSkillsCard = (props) => {
 	const {classes} = props
 	return (
@@ -49,9 +48,8 @@ const BioSkillsCard = (props) => {
 			<Grid item xs={12}>
 				<Card className={classes.card}>
 					<Grid container>
-						
 						<Grid item xs={12}>
-							<Typography className={classes.labels} align="center" color="inherit" variant="h5">
+							<Typography className={classes.labels} align="center" variant="h5">
 						       Bio
 						    </Typography>
 						</Grid>
@@ -71,7 +69,7 @@ const BioSkillsCard = (props) => {
 							/>
 						</Grid>
 						<Grid item xs={12}>
-							<Typography className={classes.labels} align="center" color="inherit" variant="h5">
+							<Typography className={classes.labels} align="center" variant="h5">
 						       Skill Set
 						    </Typography>
 						</Grid>
