@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import LandingCard from './landing-card';
 import BioSkillsCard from './bio-skills-card';
 import WEcard from './educ-experience.js'
+import GithubCard from './github-repo-card.js'
 //Material UI
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -42,7 +43,7 @@ class DeveloperProfile extends Component {
 						social=""
 					/>
 					<BioSkillsCard />
-					<Grid container>
+					<Grid container spacing={24}>
 						<Grid item xs={6}>
 							<Grid container justify="center">
 								<Typography align="center" variant="h6" color="primary">
@@ -60,7 +61,16 @@ class DeveloperProfile extends Component {
 							<WEcard />
 						</Grid>
 					</Grid>
-				{/*github repo*/}
+					<Grid container>
+						<Grid item xs={12}>
+							<Typography style={{marginTop:20}} align="flex-start" variant="h5" color="inherit">
+									Latest Github Repos
+								</Typography>
+						</Grid>
+						<Grid item xs={12}>
+							<GithubCard />
+						</Grid>
+					</Grid>
 				</Grid>
 			</Grid>
 		);
