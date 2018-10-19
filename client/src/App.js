@@ -71,7 +71,7 @@ class App extends Component {
 	      			<Navbar />
 	      			<Switch>
 	      			<Route path="/" exact component={Landing} />
-	      			<div style={{marginTop: 80, paddingTop:'30px'}}>
+	      			<div style={{marginTop: 80, paddingTop:'30px', paddingBottom:50}}>
 	      				<Route path="/login" exact component={Login} />
 	      				<Route path="/signup" exact component={Signup} />
 	      				<Route path="/profile" exact component={Profile} />
