@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -36,30 +38,14 @@ class Signup extends Component {
 			password2: this.state.password2
 		}
 		
-		this.props.registerUser(newUser)
+		this.props.registerUser(newUser, this.props.history)
 
-		// axios.post('/api/users/register', newUser)
-		// 	.then(res => {
-		// 		console.log(res.data)
-		// 		this.setState({
-		// 			name:'',
-		// 			email:'',
-		// 			password:'',
-		// 			password2:'',
-		// 			errors:{}
-		// 		})
-		// 	})
-		// 	.catch(err => {
-		// 		console.log(err.response.data)
-		// 		this.setState({
-		// 			errors:{
-		// 				name: err.response.data.name,
-		// 				email: err.response.data.email,
-		// 				password: err.response.data.password,
-		// 				password2: err.response.data.password2
-		// 			}
-		// 		})
-		// 	})
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if(nextProps.errors) {
+			this.setState({errors: nextProps.errors})
+		}
 	}
 
 	render() {
@@ -77,7 +63,7 @@ class Signup extends Component {
 		            <Person />
 		          </ListItemIcon>
 		          <TextField
-		          	error = {this.state.errors.name}
+		          	error = {!!this.state.errors.name}
 		          	id="name"
 		          	name="name"
 		          	fullWidth
@@ -95,7 +81,7 @@ class Signup extends Component {
 		            <Person />
 		          </ListItemIcon>
 		          <TextField
-		          	error = {this.state.errors.name}
+		          	error = {!!this.state.errors.email}
 		          	id="email"
 		          	label="Email"
 		          	fullWidth
@@ -113,7 +99,7 @@ class Signup extends Component {
 		            <Person />
 		          </ListItemIcon>
 		          <TextField
-		          	error = {this.state.errors.name}
+		          	error = {!!this.state.errors.password}
 		          	id="password"
 		          	label="Password"
 		          	fullWidth
@@ -131,7 +117,7 @@ class Signup extends Component {
 		            <Person />
 		          </ListItemIcon>
 		          <TextField
-		          	error = {this.state.errors.name}
+		          	error = {!!this.state.errors.password2}
 		          	id="password2"
 		          	label="Confirm Password"
 		          	fullWidth
@@ -161,4 +147,15 @@ class Signup extends Component {
 	}
 }
 
-export default connect(null, { registerUser })(Signup);
+Signup.propTypes = {
+	registerUser: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+	auth: state.auth,
+	errors: state.errors
+});
+
+
+export default connect(mapStateToProps, { registerUser })(withRouter(Signup));
