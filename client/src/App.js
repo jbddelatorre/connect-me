@@ -34,6 +34,11 @@ const theme = createMuiTheme({
 			head: {
 				fontSize:16
 			}
+		},
+		MuiFormHelperText: {
+			root:{
+				fontSize:16
+			}
 		}
 	},
 	typography: {

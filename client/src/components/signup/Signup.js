@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Person from '@material-ui/icons/Person';
 import Grid from '@material-ui/core/Grid';
-
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 export default class Signup extends Component {
 	state = {
@@ -41,10 +41,21 @@ export default class Signup extends Component {
 					name:'',
 					email:'',
 					password:'',
-					password2:''
+					password2:'',
+					errors:{}
 				})
 			})
-			.catch(err => console.log(err.response.data))
+			.catch(err => {
+				console.log(err.response.data)
+				this.setState({
+					errors:{
+						name: err.response.data.name,
+						email: err.response.data.email,
+						password: err.response.data.password,
+						password2: err.response.data.password2
+					}
+				})
+			})
 	}
 
 	render() {
@@ -70,6 +81,7 @@ export default class Signup extends Component {
 		         	value={this.state.name}
 		         	onChange={(e) => this.handleChange(e, 'name')}
 		          	margin="normal"
+		          	helperText={this.state.errors.name}
 		        	/>
 		        </ListItem>
 				<ListItem>
@@ -85,6 +97,8 @@ export default class Signup extends Component {
 		         	value={this.state.email}
 		         	onChange={(e) => this.handleChange(e, 'email')}
 		          	margin="normal"
+		          	helperText={this.state.errors.email}
+		          	FormHelperTextProps = {{error:true}}
 		        	/>
 		        </ListItem>
 		    	<ListItem>
@@ -100,6 +114,7 @@ export default class Signup extends Component {
 		         	value={this.state.password}
 		         	onChange={(e) => this.handleChange(e, 'password')}
 		          	margin="normal"
+		          	helperText={this.state.errors.password}
 		        	/>
 		        </ListItem>
 		        <ListItem>
@@ -115,6 +130,7 @@ export default class Signup extends Component {
 		         	value={this.state.password2}
 		         	onChange={(e) => this.handleChange(e, 'password2')}
 		          	margin="normal"
+		          	helperText={this.state.errors.password2}
 		        	/>
 		        </ListItem>
 		        <ListItem>
