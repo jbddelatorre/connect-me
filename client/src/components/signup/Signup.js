@@ -35,7 +35,15 @@ export default class Signup extends Component {
 		}
 		
 		axios.post('/api/users/register', newUser)
-			.then(res => console.log(res.data))
+			.then(res => {
+				console.log(res.data)
+				this.setState({
+					name:'',
+					email:'',
+					password:'',
+					password2:''
+				})
+			})
 			.catch(err => console.log(err.response.data))
 	}
 
