@@ -22,6 +22,11 @@ export default class Login extends Component {
 		email:'',
 		password:''
 	}
+	
+	handleChange = (e, p) => {
+		this.setState({ [p] : e.target.value})
+	}
+
 	render() {
 		return (
 			<Grid container justify="center" style={styles.root}>
@@ -39,6 +44,7 @@ export default class Login extends Component {
 				          // onChange={this.handleChange('email')}
 				          margin="normal"
 				          variant="outlined"
+				          onChange={(e) => this.handleChange(e, 'email')}
 				        />
 				        <TextField
 				        fullWidth
@@ -46,7 +52,7 @@ export default class Login extends Component {
 				         	label="password"
 				         	// className={classes.textField}
 				         	value={this.state.password}
-				         	// onChange={this.handleChange('password')}
+				         	onChange={(e) => this.handleChange(e, 'password')}
 				         	margin="normal"
 				         	variant="outlined"
 				        />
@@ -58,7 +64,8 @@ export default class Login extends Component {
 				        	size="large" 
 				        	variant="extendedFab" 
 				        	color="primary"
-				        	fullWidth>
+				        	fullWidth
+				        	>
 		        			Login
 		      			</Button>
 	      			</Grid>

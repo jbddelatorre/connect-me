@@ -69,7 +69,6 @@ class App extends Component {
 	    	<MuiThemeProvider theme={theme}>
 	      		<div className="App">
 	      			<Navbar />
-	      			<Switch>
 	      			<Route path="/" exact component={Landing} />
 	      			<div style={{marginTop: 80, paddingTop:'30px', paddingBottom:50}}>
 	      				<Route path="/login" exact component={Login} />
@@ -80,8 +79,7 @@ class App extends Component {
 	      				<Route path="/profile/add-education" exact component={AddEducation} />
 	      				<Route path="/developers" exact component={Developers} />
 	      				<Route path="/developers/id" exact component={DeveloperProfile} />
-	      				</div>
-	      			</Switch>
+	      			</div>
 	      		</div>
 	    	</MuiThemeProvider>
 	    </BrowserRouter>

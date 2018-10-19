@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -15,11 +16,27 @@ export default class Signup extends Component {
 		name:'',
 		email:'',
 		password:'',
-		confirmpassword:''
+		password2:'',
+		errors:{}
 	}
 
 	handleChange = (e, p) => {
 		this.setState({ [p] : e.target.value})
+	}
+
+	handleSubmit = (e) => {
+		e.preventDefault();
+		
+		const newUser = {
+			name: this.state.name,
+			email: this.state.email,
+			password: this.state.password,
+			password2: this.state.password2
+		}
+		
+		axios.post('/api/users/register', newUser)
+			.then(res => console.log(res.data))
+			.catch(err => console.log(err.response.data))
 	}
 
 	render() {
@@ -96,7 +113,9 @@ export default class Signup extends Component {
 		        	<Button
 		        		size="large"
 		        		variant="extendedFab" 
-		        		color="primary">
+		        		color="primary"
+		        		onClick={(e) => this.handleSubmit(e)}
+		        		>
         				Submit
       				</Button>
 		        </ListItem>
