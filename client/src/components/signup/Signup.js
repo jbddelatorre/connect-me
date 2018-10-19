@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { registerUser } from '../../actions/authActions';
 
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -11,7 +13,7 @@ import Person from '@material-ui/icons/Person';
 import Grid from '@material-ui/core/Grid';
 import FormHelperText from '@material-ui/core/FormHelperText';
 
-export default class Signup extends Component {
+class Signup extends Component {
 	state = {
 		name:'',
 		email:'',
@@ -34,28 +36,30 @@ export default class Signup extends Component {
 			password2: this.state.password2
 		}
 		
-		axios.post('/api/users/register', newUser)
-			.then(res => {
-				console.log(res.data)
-				this.setState({
-					name:'',
-					email:'',
-					password:'',
-					password2:'',
-					errors:{}
-				})
-			})
-			.catch(err => {
-				console.log(err.response.data)
-				this.setState({
-					errors:{
-						name: err.response.data.name,
-						email: err.response.data.email,
-						password: err.response.data.password,
-						password2: err.response.data.password2
-					}
-				})
-			})
+		this.props.registerUser(newUser)
+
+		// axios.post('/api/users/register', newUser)
+		// 	.then(res => {
+		// 		console.log(res.data)
+		// 		this.setState({
+		// 			name:'',
+		// 			email:'',
+		// 			password:'',
+		// 			password2:'',
+		// 			errors:{}
+		// 		})
+		// 	})
+		// 	.catch(err => {
+		// 		console.log(err.response.data)
+		// 		this.setState({
+		// 			errors:{
+		// 				name: err.response.data.name,
+		// 				email: err.response.data.email,
+		// 				password: err.response.data.password,
+		// 				password2: err.response.data.password2
+		// 			}
+		// 		})
+		// 	})
 	}
 
 	render() {
@@ -156,3 +160,5 @@ export default class Signup extends Component {
 		);
 	}
 }
+
+export default connect(null, { registerUser })(Signup);
