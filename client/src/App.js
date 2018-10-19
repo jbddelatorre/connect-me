@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
+import React, { Component, Fragment } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './store';
 
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import blue from '@material-ui/core/colors/blue';
 import pink from '@material-ui/core/colors/pink';
 import red from '@material-ui/core/colors/red';
@@ -67,27 +68,32 @@ const theme = createMuiTheme({
 	},
 });
 
+
 class App extends Component {
   render() {
     return (
-    	<BrowserRouter>
-	    	<MuiThemeProvider theme={theme}>
-	      		<div className="App">
-	      			<Navbar />
-	      			<Route path="/" exact component={Landing} />
-	      			<div style={{marginTop: 80, paddingTop:'30px', paddingBottom:50}}>
-	      				<Route path="/login" exact component={Login} />
-	      				<Route path="/signup" exact component={Signup} />
-	      				<Route path="/profile" exact component={Profile} />
-	      				<Route path="/profile/edit-profile" exact component={EditProfile} />
-	      				<Route path="/profile/add-experience" exact component={AddExperience} />
-	      				<Route path="/profile/add-education" exact component={AddEducation} />
-	      				<Route path="/developers" exact component={Developers} />
-	      				<Route path="/developers/id" exact component={DeveloperProfile} />
-	      			</div>
-	      		</div>
-	    	</MuiThemeProvider>
-	    </BrowserRouter>
+    	<Provider store={store}>
+	    	<BrowserRouter>
+		    	<MuiThemeProvider theme={theme}>
+		      		<div className="App">
+		      			<Navbar />
+		     			<div style={{marginTop: 50, paddingTop:'40px'}}>
+		      			<Switch>
+		      				<Route path="/" exact component={Landing} />
+		      				<Route path="/login" exact component={Login} />
+		      				<Route path="/signup" exact component={Signup} />
+		      				<Route path="/profile" exact component={Profile} />
+		      				<Route path="/profile/edit-profile" exact component={EditProfile} />
+		      				<Route path="/profile/add-experience" exact component={AddExperience} />
+		      				<Route path="/profile/add-education" exact component={AddEducation} />
+		      				<Route path="/developers" exact component={Developers} />
+		      				<Route path="/developers/id" exact component={DeveloperProfile} />
+		      			</Switch>
+		      			</div>
+		      		</div>
+		    	</MuiThemeProvider>
+		    </BrowserRouter>
+	    </Provider>
     );
   }
 }

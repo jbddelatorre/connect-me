@@ -15,6 +15,7 @@ const style = (theme) => ({
 		backgroundPosition: 'center',
 		backgroundRepeat: 'norepeat',
 		backgroundSize: 'cover',
+    marginTop:-50
 	},
 	content: {
     	height: '100vh',

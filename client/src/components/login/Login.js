@@ -10,9 +10,6 @@ const styles = {
 	}, 
 	button: {
 		marginTop: 30
-	},
-	root: {
-		padding:50
 	}
 }
 

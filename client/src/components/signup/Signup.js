@@ -73,6 +73,7 @@ export default class Signup extends Component {
 		            <Person />
 		          </ListItemIcon>
 		          <TextField
+		          	error = {this.state.errors.name}
 		          	id="name"
 		          	name="name"
 		          	fullWidth
@@ -82,6 +83,7 @@ export default class Signup extends Component {
 		         	onChange={(e) => this.handleChange(e, 'name')}
 		          	margin="normal"
 		          	helperText={this.state.errors.name}
+		          	FormHelperTextProps = {{error:true}}
 		        	/>
 		        </ListItem>
 				<ListItem>
@@ -89,6 +91,7 @@ export default class Signup extends Component {
 		            <Person />
 		          </ListItemIcon>
 		          <TextField
+		          	error = {this.state.errors.name}
 		          	id="email"
 		          	label="Email"
 		          	fullWidth
@@ -106,6 +109,7 @@ export default class Signup extends Component {
 		            <Person />
 		          </ListItemIcon>
 		          <TextField
+		          	error = {this.state.errors.name}
 		          	id="password"
 		          	label="Password"
 		          	fullWidth
@@ -115,6 +119,7 @@ export default class Signup extends Component {
 		         	onChange={(e) => this.handleChange(e, 'password')}
 		          	margin="normal"
 		          	helperText={this.state.errors.password}
+		          	FormHelperTextProps = {{error:true}}
 		        	/>
 		        </ListItem>
 		        <ListItem>
@@ -122,6 +127,7 @@ export default class Signup extends Component {
 		            <Person />
 		          </ListItemIcon>
 		          <TextField
+		          	error = {this.state.errors.name}
 		          	id="password2"
 		          	label="Confirm Password"
 		          	fullWidth
@@ -131,6 +137,7 @@ export default class Signup extends Component {
 		         	onChange={(e) => this.handleChange(e, 'password2')}
 		          	margin="normal"
 		          	helperText={this.state.errors.password2}
+		          	FormHelperTextProps = {{error:true}}
 		        	/>
 		        </ListItem>
 		        <ListItem>
