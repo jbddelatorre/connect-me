@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
 
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -49,27 +50,43 @@ const Landing = (props) => {
           			<Typography color="inherit" variant="h6" gutterBottom>
            				Create a developer profile/portfolio, share posts and get help from other developers.
           			</Typography>
-          			<div>
-          				<Button component={Link} 
-	      						to={{
-      								pathname: '/signup',
-      							}} 
-      							variant="extendedFab" size="large" color="primary" className={classes.button}>
-        					Signup 
-      					</Button>
-	      					<Button 
-	      						component={Link} 
-	      						to={{
-      								pathname: '/login',
-      							}} 
-      							variant="extendedFab" size="large" color="secondary"className={classes.button}>
-	        					Login
-	      				</Button>
-          			</div>
+          			{props.auth.isAuthenticated ?
+                  <div>
+                    <Button component={Link} 
+                      to={{
+                        pathname: '/profile',
+                      }} 
+                      variant="extendedFab" size="large" color="primary" className={classes.button}>
+                    My Profile 
+                    </Button>
+                  </div>
+                  :
+                <div>
+                  <Button component={Link} 
+                    to={{
+                      pathname: '/signup',
+                    }} 
+                    variant="extendedFab" size="large" color="primary" className={classes.button}>
+                  Signup 
+                  </Button>
+                  <Button 
+                    component={Link} 
+                    to={{
+                      pathname: '/login',
+                    }} 
+                    variant="extendedFab" size="large" color="secondary"className={classes.button}>
+                    Login
+                </Button>
+                </div>
+              }
 				</div>
 			</div>
 		</div>
 	)
 };
 
-export default withStyles(style)(Landing);
+const mapStateToProps = (state) => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps)(withStyles(style)(Landing));

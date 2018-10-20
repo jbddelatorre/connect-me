@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import { connect } from 'react-redux';
 
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
@@ -27,6 +28,12 @@ const styles = (theme) => ({
 
 
 class Profile extends Component {
+	componentDidMount() {
+		if(!this.props.auth.isAuthenticated) {
+			this.props.history.push('/')
+		}
+	}
+
 	render() {
 		const { classes } = this.props
 		return (
@@ -102,4 +109,8 @@ class Profile extends Component {
 	}
 }
 
-export default  withRouter(withStyles(styles)(Profile));
+const mapStateToProps = state => ({
+	auth: state.auth
+})
+
+export default  connect(mapStateToProps)(withRouter(withStyles(styles)(Profile)));

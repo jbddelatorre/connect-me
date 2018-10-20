@@ -1,7 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import PropTypes from 'prop-types';
 import store from './store';
+import jwt_decode from 'jwt-decode';
+import setAuthToken from './utils/setAuthToken';
+import { setCurrentUser, logoutUser } from './actions/authActions';
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import blue from '@material-ui/core/colors/blue';
@@ -68,6 +72,27 @@ const theme = createMuiTheme({
 	},
 });
 
+//Check for Token
+
+if(localStorage.jwtToken) {
+	//Set auth token header auth
+	setAuthToken(localStorage.jwtToken);
+	//Decode token and get user info and exp
+	const decoded = jwt_decode(localStorage.jwtToken);
+	//Set user and isAuthenticated
+	store.dispatch(setCurrentUser(decoded));
+
+	//Check for expired token
+	const currentTime = Date.now() / 1000;
+	if (decoded.exp < currentTime) {
+		//Logoutuser
+		store.dispatch(logoutUser());
+		//TODO: Clear profile
+		//Redirect to login
+		window.location.href = '/login';
+	}
+}
+
 
 class App extends Component {
   render() {
@@ -96,6 +121,11 @@ class App extends Component {
 	    </Provider>
     );
   }
+}
+
+Navbar.proprTypes = {
+	logoutUser: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired
 }
 
 export default App;
