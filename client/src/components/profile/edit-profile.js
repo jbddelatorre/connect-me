@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 // Component Imports
 import TextInput from './profile-inputs/text-input';
@@ -48,6 +49,25 @@ class EditProfile extends Component {
 	handleChangeEditProfile = (e, profile) => {
 		this.setState({ [profile]: e.target.value })
 		console.log(this.state)
+	}
+
+	componentDidMount() {
+		const { profile } = this.props.profile;
+		this.setState({
+			handle:profile.handle,
+			bio:profile.bio,
+			company:profile.company,
+			website:profile.website,
+			location:profile.location,
+			skills:profile.skills,
+			github:profile.githubusername,
+			about:profile.desc,
+			twitter:profile.social.twitter,
+			facebook:profile.social.facebook,
+			linkedin:profile.social.linkedin,
+			youtube:profile.social.youtube,
+			instagram:profile.social.instagram
+		})
 	}
 
 	render() {
@@ -215,4 +235,8 @@ class EditProfile extends Component {
 	}
 }
 
-export default withStyles(styles)(EditProfile);
+const mapStateToProps = (state) => ({
+	profile: state.profile
+})
+
+export default connect(mapStateToProps)(withStyles(styles)(EditProfile));

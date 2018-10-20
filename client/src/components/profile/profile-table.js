@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-
+import isEmpty from '../../validation/is-empty';
 
 const styles = {
 	root: {
@@ -21,6 +21,7 @@ const styles = {
 
 export default(props) => {
 	const {title, header, data} = props
+  console.log(typeof(data))
 	return (
 		<Grid style={styles.root} item xs={12}>
 			<Typography align="left" color="primary" variant="h5">
@@ -35,27 +36,26 @@ export default(props) => {
   					</TableRow>
   				</TableHead>
   				<TableBody>
-  					
-              {!!data ? 
-              <TableRow>
-                <TableCell style={styles.tablecell}></TableCell>
-                <TableCell style={styles.tablecell}></TableCell>
-                <TableCell style={styles.tablecell}></TableCell>
-                <TableCell style={styles.tablecell}>
-                  <Button
-                      size="medium"
-                      variant="contained" 
-                      color="secondary"
-                      fullWidth>
-                      Delete
-                    </Button>
-                </TableCell>
-              </TableRow>
+              {!isEmpty(data) ? 
+                <TableRow>
+                  <TableCell style={styles.tablecell}></TableCell>
+                  <TableCell style={styles.tablecell}></TableCell>
+                  <TableCell style={styles.tablecell}></TableCell>
+                  <TableCell style={styles.tablecell}>
+                    <Button
+                        size="medium"
+                        variant="contained" 
+                        color="secondary"
+                        fullWidth>
+                        Delete
+                      </Button>
+                  </TableCell>
+                </TableRow>
                 :
                 <TableRow>
                   <TableCell colSpan={4}>
                   <Typography align="center" color="secondary" variant="body1">
-                    No profile provided                  
+                    No information provided                  
                   </Typography>
                   </TableCell>
                 </TableRow>

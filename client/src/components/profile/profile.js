@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 import Loading from '../layout/modal-spinner'
 import ProfileTable from './profile-table';
+import isEmpty from '../../validation/is-empty';
 
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
@@ -42,10 +43,9 @@ class Profile extends Component {
 	}
 
 	render() {
-		const { classes } = this.props
+		const { classes, auth } = this.props
 		const { profile, profiles, loading } = this.props.profile;
-		// const loadingModal = loading ? 
-
+		console.log(profile)
 		return (
 			<Grid className={classes.root} container>
 				<Loading loading={loading}/>
@@ -57,7 +57,7 @@ class Profile extends Component {
 					</Grid>
 					<Grid item xs={12}>
 						<Typography align="left" color="primary" variant="h6">
-	           				Welcome. Jason
+	           				Welcome,  { auth.user.name.toUpperCase() }
 	          			</Typography>
 					</Grid>
 					<Grid item xs={12}>
@@ -69,9 +69,9 @@ class Profile extends Component {
 			        		size="large"
 			        		variant="outlined" 
 			        		color="primary">
-	        				Edit Profile
+	        				{!isEmpty(profile) ? 'Edit' : 'Add' } Profile
 	      				</Button>
-	      				{!!Object.keys(profile).length ? 
+	      				{!isEmpty(profile) ? 
 	      					<Fragment>
 			      				<Button
 			      					component={Link}
@@ -104,12 +104,12 @@ class Profile extends Component {
 					<ProfileTable 
 					    title = "Experience Credentials"
 						header={['Company', 'Title', 'Years', 'Action']}
-						data = ""
+						data = {profile.experience}
 					/>
 					<ProfileTable 
 					    title = "Education Credentials"
 						header={['School', 'Degree', 'Years', 'Action']}
-						data = ""
+						data = {profile.education}
 					/>
 					<Grid item xs={4}>
 						{!!Object.keys(profile).length ? 
