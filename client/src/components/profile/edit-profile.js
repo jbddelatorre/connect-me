@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateProfile, getCurrentProfile } from '../../actions/profileActions';
-
+import isEmpty from '../../validation/is-empty';
 
 // Component Imports
 import TextInput from './profile-inputs/text-input';
@@ -61,7 +61,7 @@ class EditProfile extends Component {
 			company:this.state.company,
 			website:this.state.website,
 			location:this.state.location,
-			skills:this.state.skills.join(','),
+			skills:this.state.skills,
 			githubusername:this.state.github,
 			twitter:this.state.twitter,
 			facebook:this.state.facebook,
@@ -69,15 +69,19 @@ class EditProfile extends Component {
 			youtube:this.state.youtube,
 			instagram:this.state.instagram
 		}
-
 		this.props.updateProfile(userData);
+		this.props.history.push('/profile')
 	}
 
-
 	componentDidMount() {
-		// this.props.getCurrentProfile();
-		const { profile } = this.props.profile;
-		if (profile) {
+		this.props.getCurrentProfile();
+	}
+
+	componentWillReceiveProps(nextProps) {
+		// console.log(nextProps.profile)
+		// console.log('AHAHAHAHA')
+		if (!isEmpty(nextProps.profile.profile)) {
+			const { profile } = this.props.profile;
 			this.setState({
 				handle:profile.handle,
 				bio:profile.bio,
@@ -85,7 +89,7 @@ class EditProfile extends Component {
 				company:profile.company,
 				website:profile.website,
 				location:profile.location,
-				skills:profile.skills,
+				skills:profile.skills.toString(),
 				github:profile.githubusername,
 				twitter:profile.social.twitter,
 				facebook:profile.social.facebook,
@@ -93,11 +97,7 @@ class EditProfile extends Component {
 				youtube:profile.social.youtube,
 				instagram:profile.social.instagram
 			})
-		} else {
-			this.props.history.push('/profile')
-		}
-		// const { profile } = this.props.profile;
-	
+		} 
 	}
 
 	render() {
@@ -240,7 +240,7 @@ class EditProfile extends Component {
 						<i className="fab fa-instagram"></i>
 					</div>
 				</SocialMedia>
-				<Grid container justify="center">
+				<Grid container justify="center" style={{marginTop: 32}}>
 					<Grid item xs={6}>
 						<Button
 						fullWidth

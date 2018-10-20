@@ -1,6 +1,10 @@
 import { GET_CURRENT_PROFILE, PROFILE_LOADING, GET_ERRORS } from '../actions/types';
 import isEmpty from '../validation/is-empty';
 
+
+
+// 
+
 const initialState = {
 	profile: {},
 	profiles: {},
@@ -8,6 +12,9 @@ const initialState = {
 }
 
 export default (state=initialState, action) => {
+
+	initialState.profile = !!localStorage.profile ? JSON.parse(localStorage.profile) : {}
+
 	switch(action.type) {
 		case 'PROFILE_LOADING':
 			return {
