@@ -7,6 +7,8 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken';
 import { setCurrentUser, logoutUser } from './actions/authActions';
 
+import PrivateRoute from './components/common/PrivateRoute';
+
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import blue from '@material-ui/core/colors/blue';
 import pink from '@material-ui/core/colors/pink';
@@ -107,7 +109,7 @@ class App extends Component {
 		      				<Route path="/" exact component={Landing} />
 		      				<Route path="/login" exact component={Login} />
 		      				<Route path="/signup" exact component={Signup} />
-		      				<Route path="/profile" exact component={Profile} />
+		      				<PrivateRoute path="/profile" exact component={Profile} />
 		      				<Route path="/profile/edit-profile" exact component={EditProfile} />
 		      				<Route path="/profile/add-experience" exact component={AddExperience} />
 		      				<Route path="/profile/add-education" exact component={AddEducation} />
