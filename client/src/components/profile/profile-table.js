@@ -35,20 +35,31 @@ export default(props) => {
   					</TableRow>
   				</TableHead>
   				<TableBody>
-  					<TableRow>
-  						<TableCell style={styles.tablecell}>Tech guy</TableCell>
-  						<TableCell style={styles.tablecell}>Senior developer</TableCell>
-  						<TableCell style={styles.tablecell}>2010-2018</TableCell>
-  						<TableCell style={styles.tablecell}>
-  							<Button
-				        		size="medium"
-				        		variant="contained" 
-				        		color="secondary"
-                    fullWidth>
-		        				Delete
-		      				</Button>
-  						</TableCell>
-  					</TableRow>
+  					
+              {!!data ? 
+              <TableRow>
+                <TableCell style={styles.tablecell}></TableCell>
+                <TableCell style={styles.tablecell}></TableCell>
+                <TableCell style={styles.tablecell}></TableCell>
+                <TableCell style={styles.tablecell}>
+                  <Button
+                      size="medium"
+                      variant="contained" 
+                      color="secondary"
+                      fullWidth>
+                      Delete
+                    </Button>
+                </TableCell>
+              </TableRow>
+                :
+                <TableRow>
+                  <TableCell colSpan={4}>
+                  <Typography align="center" color="secondary" variant="body1">
+                    No profile provided                  
+                  </Typography>
+                  </TableCell>
+                </TableRow>
+              }
   				</TableBody>
   			</Table>
 		</Grid>	

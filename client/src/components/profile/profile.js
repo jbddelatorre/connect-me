@@ -1,14 +1,20 @@
-import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { getCurrentProfile } from '../../actions/profileActions';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import Loading from '../layout/modal-spinner'
+import ProfileTable from './profile-table';
 
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
-import { Link } from 'react-router-dom';
-import ProfileTable from './profile-table';
+
+
 
 const styles = (theme) => ({
 	root: {
@@ -32,12 +38,17 @@ class Profile extends Component {
 		if(!this.props.auth.isAuthenticated) {
 			this.props.history.push('/')
 		}
+		this.props.getCurrentProfile();
 	}
 
 	render() {
 		const { classes } = this.props
+		const { profile, profiles, loading } = this.props.profile;
+		// const loadingModal = loading ? 
+
 		return (
 			<Grid className={classes.root} container>
+				<Loading loading={loading}/>
 				<Grid className={classes.container} container spacing={24}>
 					<Grid item xs={12}>
 						<Typography align="left" color="primary" variant="h4">
@@ -60,27 +71,33 @@ class Profile extends Component {
 			        		color="primary">
 	        				Edit Profile
 	      				</Button>
-	      				<Button
-	      					component={Link}
-							to={{
-								pathname: `${this.props.match.url}/add-experience`
-							}}
-	      					classes = {{outlined: classes.out}}
-			        		size="large"
-			        		variant="outlined" 
-			        		color="primary">
-	        				Add Experience
-	      				</Button>
-	      				<Button
-	      					component={Link}
-							to={{
-								pathname:  `${this.props.match.url}/add-education`
-							}}
-			        		size="large"
-			        		variant="outlined" 
-			        		color="primary">
-	        				Add Education
-	      				</Button>
+	      				{!!Object.keys(profile).length ? 
+	      					<Fragment>
+			      				<Button
+			      					component={Link}
+									to={{
+										pathname: `${this.props.match.url}/add-experience`
+									}}
+			      					classes = {{outlined: classes.out}}
+					        		size="large"
+					        		variant="outlined" 
+					        		color="primary">
+			        				Add Experience
+			      				</Button>
+			      				<Button
+			      					component={Link}
+									to={{
+										pathname:  `${this.props.match.url}/add-education`
+									}}
+					        		size="large"
+					        		variant="outlined" 
+					        		color="primary">
+			        				Add Education
+			      				</Button>
+		      				</Fragment>
+	      					:
+	      					""
+	      				}
 					</Grid>
 				</Grid>
 				<Grid className={classes.container} container spacing={24}>
@@ -95,13 +112,17 @@ class Profile extends Component {
 						data = ""
 					/>
 					<Grid item xs={4}>
+						{!!Object.keys(profile).length ? 
 						<Button
-							style={{backgroundColor:'pink'}}
-			        		size="large"
-			        		variant="contained" 
-			        		color="default">
-	        				Delete my account
-	      				</Button>
+						style={{backgroundColor:'pink'}}
+		        		size="large"
+		        		variant="contained" 
+		        		color="default">
+        				Delete my account
+      					</Button>
+						:
+						""
+						}
 					</Grid>
 				</Grid>
 			</Grid>
@@ -110,7 +131,14 @@ class Profile extends Component {
 }
 
 const mapStateToProps = state => ({
-	auth: state.auth
+	auth: state.auth,
+	profile: state.profile
 })
 
-export default  connect(mapStateToProps)(withRouter(withStyles(styles)(Profile)));
+Profile.propTypes = {
+	getCurrentProfile: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired,
+	profile: PropTypes.object.isRequired
+}
+
+export default  connect(mapStateToProps, { getCurrentProfile })(withRouter(withStyles(styles)(Profile)));
