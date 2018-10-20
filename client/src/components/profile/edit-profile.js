@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { updateProfile, getCurrentProfile } from '../../actions/profileActions';
+
 
 // Component Imports
 import TextInput from './profile-inputs/text-input';
@@ -33,6 +35,7 @@ class EditProfile extends Component {
 	state = {
 		handle:'',
 		bio:'',
+		status:'',
 		company:'',
 		website:'',
 		location:'',
@@ -48,26 +51,53 @@ class EditProfile extends Component {
 
 	handleChangeEditProfile = (e, profile) => {
 		this.setState({ [profile]: e.target.value })
-		console.log(this.state)
 	}
 
+	handleSubmit = () => {
+		const userData = {
+			handle:this.state.handle,
+			bio:this.state.bio,
+			status:this.state.status,
+			company:this.state.company,
+			website:this.state.website,
+			location:this.state.location,
+			skills:this.state.skills.join(','),
+			githubusername:this.state.github,
+			twitter:this.state.twitter,
+			facebook:this.state.facebook,
+			linkedin:this.state.linkedin,
+			youtube:this.state.youtube,
+			instagram:this.state.instagram
+		}
+
+		this.props.updateProfile(userData);
+	}
+
+
 	componentDidMount() {
+		// this.props.getCurrentProfile();
 		const { profile } = this.props.profile;
-		this.setState({
-			handle:profile.handle,
-			bio:profile.bio,
-			company:profile.company,
-			website:profile.website,
-			location:profile.location,
-			skills:profile.skills,
-			github:profile.githubusername,
-			about:profile.desc,
-			twitter:profile.social.twitter,
-			facebook:profile.social.facebook,
-			linkedin:profile.social.linkedin,
-			youtube:profile.social.youtube,
-			instagram:profile.social.instagram
-		})
+		if (profile) {
+			this.setState({
+				handle:profile.handle,
+				bio:profile.bio,
+				status:profile.status,
+				company:profile.company,
+				website:profile.website,
+				location:profile.location,
+				skills:profile.skills,
+				github:profile.githubusername,
+				twitter:profile.social.twitter,
+				facebook:profile.social.facebook,
+				linkedin:profile.social.linkedin,
+				youtube:profile.social.youtube,
+				instagram:profile.social.instagram
+			})
+		} else {
+			this.props.history.push('/profile')
+		}
+		// const { profile } = this.props.profile;
+	
 	}
 
 	render() {
@@ -108,6 +138,14 @@ class EditProfile extends Component {
 					subtitle="A handle for your profile URL."
 				/>
 				<TextInput 
+					id="status"
+					name="status"
+					label="status"
+					value={this.state.status}
+					handleChange = {(e) => this.handleChangeEditProfile(e, 'status')}
+					subtitle="Your job position"
+				/>
+				<TextInput 
 					id="company"
 					name="company"
 					label="Company"
@@ -146,23 +184,6 @@ class EditProfile extends Component {
 					value={this.state.github}
 					handleChange = {(e) => this.handleChangeEditProfile(e, 'github')}
 					subtitle="If you want to include your github"
-				/>
-				<TextInput 
-					id="company"
-					name="company"
-					label="Company"
-					value={this.state.company}
-					handleChange = {(e) => this.handleChangeEditProfile(e, 'company')}
-					subtitle="Company your work for"
-				/>
-				<TextInput 
-					id="about"
-					name="about"
-					label="About Yourself"
-					value={this.state.about}
-					handleChange = {(e) => this.handleChangeEditProfile(e, 'about')}
-					subtitle="Tell something about yourself"
-					textfield
 				/>
 				<SocialMedia 
 					id="twitter"
@@ -225,7 +246,8 @@ class EditProfile extends Component {
 						fullWidth
 		        		size="large"
 		        		variant="extendedFab" 
-		        		color="primary">
+		        		color="primary"
+		        		onClick={this.handleSubmit}>
         				Edit Your Profile
       					</Button>
 					</Grid>
@@ -239,4 +261,4 @@ const mapStateToProps = (state) => ({
 	profile: state.profile
 })
 
-export default connect(mapStateToProps)(withStyles(styles)(EditProfile));
+export default connect(mapStateToProps, { updateProfile, getCurrentProfile })(withStyles(styles)(EditProfile));

@@ -21,7 +21,6 @@ const styles = {
 
 export default(props) => {
 	const {title, header, data} = props
-  console.log(typeof(data))
 	return (
 		<Grid style={styles.root} item xs={12}>
 			<Typography align="left" color="primary" variant="h5">

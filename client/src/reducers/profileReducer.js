@@ -20,6 +20,12 @@ export default (state=initialState, action) => {
 				profile: action.payload,
 				loading: false
 			}
+		case 'UPDATE_PROFILE':
+			return {
+				...state,
+				profile: action.payload,
+				loading: false
+			}
 		default:
 			return state;
 	}
