@@ -42,9 +42,11 @@ class Profile extends Component {
 		this.props.getCurrentProfile();
 	}
 
+
 	render() {
 		const { classes, auth } = this.props
 		const { profile, profiles, loading } = this.props.profile;
+		// console.log(profile.experience)
 		return (
 			<Grid className={classes.root} container>
 				<Loading loading={loading}/>

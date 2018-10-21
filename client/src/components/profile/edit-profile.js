@@ -73,6 +73,7 @@ class EditProfile extends Component {
 		this.props.history.push('/profile')
 	}
 
+
 	componentDidMount() {
 		this.props.getCurrentProfile();
 	}
@@ -102,6 +103,7 @@ class EditProfile extends Component {
 
 	render() {
 		const {classes} = this.props
+
 		return (
 			<Grid container>
 				<Grid className={classes.margin}  container justify="center">

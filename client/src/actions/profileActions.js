@@ -9,7 +9,6 @@ export const getCurrentProfile = () => (dispatch) => {
 	axios.get('/api/profile')
 		.then(res => {
 			localStorage.setItem('profile', JSON.stringify(res.data));
-			console.log(!!localStorage.profile)
 			dispatch({
 				type:'GET_CURRENT_PROFILE',
 				payload: res.data
@@ -47,6 +46,22 @@ export const addExperience = (workExperience, history) => (dispatch) => {
 				payload: res.data
 			})
 			history.push('/profile')
+		})
+		.catch(err => {
+		dispatch({
+			type: GET_ERRORS,
+			payload: err.response.data
+			})
+		})
+}
+
+export const deleteExperience = (id) => (dispatch) => {
+	axios.delete(`/api/profile/experience/${id}`)
+		.then(res => {
+			dispatch({
+				type: 'GET_CURRENT_PROFILE',
+				payload: res.data
+			})
 		})
 		.catch(err => {
 		dispatch({
