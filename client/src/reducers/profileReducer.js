@@ -10,7 +10,7 @@ const initialState = {
 
 export default (state=initialState, action) => {
 
-	initialState.profile = localStorage.profile ? JSON.parse(localStorage.profile) : {}
+	// initialState.profile = localStorage.profile ? JSON.parse(localStorage.profile) : {}
 
 	switch(action.type) {
 		case 'PROFILE_LOADING':

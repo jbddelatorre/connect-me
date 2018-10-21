@@ -32,21 +32,25 @@ const styles = (theme) => ({
 })
 
 class EditProfile extends Component {
-	state = {
-		handle:'',
-		bio:'',
-		status:'',
-		company:'',
-		website:'',
-		location:'',
-		skills:'',
-		github:'',
-		about:'',
-		twitter:'',
-		facebook:'',
-		linkedin:'',
-		youtube:'',
-		instagram:''
+	constructor(props) {
+		super(props)
+		this.state = {
+			handle:'',
+			bio:'',
+			status:'',
+			company:'',
+			website:'',
+			location:'',
+			skills:'',
+			github:'',
+			about:'',
+			twitter:'',
+			facebook:'',
+			linkedin:'',
+			youtube:'',
+			instagram:''
+		}
+
 	}
 
 	handleChangeEditProfile = (e, profile) => {
@@ -76,13 +80,14 @@ class EditProfile extends Component {
 
 	componentDidMount() {
 		this.props.getCurrentProfile();
+		const { profile } = this.props.profile;
+		console.log(profile)
+		
 	}
 
-	componentWillReceiveProps(nextProps) {
-		// console.log(nextProps.profile)
-		// console.log('AHAHAHAHA')
-		if (!isEmpty(nextProps.profile.profile)) {
-			const { profile } = this.props.profile;
+	componentDidUpdate(prevProps, prevState) {
+		const { profile } = this.props.profile;
+		if(prevProps.profile.profile !== profile) {
 			this.setState({
 				handle:profile.handle,
 				bio:profile.bio,
@@ -101,9 +106,14 @@ class EditProfile extends Component {
 		} 
 	}
 
+	componentWillUnmount() {
+		console.log('UNMOUNT')
+	}
+
+
 	render() {
 		const {classes} = this.props
-
+		// console.log('render')
 		return (
 			<Grid container>
 				<Grid className={classes.margin}  container justify="center">
