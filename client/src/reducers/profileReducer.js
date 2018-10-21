@@ -1,4 +1,4 @@
-import { GET_CURRENT_PROFILE, PROFILE_LOADING, GET_ERRORS, ADD_EXPERIENCE } from '../actions/types';
+import { GET_CURRENT_PROFILE, PROFILE_LOADING, GET_ERRORS, ADD_EXPERIENCE,  ADD_EDUCATION } from '../actions/types';
 import isEmpty from '../validation/is-empty';
 
 
@@ -36,6 +36,15 @@ export default (state=initialState, action) => {
 				profile: {
 					...state.profile,
 					experience: [action.payload ,...state.profile.experience]
+				},
+				loading: false
+			}
+		case 'ADD_EDUCATION':
+			return {
+				...state,
+				profile: {
+					...state.profile,
+					education: [action.payload ,...state.profile.education]
 				},
 				loading: false
 			}

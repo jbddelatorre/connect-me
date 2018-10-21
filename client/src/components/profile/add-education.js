@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import { addEducation } from '../../actions/profileActions'
+import { connect } from 'react-redux'
 // Component Imports
 import TextInput from './profile-inputs/text-input';
 
@@ -48,9 +49,30 @@ class AddExperience extends Component {
 		desc:''
 	}
 
+	handleCurrentEdu = () => {
+		const checkbox = !this.state.current
+		if(checkbox == true) {
+			this.setState({todate: '', current: checkbox })
+		} else {
+			this.setState({current: checkbox })
+		}
+	}
+
 	handleChangeEditProfile = (e, profile) => {
 		this.setState({ [profile]: e.target.value })
-		console.log(this.state)
+	}
+
+	handleSubmit = () => {
+		const education = {
+			school:this.state.school,
+			degree:this.state.degree,
+			fieldofstudy:this.state.fieldofstudy,
+			from: this.state.fromdate,
+			to: this.state.todate,
+			current: this.state.current,
+			description:this.state.desc
+		}
+		this.props.addEducation(education, this.props.history)
 	}
 
 	render() {
@@ -120,13 +142,14 @@ class AddExperience extends Component {
 					subtitle="To Date"
 					type='date'
 					justifysub="left"
+					disabled={this.state.current}
 				/>
 				<Grid container justify="center">
 					<Grid item xs={6}>
 						<FormControlLabel
 				          control={
 				            <Checkbox
-				              checked={this.state.checkedG}
+				              onChange={this.handleCurrentEdu}
 				              // onChange={this.handleChange('checkedG')}
 				              value=""
 				              classes={{
@@ -155,8 +178,9 @@ class AddExperience extends Component {
 						fullWidth
 		        		size="large"
 		        		variant="extendedFab" 
-		        		color="primary">
-        				Tell us about your experience
+		        		color="primary"
+		        		onClick={this.handleSubmit}>
+        				Add Education
       					</Button>
 					</Grid>
 				</Grid>
@@ -165,4 +189,4 @@ class AddExperience extends Component {
 	}
 }
 
-export default withStyles(styles)(AddExperience);
+export default connect(null, { addEducation })(withStyles(styles)(AddExperience));
