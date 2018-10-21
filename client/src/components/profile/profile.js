@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { getCurrentProfile } from '../../actions/profileActions';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import Loading from '../layout/modal-spinner'
+import ProfileTable from './profile-table';
+import isEmpty from '../../validation/is-empty';
 
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
-import { Link } from 'react-router-dom';
-import ProfileTable from './profile-table';
+
+
 
 const styles = (theme) => ({
 	root: {
@@ -27,10 +35,20 @@ const styles = (theme) => ({
 
 
 class Profile extends Component {
+	componentDidMount() {
+		// if(!this.props.auth.isAuthenticated) {
+		// 	this.props.history.push('/')
+		// }
+		this.props.getCurrentProfile();
+	}
+
 	render() {
-		const { classes } = this.props
+		const { classes, auth } = this.props
+		const { profile, profiles, loading } = this.props.profile;
+		// console.log(profile.experience)
 		return (
 			<Grid className={classes.root} container>
+				<Loading loading={loading}/>
 				<Grid className={classes.container} container spacing={24}>
 					<Grid item xs={12}>
 						<Typography align="left" color="primary" variant="h4">
@@ -39,7 +57,7 @@ class Profile extends Component {
 					</Grid>
 					<Grid item xs={12}>
 						<Typography align="left" color="primary" variant="h6">
-	           				Welcome. Jason
+	           				Welcome,  { auth.user.name.toUpperCase() }
 	          			</Typography>
 					</Grid>
 					<Grid item xs={12}>
@@ -51,50 +69,60 @@ class Profile extends Component {
 			        		size="large"
 			        		variant="outlined" 
 			        		color="primary">
-	        				Edit Profile
+	        				{!isEmpty(profile) ? 'Edit' : 'Add' } Profile
 	      				</Button>
-	      				<Button
-	      					component={Link}
-							to={{
-								pathname: `${this.props.match.url}/add-experience`
-							}}
-	      					classes = {{outlined: classes.out}}
-			        		size="large"
-			        		variant="outlined" 
-			        		color="primary">
-	        				Add Experience
-	      				</Button>
-	      				<Button
-	      					component={Link}
-							to={{
-								pathname:  `${this.props.match.url}/add-education`
-							}}
-			        		size="large"
-			        		variant="outlined" 
-			        		color="primary">
-	        				Add Education
-	      				</Button>
+	      				{!isEmpty(profile) ? 
+	      					<Fragment>
+			      				<Button
+			      					component={Link}
+									to={{
+										pathname: `${this.props.match.url}/add-experience`
+									}}
+			      					classes = {{outlined: classes.out}}
+					        		size="large"
+					        		variant="outlined" 
+					        		color="primary">
+			        				Add Experience
+			      				</Button>
+			      				<Button
+			      					component={Link}
+									to={{
+										pathname:  `${this.props.match.url}/add-education`
+									}}
+					        		size="large"
+					        		variant="outlined" 
+					        		color="primary">
+			        				Add Education
+			      				</Button>
+		      				</Fragment>
+	      					:
+	      					""
+	      				}
 					</Grid>
 				</Grid>
 				<Grid className={classes.container} container spacing={24}>
 					<ProfileTable 
 					    title = "Experience Credentials"
 						header={['Company', 'Title', 'Years', 'Action']}
-						data = ""
+						data = {profile.experience}
 					/>
 					<ProfileTable 
 					    title = "Education Credentials"
 						header={['School', 'Degree', 'Years', 'Action']}
-						data = ""
+						data = {profile.education}
 					/>
 					<Grid item xs={4}>
+						{!!Object.keys(profile).length ? 
 						<Button
-							style={{backgroundColor:'pink'}}
-			        		size="large"
-			        		variant="contained" 
-			        		color="default">
-	        				Delete my account
-	      				</Button>
+						style={{backgroundColor:'pink'}}
+		        		size="large"
+		        		variant="contained" 
+		        		color="default">
+        				Delete my account
+      					</Button>
+						:
+						""
+						}
 					</Grid>
 				</Grid>
 			</Grid>
@@ -102,4 +130,15 @@ class Profile extends Component {
 	}
 }
 
-export default  withRouter(withStyles(styles)(Profile));
+const mapStateToProps = state => ({
+	auth: state.auth,
+	profile: state.profile
+})
+
+Profile.propTypes = {
+	getCurrentProfile: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired,
+	profile: PropTypes.object.isRequired
+}
+
+export default  connect(mapStateToProps, { getCurrentProfile })(withRouter(withStyles(styles)(Profile)));

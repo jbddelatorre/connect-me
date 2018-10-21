@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { updateProfile, getCurrentProfile } from '../../actions/profileActions';
+import isEmpty from '../../validation/is-empty';
 
 // Component Imports
 import TextInput from './profile-inputs/text-input';
@@ -29,29 +32,88 @@ const styles = (theme) => ({
 })
 
 class EditProfile extends Component {
-	state = {
-		handle:'',
-		bio:'',
-		company:'',
-		website:'',
-		location:'',
-		skills:'',
-		github:'',
-		about:'',
-		twitter:'',
-		facebook:'',
-		linkedin:'',
-		youtube:'',
-		instagram:''
+	constructor(props) {
+		super(props)
+		this.state = {
+			handle:'',
+			bio:'',
+			status:'',
+			company:'',
+			website:'',
+			location:'',
+			skills:'',
+			github:'',
+			about:'',
+			twitter:'',
+			facebook:'',
+			linkedin:'',
+			youtube:'',
+			instagram:''
+		}
+
 	}
 
 	handleChangeEditProfile = (e, profile) => {
 		this.setState({ [profile]: e.target.value })
-		console.log(this.state)
 	}
+
+	handleSubmit = () => {
+		const userData = {
+			handle:this.state.handle,
+			bio:this.state.bio,
+			status:this.state.status,
+			company:this.state.company,
+			website:this.state.website,
+			location:this.state.location,
+			skills:this.state.skills,
+			githubusername:this.state.github,
+			twitter:this.state.twitter,
+			facebook:this.state.facebook,
+			linkedin:this.state.linkedin,
+			youtube:this.state.youtube,
+			instagram:this.state.instagram
+		}
+		this.props.updateProfile(userData);
+		this.props.history.push('/profile')
+	}
+
+
+	componentDidMount() {
+		this.props.getCurrentProfile();
+		const { profile } = this.props.profile;
+		console.log(profile)
+		
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		const { profile } = this.props.profile;
+		if(prevProps.profile.profile !== profile) {
+			this.setState({
+				handle:profile.handle,
+				bio:profile.bio,
+				status:profile.status,
+				company:profile.company,
+				website:profile.website,
+				location:profile.location,
+				skills:profile.skills.toString(),
+				github:profile.githubusername,
+				twitter:profile.social.twitter,
+				facebook:profile.social.facebook,
+				linkedin:profile.social.linkedin,
+				youtube:profile.social.youtube,
+				instagram:profile.social.instagram
+			})
+		} 
+	}
+
+	componentWillUnmount() {
+		console.log('UNMOUNT')
+	}
+
 
 	render() {
 		const {classes} = this.props
+		// console.log('render')
 		return (
 			<Grid container>
 				<Grid className={classes.margin}  container justify="center">
@@ -86,6 +148,14 @@ class EditProfile extends Component {
 					value={this.state.handle}
 					handleChange = {(e) => this.handleChangeEditProfile(e, 'handle')}
 					subtitle="A handle for your profile URL."
+				/>
+				<TextInput 
+					id="status"
+					name="status"
+					label="status"
+					value={this.state.status}
+					handleChange = {(e) => this.handleChangeEditProfile(e, 'status')}
+					subtitle="Your job position"
 				/>
 				<TextInput 
 					id="company"
@@ -126,23 +196,6 @@ class EditProfile extends Component {
 					value={this.state.github}
 					handleChange = {(e) => this.handleChangeEditProfile(e, 'github')}
 					subtitle="If you want to include your github"
-				/>
-				<TextInput 
-					id="company"
-					name="company"
-					label="Company"
-					value={this.state.company}
-					handleChange = {(e) => this.handleChangeEditProfile(e, 'company')}
-					subtitle="Company your work for"
-				/>
-				<TextInput 
-					id="about"
-					name="about"
-					label="About Yourself"
-					value={this.state.about}
-					handleChange = {(e) => this.handleChangeEditProfile(e, 'about')}
-					subtitle="Tell something about yourself"
-					textfield
 				/>
 				<SocialMedia 
 					id="twitter"
@@ -199,13 +252,14 @@ class EditProfile extends Component {
 						<i className="fab fa-instagram"></i>
 					</div>
 				</SocialMedia>
-				<Grid container justify="center">
+				<Grid container justify="center" style={{marginTop: 32}}>
 					<Grid item xs={6}>
 						<Button
 						fullWidth
 		        		size="large"
 		        		variant="extendedFab" 
-		        		color="primary">
+		        		color="primary"
+		        		onClick={this.handleSubmit}>
         				Edit Your Profile
       					</Button>
 					</Grid>
@@ -215,4 +269,8 @@ class EditProfile extends Component {
 	}
 }
 
-export default withStyles(styles)(EditProfile);
+const mapStateToProps = (state) => ({
+	profile: state.profile
+})
+
+export default connect(mapStateToProps, { updateProfile, getCurrentProfile })(withStyles(styles)(EditProfile));

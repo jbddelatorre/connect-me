@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 
+import { addExperience } from '../../actions/profileActions'
 // Component Imports
 import TextInput from './profile-inputs/text-input';
 
@@ -50,11 +52,34 @@ class AddExperience extends Component {
 
 	handleChangeEditProfile = (e, profile) => {
 		this.setState({ [profile]: e.target.value })
-		console.log(this.state)
+	}
+
+	handleSubmit = () => {
+		const experience = {
+			title:this.state.title,
+			company:this.state.company,
+			location:this.state.location,
+			from: this.state.fromdate,
+			to: this.state.todate,
+			current: this.state.current,
+			description:this.state.desc
+		}
+		this.props.addExperience(experience, this.props.history)
+	}
+
+	handleCurrentJob = () => {
+		const checkbox = !this.state.current
+		const emptyToDate = ''
+		if(checkbox == true) {
+			this.setState({todate: '', current: checkbox })
+		} else {
+			this.setState({current: checkbox })
+		}
 	}
 
 	render() {
 		const {classes} = this.props
+		
 		return (
 			<Grid container>
 				<Grid className={classes.margin}  container justify="center">
@@ -120,14 +145,15 @@ class AddExperience extends Component {
 					subtitle="To Date"
 					type='date'
 					justifysub="left"
+					disabled={this.state.current}
 				/>
 				<Grid container justify="center">
 					<Grid item xs={6}>
 						<FormControlLabel
 				          control={
 				            <Checkbox
-				              checked={this.state.checkedG}
-				              // onChange={this.handleChange('checkedG')}
+				              // checked={this.state.checkedG}
+				              onChange={this.handleCurrentJob}
 				              value=""
 				              classes={{
 				                root: classes.root,
@@ -155,7 +181,8 @@ class AddExperience extends Component {
 						fullWidth
 		        		size="large"
 		        		variant="extendedFab" 
-		        		color="primary">
+		        		color="primary"
+		        		onClick={this.handleSubmit}>
         				Add your experience
       					</Button>
 					</Grid>
@@ -165,4 +192,4 @@ class AddExperience extends Component {
 	}
 }
 
-export default withStyles(styles)(AddExperience);
+export default connect(null, { addExperience })(withStyles(styles)(AddExperience));

@@ -24,6 +24,7 @@ router.get('/test', (req, res) => res.json({msg: "Profile Works"}));
 // @desc 	Tests profile route
 // @access 	Public
 router.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
+	console.log(typeof(req.body))
 	const errors = {};
 	Profile.findOne({ user: req.user.id })
 		.populate('user', ['name', 'avatar'])
@@ -101,6 +102,8 @@ router.get('/user/:user_id', (req,res) => {
 // @access 	Private
 router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
 	
+	console.log(req.body)
+
 	const {errors, isValid } = validateProfileInput(req.body);
 	//Check Validation
 	if(!isValid) {
@@ -127,13 +130,16 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
 	} 
 
 	// Social
+	
 	profileFields.social = {};
-
+	
 	if(req.body.youtube) profileFields.social.youtube = req.body.youtube;
 	if(req.body.twitter) profileFields.social.twitter = req.body.twitter;
 	if(req.body.facebook) profileFields.social.facebook = req.body.facebook;
 	if(req.body.linkedin) profileFields.social.linkedin = req.body.linkedin;
 	if(req.body.instagram) profileFields.social.instagram = req.body.instagram;
+	
+
 
 	Profile.findOne({ user: req.user.id })
 		.then(profile => {
