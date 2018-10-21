@@ -1,6 +1,13 @@
 import axios from 'axios';
 
-import { GET_CURRENT_PROFILE, PROFILE_LOADING, GET_ERRORS, UPDATE_PROFILE, ADD_EXPERIENCE, ADD_EDUCATION } from './types';
+import { 
+	GET_CURRENT_PROFILE, 
+	PROFILE_LOADING, 
+	GET_ERRORS, 
+	UPDATE_PROFILE, 
+	ADD_EXPERIENCE, 
+	ADD_EDUCATION, 
+	GET_ALL_PROFILE } from './types';
 
 //Get current profile
 
@@ -96,6 +103,40 @@ export const deleteEducation = (id) => (dispatch) => {
 		.then(res => {
 			dispatch({
 				type: 'GET_CURRENT_PROFILE',
+				payload: res.data
+			})
+		})
+		.catch(err => {
+		dispatch({
+			type: GET_ERRORS,
+			payload: err.response.data
+			})
+		})
+}
+
+export const getAllProfile = () => (dispatch) => {
+	dispatch(setProfileLoading());
+	axios.get(`/api/profile/all`)
+		.then(res => {
+			dispatch({
+				type: 'GET_ALL_PROFILE',
+				payload: res.data
+			})
+		})
+		.catch(err => {
+		dispatch({
+			type: GET_ERRORS,
+			payload: err.response.data
+			})
+		})
+}
+
+export const getDeveloperProfile = (id) => (dispatch) => {
+	dispatch(setProfileLoading());
+	axios.get(`/api/profile/all`)
+		.then(res => {
+			dispatch({
+				type: 'GET_ALL_PROFILE',
 				payload: res.data
 			})
 		})

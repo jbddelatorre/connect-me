@@ -120,7 +120,7 @@ class Profile extends Component {
 		        		size="large"
 		        		variant="contained" 
 		        		color="default">
-        				Delete my account
+        				Delete my profile
       					</Button>
 						:
 						""

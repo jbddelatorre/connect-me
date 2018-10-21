@@ -1,10 +1,16 @@
-import { GET_CURRENT_PROFILE, PROFILE_LOADING, GET_ERRORS, ADD_EXPERIENCE,  ADD_EDUCATION } from '../actions/types';
+import { 
+	GET_CURRENT_PROFILE, 
+	PROFILE_LOADING, 
+	GET_ERRORS, 
+	ADD_EXPERIENCE,  
+	ADD_EDUCATION, 
+	GET_ALL_PROFILE } from '../actions/types';
 import isEmpty from '../validation/is-empty';
 
 
 const initialState = {
 	profile: {},
-	profiles: {},
+	profiles: [],
 	loading:false
 }
 
@@ -46,6 +52,12 @@ export default (state=initialState, action) => {
 					...state.profile,
 					education: [action.payload ,...state.profile.education]
 				},
+				loading: false
+			}
+		case 'GET_ALL_PROFILE':
+			return {
+				...state,
+				profiles: [...action.payload],
 				loading: false
 			}
 		default:
