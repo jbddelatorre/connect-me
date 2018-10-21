@@ -94,7 +94,7 @@ const DeveloperCard = (props) => {
 				          			<Button
 				          				component = {Link}
 				          				to={{
-											pathname:'/profile'
+											pathname:'/developers/' + data.user._id
 										}}
 				          				className={classes.button}
 										fullWidth

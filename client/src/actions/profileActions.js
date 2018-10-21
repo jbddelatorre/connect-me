@@ -7,7 +7,8 @@ import {
 	UPDATE_PROFILE, 
 	ADD_EXPERIENCE, 
 	ADD_EDUCATION, 
-	GET_ALL_PROFILE } from './types';
+	GET_ALL_PROFILE,
+	GET_DEVELOPER_PROFILE } from './types';
 
 //Get current profile
 
@@ -133,10 +134,10 @@ export const getAllProfile = () => (dispatch) => {
 
 export const getDeveloperProfile = (id) => (dispatch) => {
 	dispatch(setProfileLoading());
-	axios.get(`/api/profile/all`)
+	axios.get(`/api/profile/user/${id}`)
 		.then(res => {
 			dispatch({
-				type: 'GET_ALL_PROFILE',
+				type: 'GET_DEVELOPER_PROFILE',
 				payload: res.data
 			})
 		})

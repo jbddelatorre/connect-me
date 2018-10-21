@@ -42,7 +42,7 @@ const styles = (theme) => ({
 })
 
 const BioSkillsCard = (props) => {
-	const {classes} = props
+	const {classes, skills, bio} = props
 	return (
 		<Grid className={classes.mB}>
 			<Grid item xs={12}>
@@ -50,12 +50,12 @@ const BioSkillsCard = (props) => {
 					<Grid container>
 						<Grid item xs={12}>
 							<Typography className={classes.labels} align="center" variant="h5">
-						       Bio
+						      Bio
 						    </Typography>
 						</Grid>
 						<Grid item xs={12}>
 							<Typography className={classes.body} align="center" color="inherit" variant="body1">
-						       Lorem Ipsum
+						       {bio}
 						    </Typography>
 						</Grid>
 						<Grid item xs={12}>
@@ -73,7 +73,7 @@ const BioSkillsCard = (props) => {
 						       Skill Set
 						    </Typography>
 						</Grid>
-						<IndividualSkill skill="1"/>
+							{skills ? skills.map(s => <IndividualSkill key={s+Math.random} skill={s}/>) : 'No skills provided'}
 					</Grid>
 				</Card>
 			</Grid>

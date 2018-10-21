@@ -211,6 +211,16 @@ class EditProfile extends Component {
 					handleChange = {(e) => this.handleChangeEditProfile(e, 'github')}
 					subtitle="If you want to include your github"
 				/>
+				<TextInput 
+					id="bio"
+					name="bio"
+					label="Bio"
+					value={this.state.bio}
+					handleChange = {(e) => this.handleChangeEditProfile(e, 'bio')}
+					subtitle="Tell us about yourself"
+					textfield
+					rows={2}
+				/>
 				<SocialMedia 
 					id="twitter"
 					name="twitter"

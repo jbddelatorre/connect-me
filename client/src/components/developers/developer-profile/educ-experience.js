@@ -37,7 +37,7 @@ const WEcard = (props) => {
 				</Grid>
 				
 				{arrayInfo.map(d => (
-					<Grid item xs={12} style={styles.sub}>
+					<Grid key={d+Math.random()}item xs={12} style={styles.sub}>
 						<Typography align="flex-start" variant="h6">
 						{d}
 						</Typography>

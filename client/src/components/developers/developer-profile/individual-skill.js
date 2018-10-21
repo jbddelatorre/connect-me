@@ -22,7 +22,7 @@ export default withStyles(style)((props) => {
 		<Grid item xs={2} className={classes.skill}>
 			<Grid container wrap="nowrap">
 				<Build className={classes.build}/>
-				<Typography align="flex-start" color="inherit" variant="subtitle1">
+				<Typography align="left" color="inherit" variant="subtitle1">
 			       {skill}
 			    </Typography>
 		    </Grid>

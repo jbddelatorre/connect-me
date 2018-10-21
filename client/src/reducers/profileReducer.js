@@ -4,13 +4,15 @@ import {
 	GET_ERRORS, 
 	ADD_EXPERIENCE,  
 	ADD_EDUCATION, 
-	GET_ALL_PROFILE } from '../actions/types';
+	GET_ALL_PROFILE,
+	GET_DEVELOPER_PROFILE } from '../actions/types';
 import isEmpty from '../validation/is-empty';
 
 
 const initialState = {
 	profile: {},
 	profiles: [],
+	current: {},
 	loading:false
 }
 
@@ -58,6 +60,12 @@ export default (state=initialState, action) => {
 			return {
 				...state,
 				profiles: [...action.payload],
+				loading: false
+			}
+		case 'GET_DEVELOPER_PROFILE':
+			return {
+				...state,
+				current: action.payload,
 				loading: false
 			}
 		default:

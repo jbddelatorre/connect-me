@@ -55,17 +55,17 @@ const LandingCard = (props) => {
 						</Grid>
 						<Grid item xs={12}>
 							<Typography className={classes.labels} align="center" color="inherit" variant="h2">
-				           		Name
+				           		{name}
 				        	</Typography>
 						</Grid>
 						<Grid item xs={12}>
 							<Typography className={classes.labels} align="center" color="inherit" variant="body1">
-				           		Job Desc
+				           		{job}
 				        	</Typography>
 						</Grid>
 						<Grid item xs={12}>
 							<Typography className={classes.labels} align="center" color="inherit" variant="body1">
-				           		Company
+				           		{company}
 				        	</Typography>
 						</Grid>
 						<Grid item xs={12}>

@@ -114,7 +114,7 @@ class App extends Component {
 		      				<Route path="/profile/add-experience" exact component={AddExperience} />
 		      				<Route path="/profile/add-education" exact component={AddEducation} />
 		      				<Route path="/developers" exact component={Developers} />
-		      				<Route path="/developers/id" exact component={DeveloperProfile} />
+		      				<Route path="/developers/:id" exact component={DeveloperProfile} />
 		      			</Switch>
 		      			</div>
 		      		</div>

@@ -19,11 +19,9 @@ class Developers extends Component {
 
 	componentDidMount() {
 		this.props.getAllProfile()
-
 	}
 
 	componentWillReceiveProps(newProps) {
-		console.log(newProps.profile.profiles)
 		this.setState({profiles: newProps.profile.profiles})
 	}
 
