@@ -6,7 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 
 export default (props) => {
-	const {id, name, label, handleChange, value, subtitle, textfield, type, justifysub} = props;
+	const {id, name, label, handleChange, value, subtitle, textfield, type, justifysub, disabled} = props;
 
 	const justify = justifysub ? justifysub: 'center'
 
@@ -26,6 +26,7 @@ export default (props) => {
 		          	variant="outlined"
 		          	multiline = {textfield}
 		          	rows={2}
+		          	disabled={disabled}
 			    />
 			    <Typography align={justify} color="primary" variant="subtitle1">
 		        	{subtitle}

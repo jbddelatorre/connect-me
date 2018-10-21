@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_CURRENT_PROFILE, PROFILE_LOADING, GET_ERRORS, UPDATE_PROFILE } from './types';
+import { GET_CURRENT_PROFILE, PROFILE_LOADING, GET_ERRORS, UPDATE_PROFILE, ADD_EXPERIENCE } from './types';
 
 //Get current profile
 
@@ -24,20 +24,37 @@ export const getCurrentProfile = () => (dispatch) => {
 }
 
 export const updateProfile = (userData) => (dispatch) => {
-	// dispatch(setProfileLoading());
 	axios.post('/api/profile', userData)
 		.then(res => {
-			console.log(userData)
 			dispatch({
 				type: 'UPDATE_PROFILE',
 				payload: res.data
 			})
 		})
 		.catch(err => {
-			console.log(err)
-			}) 
-			
-} 
+		dispatch({
+			type: GET_ERRORS,
+			payload: err.response.data
+			})
+		})
+}
+
+export const addExperience = (workExperience, history) => (dispatch) => {
+	axios.post('/api/profile/experience', workExperience)
+		.then(res => {
+			dispatch({
+				type: 'ADD_EXPERIENCE',
+				payload: res.data
+			})
+			history.push('/profile')
+		})
+		.catch(err => {
+		dispatch({
+			type: GET_ERRORS,
+			payload: err.response.data
+			})
+		})
+}
 
 //Profile loading
 
