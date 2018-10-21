@@ -39,7 +39,7 @@ export const updateProfile = (userData) => (dispatch) => {
 }
 
 export const addExperience = (workExperience, history) => (dispatch) => {
-	axios.post('/api/profile/education', workExperience)
+	axios.post('/api/profile/experience', workExperience)
 		.then(res => {
 			dispatch({
 				type: 'ADD_EXPERIENCE',
@@ -56,7 +56,8 @@ export const addExperience = (workExperience, history) => (dispatch) => {
 }
 
 export const addEducation = (education, history) => (dispatch) => {
-	axios.post('/api/profile/experience', education)
+	dispatch(setProfileLoading());
+	axios.post('/api/profile/education', education)
 		.then(res => {
 			dispatch({
 				type: 'ADD_EDUCATION',
@@ -73,7 +74,25 @@ export const addEducation = (education, history) => (dispatch) => {
 }
 
 export const deleteExperience = (id) => (dispatch) => {
+	dispatch(setProfileLoading());
 	axios.delete(`/api/profile/experience/${id}`)
+		.then(res => {
+			dispatch({
+				type: 'GET_CURRENT_PROFILE',
+				payload: res.data
+			})
+		})
+		.catch(err => {
+		dispatch({
+			type: GET_ERRORS,
+			payload: err.response.data
+			})
+		})
+}
+
+export const deleteEducation = (id) => (dispatch) => {
+	dispatch(setProfileLoading());
+	axios.delete(`/api/profile/education/${id}`)
 		.then(res => {
 			dispatch({
 				type: 'GET_CURRENT_PROFILE',

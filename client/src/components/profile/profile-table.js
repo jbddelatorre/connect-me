@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 import { connect } from 'react-redux';
-import { deleteExperience } from '../../actions/profileActions'
+import { deleteExperience, deleteEducation } from '../../actions/profileActions'
 
 import isEmpty from '../../validation/is-empty';
 
@@ -25,12 +25,27 @@ const styles = {
 }
 
 class ProfileTable extends Component {
-  handleDeleteExperience = (id) => {
-    this.props.deleteExperience(id)
+  handleDelete = (type, id) => {
+    switch (type) {
+      case 'EXPERIENCE':
+        return this.props.deleteExperience(id)
+      case 'EDUCATION':
+        return this.props.deleteEducation(id)
+    }
   }
 
 	render() {
-    const {title, header, data} = this.props
+    const {title, header, data, type} = this.props
+    let info = [];
+    switch (type) {
+      case 'EXPERIENCE':
+        info = ['company', 'title']
+        break;
+      case 'EDUCATION':
+        info = ['school', 'degree']
+        break;
+    }
+    
     return (
       <Grid style={styles.root} item xs={12}>
         <Typography align="left" color="primary" variant="h5">
@@ -48,8 +63,8 @@ class ProfileTable extends Component {
                 {!isEmpty(data) ? 
                   data.map(d => (
                     <TableRow key={d._id}>
-                      <TableCell style={styles.tablecell}>{d.company}</TableCell>
-                      <TableCell style={styles.tablecell}>{d.title}</TableCell>
+                      <TableCell style={styles.tablecell}>{d[info[0]]}</TableCell>
+                      <TableCell style={styles.tablecell}>{d[info[1]]}</TableCell>
                       <TableCell style={styles.tablecell}><Moment format="YYYY/MM/DD">{d.from}</Moment> - {d.current ? 'Current':<Moment format="YYYY/MM/DD">{d.to}</Moment>}</TableCell>
                       <TableCell style={styles.tablecell}>
                         <Button
@@ -57,7 +72,7 @@ class ProfileTable extends Component {
                             variant="contained" 
                             color="secondary"
                             fullWidth
-                            onClick={() => this.handleDeleteExperience(d._id)}>
+                            onClick={() => this.handleDelete(type, d._id)}>
                             Delete
                           </Button>
                       </TableCell>
@@ -78,4 +93,4 @@ class ProfileTable extends Component {
   }
 }
 
-export default connect(null, { deleteExperience })(ProfileTable);
+export default connect(null, { deleteExperience, deleteEducation })(ProfileTable);

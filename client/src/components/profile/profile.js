@@ -105,11 +105,13 @@ class Profile extends Component {
 					    title = "Experience Credentials"
 						header={['Company', 'Title', 'Years', 'Action']}
 						data = {profile.experience}
+						type="EXPERIENCE"
 					/>
 					<ProfileTable 
 					    title = "Education Credentials"
 						header={['School', 'Degree', 'Years', 'Action']}
 						data = {profile.education}
+						type="EDUCATION"
 					/>
 					<Grid item xs={4}>
 						{!!Object.keys(profile).length ? 
