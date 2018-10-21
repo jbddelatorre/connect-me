@@ -62,7 +62,7 @@ router.post('/register', (req, res) => {
 		})
 })
 
-// @route 	GET api/users/login
+// @route 	POST api/users/login
 // @desc 	Login User / Return JWT Token
 // @access 	Public
 router.post('/login', (req,res) => {
@@ -91,7 +91,6 @@ router.post('/login', (req,res) => {
 					if (isMatch) {
 						//User matched
 						const payload = { id: user.id, name: user.name, avatar: user.avatar } //Create JWT payload
-
 
 						//Sign Token
 						jwt.sign(
