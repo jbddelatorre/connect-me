@@ -51,7 +51,7 @@ class AddExperience extends Component {
 
 	handleCurrentEdu = () => {
 		const checkbox = !this.state.current
-		if(checkbox == true) {
+		if(checkbox === true) {
 			this.setState({todate: '', current: checkbox })
 		} else {
 			this.setState({current: checkbox })

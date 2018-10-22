@@ -46,6 +46,8 @@ class ProfileTable extends Component {
       case 'EDUCATION':
         info = ['school', 'degree']
         break;
+      default:
+          return
     }
     
     return (

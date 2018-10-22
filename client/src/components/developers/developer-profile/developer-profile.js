@@ -61,7 +61,7 @@ class DeveloperProfile extends Component {
 	}
 
 	render() {
-		console.log(this.state.skills)
+		// console.log(this.state.website)
 		return (
 			<Grid container justify="center">
 				<Grid item xs={10}>
@@ -86,6 +86,7 @@ class DeveloperProfile extends Component {
 						job={this.state.status}
 						company={this.state.company}
 						social={this.state.social}
+						website={this.state.website}
 					/>
 					<BioSkillsCard 
 						bio={this.state.bio}

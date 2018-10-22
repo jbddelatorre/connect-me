@@ -40,7 +40,8 @@ const styles = (theme) => ({
 })
 
 const LandingCard = (props) => {
-	const {classes, img, name, job, company, social} = props;
+	const {classes, img, name, job, company, social, website} = props;
+	console.log(website)
 	return (
 		<Grid container className={classes.mB}>
 			<Grid item xs={12}>
@@ -74,19 +75,19 @@ const LandingCard = (props) => {
 						<Grid item xs={12}>
 							<Grid container justify="center">
 								<div className={classes.icon}>
-									<a className={ classes.link }href=""><i className="fas fa-globe"></i></a>
+									<a className={ classes.link }href={website}><i className="fas fa-globe"></i></a>
 								</div>
 								<div className={classes.icon}>
-									<i className="fab fa-twitter"></i>
+									<a className={ classes.link }href={social.twitter}><i className="fab fa-twitter"></i></a>
 								</div>
 								<div className={classes.icon}>
-									<i className="fab fa-facebook-f"></i>
+									<a className={ classes.link }href={social.facebook}><i className="fab fa-facebook-f"></i></a>
 								</div>
 								<div className={classes.icon}>
-									<i className="fab fa-linkedin-in"></i>
+									<a className={ classes.link }href={social.linkedin}><i className="fab fa-linkedin-in"></i></a>
 								</div>
 								<div className={classes.icon}>
-									<i className="fab fa-instagram"></i>
+									<a className={ classes.link }href={social.instagram}><i className="fab fa-instagram"></i></a>
 								</div>
 							</Grid>
 						</Grid>        
