@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+// import { Link } from 'react-router-dom';
 
 //Components
-import LandingCard from './landing-card';
-import ListItemSkills from '../developer-skills-list-item';
+// import LandingCard from './landing-card';
+// import ListItemSkills from '../developer-skills-list-item';
 import IndividualSkill from './individual-skill';
 //Material UI
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
+// import classNames from 'classnames';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 
-import Build from '@material-ui/icons/Build';
+// import Build from '@material-ui/icons/Build';
 
 const styles = (theme) => ({
 	subCategory: {
@@ -73,7 +73,7 @@ const BioSkillsCard = (props) => {
 						       Skill Set
 						    </Typography>
 						</Grid>
-							{skills ? skills.map(s => <IndividualSkill key={s+Math.random} skill={s}/>) : 'No skills provided'}
+							{skills ? skills.map(s => <IndividualSkill key={s+Math.random()} skill={s}/>) : 'No skills provided'}
 					</Grid>
 				</Card>
 			</Grid>

@@ -19,7 +19,7 @@ const styles = {
 }
 
 const WEcard = (props) => {
-	const {head, date, work} = props;
+	const {work} = props;
 	const arrayInfo = work ? ['Position: ', 'Description: '] : ['Degree: ', 'Field Of Study: ', 'Description: ']; 
 
 	return (

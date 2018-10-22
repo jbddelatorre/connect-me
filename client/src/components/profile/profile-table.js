@@ -31,6 +31,8 @@ class ProfileTable extends Component {
         return this.props.deleteExperience(id)
       case 'EDUCATION':
         return this.props.deleteEducation(id)
+        default:
+          return
     }
   }
 

@@ -5,8 +5,9 @@ import {
 	ADD_EXPERIENCE,  
 	ADD_EDUCATION, 
 	GET_ALL_PROFILE,
-	GET_DEVELOPER_PROFILE } from '../actions/types';
-import isEmpty from '../validation/is-empty';
+	GET_DEVELOPER_PROFILE,
+	UPDATE_PROFILE } from '../actions/types';
+// import isEmpty from '../validation/is-empty';
 
 
 const initialState = {
@@ -21,24 +22,24 @@ export default (state=initialState, action) => {
 	// initialState.profile = localStorage.profile ? JSON.parse(localStorage.profile) : {}
 
 	switch(action.type) {
-		case 'PROFILE_LOADING':
+		case PROFILE_LOADING:
 			return {
 				...state,
 				loading: true
 			}
-		case 'GET_CURRENT_PROFILE':
+		case GET_CURRENT_PROFILE:
 			return {
 				...state,
 				profile: action.payload,
 				loading: false
 			}
-		case 'UPDATE_PROFILE':
+		case UPDATE_PROFILE:
 			return {
 				...state,
 				profile: action.payload,
 				loading: false
 			}
-		case 'ADD_EXPERIENCE':
+		case ADD_EXPERIENCE:
 			return {
 				...state,
 				profile: {
@@ -47,7 +48,7 @@ export default (state=initialState, action) => {
 				},
 				loading: false
 			}
-		case 'ADD_EDUCATION':
+		case ADD_EDUCATION:
 			return {
 				...state,
 				profile: {
@@ -56,13 +57,13 @@ export default (state=initialState, action) => {
 				},
 				loading: false
 			}
-		case 'GET_ALL_PROFILE':
+		case GET_ALL_PROFILE:
 			return {
 				...state,
 				profiles: [...action.payload],
 				loading: false
 			}
-		case 'GET_DEVELOPER_PROFILE':
+		case GET_DEVELOPER_PROFILE:
 			return {
 				...state,
 				current: action.payload,

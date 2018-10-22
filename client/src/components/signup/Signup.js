@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Person from '@material-ui/icons/Person';
 import Grid from '@material-ui/core/Grid';
-import FormHelperText from '@material-ui/core/FormHelperText';
+
 
 class Signup extends Component {
 	state = {

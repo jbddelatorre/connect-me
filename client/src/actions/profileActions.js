@@ -18,14 +18,14 @@ export const getCurrentProfile = () => (dispatch) => {
 		.then(res => {
 			// localStorage.setItem('profile', JSON.stringify(res.data));
 			dispatch({
-				type:'GET_CURRENT_PROFILE',
+				type:GET_CURRENT_PROFILE,
 				payload: res.data
 				})
 			})
 			
 		.catch(err => 
 			dispatch({
-				type:'GET_CURRENT_PROFILE',
+				type:GET_CURRENT_PROFILE,
 				payload: {}
 			}))
 }
@@ -34,7 +34,7 @@ export const updateProfile = (userData) => (dispatch) => {
 	axios.post('/api/profile', userData)
 		.then(res => {
 			dispatch({
-				type: 'UPDATE_PROFILE',
+				type: UPDATE_PROFILE,
 				payload: res.data
 			})
 		})
@@ -50,7 +50,7 @@ export const addExperience = (workExperience, history) => (dispatch) => {
 	axios.post('/api/profile/experience', workExperience)
 		.then(res => {
 			dispatch({
-				type: 'ADD_EXPERIENCE',
+				type: ADD_EXPERIENCE,
 				payload: res.data
 			})
 			history.push('/profile')
@@ -68,7 +68,7 @@ export const addEducation = (education, history) => (dispatch) => {
 	axios.post('/api/profile/education', education)
 		.then(res => {
 			dispatch({
-				type: 'ADD_EDUCATION',
+				type: ADD_EDUCATION,
 				payload: res.data
 			})
 			history.push('/profile')
@@ -86,7 +86,7 @@ export const deleteExperience = (id) => (dispatch) => {
 	axios.delete(`/api/profile/experience/${id}`)
 		.then(res => {
 			dispatch({
-				type: 'GET_CURRENT_PROFILE',
+				type: GET_CURRENT_PROFILE,
 				payload: res.data
 			})
 		})
@@ -103,7 +103,7 @@ export const deleteEducation = (id) => (dispatch) => {
 	axios.delete(`/api/profile/education/${id}`)
 		.then(res => {
 			dispatch({
-				type: 'GET_CURRENT_PROFILE',
+				type: GET_CURRENT_PROFILE,
 				payload: res.data
 			})
 		})
@@ -120,7 +120,7 @@ export const getAllProfile = () => (dispatch) => {
 	axios.get(`/api/profile/all`)
 		.then(res => {
 			dispatch({
-				type: 'GET_ALL_PROFILE',
+				type: GET_ALL_PROFILE,
 				payload: res.data
 			})
 		})
@@ -137,7 +137,7 @@ export const getDeveloperProfile = (id) => (dispatch) => {
 	axios.get(`/api/profile/user/${id}`)
 		.then(res => {
 			dispatch({
-				type: 'GET_DEVELOPER_PROFILE',
+				type: GET_DEVELOPER_PROFILE,
 				payload: res.data
 			})
 		})
@@ -153,6 +153,6 @@ export const getDeveloperProfile = (id) => (dispatch) => {
 
 export const setProfileLoading = () => {
 	return {
-		type: 'PROFILE_LOADING'
+		type: PROFILE_LOADING
 	}
 }

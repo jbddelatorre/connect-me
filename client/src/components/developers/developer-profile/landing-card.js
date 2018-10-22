@@ -33,6 +33,9 @@ const styles = (theme) => ({
 	},
 	mB: {
 		marginBottom: 30
+	},
+	link: {
+		color:'white',
 	}
 })
 
@@ -47,9 +50,9 @@ const LandingCard = (props) => {
 							<Grid container justify="center">
 								<Avatar
 								className={classNames(classes.avatar, classes.bigAvatar)}
-								src=""
-								alt="">
-								IMAGE
+								src={img}
+								alt="Profile Image">
+								
 								</Avatar>
 							</Grid>	
 						</Grid>
@@ -71,7 +74,7 @@ const LandingCard = (props) => {
 						<Grid item xs={12}>
 							<Grid container justify="center">
 								<div className={classes.icon}>
-									<i className="fas fa-globe"></i>
+									<a className={ classes.link }href=""><i className="fas fa-globe"></i></a>
 								</div>
 								<div className={classes.icon}>
 									<i className="fab fa-twitter"></i>
