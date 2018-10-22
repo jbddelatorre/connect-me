@@ -19,34 +19,33 @@ const styles = {
 }
 
 const WEcard = (props) => {
-	const {work} = props;
+	const {work, data} = props;
 	const arrayInfo = work ? ['Position: ', 'Description: '] : ['Degree: ', 'Field Of Study: ', 'Description: ']; 
-
 	return (
 		<Grid item xs={12}>
 			<Card style={styles.root}>
 				<Grid item xs={12}>
-					<Typography align="flex-start" variant="h6">
-						HEAD
+					<Typography align="left" variant="h6">
+						Head
 					</Typography>
 				</Grid>
 				<Grid item xs={12}>
-					<Typography align="flex-start" variant="body1">
+					<Typography align="left" variant="body1">
 						date
 					</Typography>
 				</Grid>
-				
 				{arrayInfo.map(d => (
 					<Grid key={d+Math.random()}item xs={12} style={styles.sub}>
-						<Typography align="flex-start" variant="h6">
-						{d}
+						<Typography align="left" variant="h6">
+							{d}
 						</Typography>
-						<Typography align="flex-start" variant="body1">
-						123
+						<Typography align="left" variant="body1">
+							{
+								data.title ? data.title : data[d.toLowerCase().replace(/\W/g, 'N/A')]
+							}
 						</Typography>
 					</Grid>
-					)
-				)}
+				))}
 			</Card>
 		</Grid>
 	)

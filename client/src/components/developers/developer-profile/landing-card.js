@@ -41,7 +41,6 @@ const styles = (theme) => ({
 
 const LandingCard = (props) => {
 	const {classes, img, name, job, company, social, website} = props;
-	console.log(website)
 	return (
 		<Grid container className={classes.mB}>
 			<Grid item xs={12}>
@@ -75,19 +74,19 @@ const LandingCard = (props) => {
 						<Grid item xs={12}>
 							<Grid container justify="center">
 								<div className={classes.icon}>
-									<a className={ classes.link }href={website}><i className="fas fa-globe"></i></a>
+									<a className={ classes.link }href={'https://'+website} target="_blank" ><i className="fas fa-globe"></i></a>
 								</div>
 								<div className={classes.icon}>
-									<a className={ classes.link }href={social.twitter}><i className="fab fa-twitter"></i></a>
+									<a className={ classes.link }href={'https://'+social.twitter} target="_blank" ><i className="fab fa-twitter"></i></a>
 								</div>
 								<div className={classes.icon}>
-									<a className={ classes.link }href={social.facebook}><i className="fab fa-facebook-f"></i></a>
+									<a className={ classes.link }href={'https://'+social.facebook} target="_blank" ><i className="fab fa-facebook-f"></i></a>
 								</div>
 								<div className={classes.icon}>
-									<a className={ classes.link }href={social.linkedin}><i className="fab fa-linkedin-in"></i></a>
+									<a className={ classes.link }href={'https://'+social.linkedin} target="_blank" ><i className="fab fa-linkedin-in"></i></a>
 								</div>
 								<div className={classes.icon}>
-									<a className={ classes.link }href={social.instagram}><i className="fab fa-instagram"></i></a>
+									<a className={ classes.link }href={'https://'+social.instagram} target="_blank" ><i className="fab fa-instagram"></i></a>
 								</div>
 							</Grid>
 						</Grid>        

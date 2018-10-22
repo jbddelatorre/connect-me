@@ -40,7 +40,6 @@ class DeveloperProfile extends Component {
 
 	componentWillReceiveProps(newProps) {
 		const { current } = newProps.profile
-		console.log(current)
 		if(!isEmpty(current)) {
 			this.setState({
 				_id:current._id,
@@ -61,7 +60,7 @@ class DeveloperProfile extends Component {
 	}
 
 	render() {
-		// console.log(this.state.website)
+		const { experience, education } = this.state
 		return (
 			<Grid container justify="center">
 				<Grid item xs={10}>
@@ -99,7 +98,11 @@ class DeveloperProfile extends Component {
 									Experience
 								</Typography>
 							</Grid>
-							<WEcard work data={this.state.experience}/>
+							{experience ? 
+								experience.map(e => <WEcard key={e+Math.random()} work data={e}/>)
+								:
+								<WEcard data={false}/>
+							}
 						</Grid>
 						<Grid item xs={6}>
 							<Grid container justify="center">
@@ -107,13 +110,17 @@ class DeveloperProfile extends Component {
 									Education
 								</Typography>
 							</Grid>
-							<WEcard data={this.state.education}/>
+							{education ? 
+								education.map(e => <WEcard key={e+Math.random()} data={e}/>)
+								:
+								<WEcard data={false}/>
+							}
 						</Grid>
 					</Grid>
 					<Grid container>
 						<Grid item xs={12}>
 							<Typography style={{marginTop:20}} align="left" variant="h5" color="inherit">
-									Latest Github Repos
+									My Github Repository
 								</Typography>
 						</Grid>
 						<Grid item xs={12}>
