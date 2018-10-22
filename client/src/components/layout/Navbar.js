@@ -49,6 +49,29 @@ class NavBar extends Component {
   render() {
     const { classes } = this.props;
     const logout =  
+                <span>
+                <Button
+                component={Link}
+                to={{
+                  pathname:'/profile'
+                }}
+                size="large" 
+                variant="contained"
+                color="primary"
+                className={classes.button}>
+                Post Feed
+                </Button>
+                <Button
+                component={Link}
+                to={{
+                  pathname:'/posts'
+                }}
+                size="large" 
+                variant="contained"
+                color="primary"
+                className={classes.button}>
+                My Profile
+                </Button>
                 <Button
                 onClick={ this.onLogoutClick }
                 size="large" 
@@ -61,6 +84,7 @@ class NavBar extends Component {
                   style={style.avatar}/>
                 Log Out
                 </Button>
+                </span>
     const login = 
               <span>
                 <Button

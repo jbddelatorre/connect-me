@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router-dom'
 
 //Material
 import Grid from '@material-ui/core/Grid';
@@ -56,7 +55,7 @@ export default withStyles(style)((props) => {
 					</Grid>
 					<Grid item xs={12}>
 							<Typography align="left" variant="body1">
-							<a className={classes.link} target="_blank" href={`https://github.com/${props.data}`}>{props.data ? `https://github.com/${props.data}`: ''}</a>
+							<a className={classes.link} rel="noopener noreferrer"target="_blank" href={`https://github.com/${props.data}`}>{props.data ? `https://github.com/${props.data}`: ''}</a>
 							</Typography>
 					</Grid>
 				</Grid>

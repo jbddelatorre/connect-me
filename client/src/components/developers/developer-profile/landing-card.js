@@ -74,19 +74,19 @@ const LandingCard = (props) => {
 						<Grid item xs={12}>
 							<Grid container justify="center">
 								<div className={classes.icon}>
-									<a className={ classes.link }href={'https://'+website} target="_blank" ><i className="fas fa-globe"></i></a>
+									<a className={ classes.link } rel="noopener noreferrer" href={'https://'+website} target="_blank" ><i className="fas fa-globe"></i></a>
 								</div>
 								<div className={classes.icon}>
-									<a className={ classes.link }href={'https://'+social.twitter} target="_blank" ><i className="fab fa-twitter"></i></a>
+									<a className={ classes.link } rel="noopener noreferrer" href={'https://'+social.twitter} target="_blank" ><i className="fab fa-twitter"></i></a>
 								</div>
 								<div className={classes.icon}>
-									<a className={ classes.link }href={'https://'+social.facebook} target="_blank" ><i className="fab fa-facebook-f"></i></a>
+									<a className={ classes.link } rel="noopener noreferrer" href={'https://'+social.facebook} target="_blank" ><i className="fab fa-facebook-f"></i></a>
 								</div>
 								<div className={classes.icon}>
-									<a className={ classes.link }href={'https://'+social.linkedin} target="_blank" ><i className="fab fa-linkedin-in"></i></a>
+									<a className={ classes.link } rel="noopener noreferrer" href={'https://'+social.linkedin} target="_blank" ><i className="fab fa-linkedin-in"></i></a>
 								</div>
 								<div className={classes.icon}>
-									<a className={ classes.link }href={'https://'+social.instagram} target="_blank" ><i className="fab fa-instagram"></i></a>
+									<a className={ classes.link } rel="noopener noreferrer" href={'https://'+social.instagram} target="_blank" ><i className="fab fa-instagram"></i></a>
 								</div>
 							</Grid>
 						</Grid>        
