@@ -124,7 +124,7 @@ class DeveloperProfile extends Component {
 								</Typography>
 						</Grid>
 						<Grid item xs={12}>
-							<GithubCard data={this.state.githubusername}/>
+							{this.state.githubusername ? <GithubCard data={this.state.githubusername}/> : ''}
 						</Grid>
 					</Grid>
 				</Grid>
