@@ -70,7 +70,6 @@ class GithubCard extends Component {
 	render() {
 		const { classes, data } = this.props
 		const { repos } = this.state;
-		console.log(repos)
 		const repoItems = repos.map(r => (
 			<Grid  className={classes.container} key={r.id} container spacing={8}>	
 				<Grid item xs={6}>

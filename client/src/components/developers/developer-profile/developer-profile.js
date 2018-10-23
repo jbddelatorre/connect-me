@@ -6,7 +6,9 @@ import isEmpty from '../../../validation/is-empty';
 //Components
 import LandingCard from './landing-card';
 import BioSkillsCard from './bio-skills-card';
-import WEcard from './educ-experience.js'
+// import WEcard from './educ-experience.js'
+import EducationCardList from './education-card.js'
+import ExperienceCardList from './experience-card.js'
 import GithubCard from './github-repo-card.js'
 //Material UI
 import Grid from '@material-ui/core/Grid';
@@ -98,10 +100,10 @@ class DeveloperProfile extends Component {
 									Experience
 								</Typography>
 							</Grid>
-							{experience ? 
-								experience.map(e => <WEcard key={e+Math.random()} work data={e}/>)
+							{education ? 
+								<ExperienceCardList data={experience} />
 								:
-								<WEcard data={false}/>
+								<ExperienceCardList data={[]}/>
 							}
 						</Grid>
 						<Grid item xs={6}>
@@ -111,9 +113,9 @@ class DeveloperProfile extends Component {
 								</Typography>
 							</Grid>
 							{education ? 
-								education.map(e => <WEcard key={e+Math.random()} data={e}/>)
+								<EducationCardList data={education} />
 								:
-								<WEcard data={false}/>
+								<EducationCardList data={[]}/>
 							}
 						</Grid>
 					</Grid>
