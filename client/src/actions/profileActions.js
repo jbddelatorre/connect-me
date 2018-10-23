@@ -16,7 +16,6 @@ export const getCurrentProfile = () => (dispatch) => {
 	dispatch(setProfileLoading());
 	axios.get('/api/profile')
 		.then(res => {
-			// localStorage.setItem('profile', JSON.stringify(res.data));
 			dispatch({
 				type:GET_CURRENT_PROFILE,
 				payload: res.data

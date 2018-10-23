@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { addPost } from '../../../actions/postActions';
+import { connect } from 'react-redux';
+
 //Material UI
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -10,6 +13,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
+
 
 class SaySomethingFrom extends Component {
 	constructor(props) {
@@ -25,7 +29,15 @@ class SaySomethingFrom extends Component {
 	}
 
 	handleSubmit = () => {
-		const { post } = this.state
+		const { name, avatar, user } = this.props
+		const addPost = {
+			text:this.state.post,
+			name:name,
+			avatar:avatar,
+			user:user
+		}
+		this.props.addPost(addPost)
+		this.setState({post: ''})
 	}
 
 	render() {
@@ -68,4 +80,4 @@ class SaySomethingFrom extends Component {
 	}
 }
 
-export default SaySomethingFrom;
+export default connect(null, { addPost })(SaySomethingFrom);

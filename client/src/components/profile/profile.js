@@ -14,7 +14,7 @@ import { withRouter } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-
+import axios from 'axios';
 
 
 const styles = (theme) => ({
@@ -36,9 +36,6 @@ const styles = (theme) => ({
 
 class Profile extends Component {
 	componentDidMount() {
-		// if(!this.props.auth.isAuthenticated) {
-		// 	this.props.history.push('/')
-		// }
 		this.props.getCurrentProfile();
 	}
 
@@ -136,6 +133,20 @@ const mapStateToProps = state => ({
 	auth: state.auth,
 	profile: state.profile
 })
+
+// const mapDispatchToProps = (dispatch) => {
+// 	return {
+// 		getCurrentProfile2: () => {
+// 			axios.get('/api/profile')
+// 				.then(res => {
+// 					dispatch({
+// 						type:'GET_CURRENT_PROFILE',
+// 						payload: res.data
+// 						})
+// 					})
+// 		}
+// 	}
+// }
 
 Profile.propTypes = {
 	getCurrentProfile: PropTypes.func.isRequired,
