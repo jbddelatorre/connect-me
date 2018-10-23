@@ -27,6 +27,7 @@ import AddExperience from './components/profile/add-experience';
 import AddEducation from './components/profile/add-education';
 import Developers from './components/developers/developers.js'
 import DeveloperProfile from './components/developers/developer-profile/developer-profile';
+import Posts from './components/posts/all-posts/posts';
 
 const primary = blue
 const secondary = pink
@@ -115,6 +116,7 @@ class App extends Component {
 		      				<Route path="/profile/add-education" exact component={AddEducation} />
 		      				<Route path="/developers" exact component={Developers} />
 		      				<Route path="/developers/:id" exact component={DeveloperProfile} />
+		      				<Route path="/posts" exact component={Posts} />
 		      			</Switch>
 		      			</div>
 		      		</div>

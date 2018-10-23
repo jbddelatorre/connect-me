@@ -53,7 +53,7 @@ class NavBar extends Component {
                 <Button
                 component={Link}
                 to={{
-                  pathname:'/profile'
+                  pathname:'/posts'
                 }}
                 size="large" 
                 variant="contained"
@@ -64,7 +64,7 @@ class NavBar extends Component {
                 <Button
                 component={Link}
                 to={{
-                  pathname:'/posts'
+                  pathname:'/profile'
                 }}
                 size="large" 
                 variant="contained"
