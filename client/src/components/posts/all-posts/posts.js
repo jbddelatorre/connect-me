@@ -49,7 +49,15 @@ class Posts extends Component {
 				user={ auth.user.id }
 				/>
 				{ stateposts.length > 0 ?
-					stateposts.map(p => <SinglePost key={p._id} post = {p} />)
+					stateposts.map(p => {
+						
+						let liked = false;
+						// console.log(p.likes.user)						
+						const likeFilter = p.likes.filter(likes => likes.user === auth.user.id)
+						if(likeFilter.length > 0) liked = true;
+
+						return <SinglePost key={p._id} post = {p} liked = {liked}/>
+					})
 					:
 					<div style={{display:'flex', justifyContent:'center'}}>
 						<h6>No posts found</h6>
