@@ -25,7 +25,8 @@ const styles = (theme) => {
 			paddingBottom: theme.spacing.unit*4,
 			paddingRight: theme.spacing.unit*2,
 			paddingLeft: theme.spacing.unit*2,
-			backgroundColor:'#f8f9fa'
+			backgroundColor:'#f8f9fa',
+			marginTop: theme.spacing.unit*4,
 		},
 		bigAvatar: {
 			width:'80px',

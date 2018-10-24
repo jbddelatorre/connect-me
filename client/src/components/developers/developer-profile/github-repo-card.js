@@ -70,7 +70,8 @@ class GithubCard extends Component {
 	render() {
 		const { classes, data } = this.props
 		const { repos } = this.state;
-		const repoItems = repos.map(r => (
+		const repoItems = repos.length > 0 ?
+			repos.map(r => (
 			<Grid  className={classes.container} key={r.id} container spacing={8}>	
 				<Grid item xs={6}>
 					<Grid item xs={12}>
@@ -99,12 +100,12 @@ class GithubCard extends Component {
 				</Grid>
 			</Grid>
 		))
+			: 
+			null
+
 		return (
 			<Card className={classes.card}>
 				{
-					repos.length == 0 ?
-					'No Repos Found'
-					:
 					repoItems
 				}	
 			</Card>

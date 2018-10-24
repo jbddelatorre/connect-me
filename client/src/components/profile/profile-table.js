@@ -75,7 +75,6 @@ class ProfileTable extends Component {
                             size="medium"
                             variant="contained" 
                             color="secondary"
-                            fullWidth
                             onClick={() => this.handleDelete(type, d._id)}>
                             Delete
                           </Button>
