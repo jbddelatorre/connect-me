@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 //Component
 import ListItemSkills from './developer-skills-list-item';
@@ -24,7 +25,8 @@ const styles = (theme) => {
 			paddingBottom: theme.spacing.unit*4,
 			paddingRight: theme.spacing.unit*2,
 			paddingLeft: theme.spacing.unit*2,
-			backgroundColor:'#f8f9fa'
+			backgroundColor:'#f8f9fa',
+			marginTop: theme.spacing.unit*4,
 		},
 		bigAvatar: {
 			width:'80px',
@@ -61,7 +63,7 @@ const styles = (theme) => {
 }
 
 const DeveloperCard = (props) => {
-	const { classes } = props
+	const { classes, data } = props
 
 	return (
 		<Grid container justify="center">
@@ -80,17 +82,21 @@ const DeveloperCard = (props) => {
 						</Grid>
 						<Grid item xs={5}>
 							<Typography className={classes.subhead} align="left" color="inherit" variant="h5">
-				           		Name
+				           		{data.user.name}
 				          	</Typography>
 				          	<Typography align="left" color="inherit" variant="body1">
-				           		Work
+				           		{`${data.status} at ${data.company}`}
 				          	</Typography>
 				          	<Typography align="left" color="inherit" variant="body1">
-				           		Location
+				           		{data.location}
 				          	</Typography>
 				          	<Grid container justify="flex-start">
 				          		<Grid item xs={5}>
 				          			<Button
+				          				component = {Link}
+				          				to={{
+											pathname:'/developers/' + data.user._id
+										}}
 				          				className={classes.button}
 										fullWidth
 						        		size="small"
@@ -106,8 +112,7 @@ const DeveloperCard = (props) => {
 				           		Skills
 				          	</Typography>
 				          	<List className={classes.list}>
-						        <ListItemSkills skill = "SKill1"/>
-						        <ListItemSkills/>
+						        {data.skills.map(s => <ListItemSkills key={s+Math.random()} skill = {s}/>)}
 						    </List>
 						</Grid>
 					</Grid>

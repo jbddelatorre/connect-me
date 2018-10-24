@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+// import { Link } from 'react-router-dom';
 
 //Components
-import LandingCard from './landing-card';
-import ListItemSkills from '../developer-skills-list-item';
+// import LandingCard from './landing-card';
+// import ListItemSkills from '../developer-skills-list-item';
 import IndividualSkill from './individual-skill';
 //Material UI
 import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
+// import classNames from 'classnames';
 import Typography from '@material-ui/core/Typography';
 import Card from '@material-ui/core/Card';
 
-import Build from '@material-ui/icons/Build';
+// import Build from '@material-ui/icons/Build';
 
 const styles = (theme) => ({
 	subCategory: {
@@ -42,7 +42,7 @@ const styles = (theme) => ({
 })
 
 const BioSkillsCard = (props) => {
-	const {classes} = props
+	const {classes, skills, bio} = props
 	return (
 		<Grid className={classes.mB}>
 			<Grid item xs={12}>
@@ -50,12 +50,12 @@ const BioSkillsCard = (props) => {
 					<Grid container>
 						<Grid item xs={12}>
 							<Typography className={classes.labels} align="center" variant="h5">
-						       Bio
+						      Bio
 						    </Typography>
 						</Grid>
 						<Grid item xs={12}>
 							<Typography className={classes.body} align="center" color="inherit" variant="body1">
-						       Lorem Ipsum
+						       {bio}
 						    </Typography>
 						</Grid>
 						<Grid item xs={12}>
@@ -73,7 +73,7 @@ const BioSkillsCard = (props) => {
 						       Skill Set
 						    </Typography>
 						</Grid>
-						<IndividualSkill skill="1"/>
+							{skills ? skills.map(s => <IndividualSkill key={s+Math.random()} skill={s}/>) : 'No skills provided'}
 					</Grid>
 				</Card>
 			</Grid>

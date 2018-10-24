@@ -48,7 +48,7 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
 	if(!isValid) {
 		return res.status(400).json(errors);
 	}
-
+	console.log(req.body)
 	const newPost = new Post({
 		text: req.body.text,
 		name: req.body.name,
@@ -174,9 +174,7 @@ router.delete('/comment/:id/:comment_id', passport.authenticate('jwt', {session:
 		const removeIndex = post.comments
 			.map(item => item._id.toString())
 			.indexOf(req.params.comment_id)
-
-		console.log('asdasd')
-
+			
 		post.comments.splice(removeIndex, 1);
 		post.save().then(post => res.json(post))
 	})
