@@ -50,7 +50,7 @@ class SinglePost extends Component {
 							<Grid item xs={2}>
 								<Grid container justify="center">
 									<Avatar
-									style={{height:100, width:100}} 
+									style={{height:100, width:100, marginLeft:16, marginRight:16}} 
 									src={ post.avatar }
 									alt="IMG"
 									/>
