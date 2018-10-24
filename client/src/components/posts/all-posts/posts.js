@@ -24,7 +24,8 @@ class Posts extends Component {
 		const { auth } = this.props
 		return (
 			<Fragment>
-				<SaySomethingForm 
+				<SaySomethingForm
+				head = "Say something!" 
 				name={ auth.name }
 				avatar={ auth.avatar }
 				user={ auth.id }

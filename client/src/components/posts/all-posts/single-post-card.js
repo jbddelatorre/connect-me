@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 //Material UI
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -54,8 +54,12 @@ export default (props) => {
 				        		size="small"
 				        		variant="contained" 
 				        		color="primary"
+				        		component = {Link}
+				        		to = {{
+				        			pathname:'/comments'
+				        		}}
 				       			>
-		        				Comment
+		        				Comments
 		      					</Button>
 							</CardActions>
 						</Grid>
