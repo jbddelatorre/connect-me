@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { connect } from 'react-redux';
-import { likePost } from '../../../actions/postActions';
-
 //Material UI
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
