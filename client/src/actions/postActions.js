@@ -100,7 +100,36 @@ export const likePost = (userId, post_id) => (dispatch) => {
 	dispatch({
 		type: POST_LOADING
 	})
-	axios.post(`/api/posts/comment/like/${post_id}`, userId)
+	axios.post(`/api/posts/like/${post_id}`, userId)
+		.then(res => {
+			axios.get('/api/posts')
+				.then(res => (
+					dispatch({
+						type: GET_ALL_POSTS,
+						payload: res.data
+					})
+				))
+				.catch(err => {
+					console.log(err)
+				dispatch({
+					type: GET_ERRORS,
+					payload: err.response.data
+					})
+				})
+		})
+		.catch(err => {
+		dispatch({
+			type: GET_ERRORS,
+			payload: err.response.data
+			})
+		})
+}
+
+export const unlikePost = (userId, post_id) => (dispatch) => {
+	dispatch({
+		type: POST_LOADING
+	})
+	axios.post(`/api/posts/unlike/${post_id}`, userId)
 		.then(res => {
 			axios.get('/api/posts')
 				.then(res => (

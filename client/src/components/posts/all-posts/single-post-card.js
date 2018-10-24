@@ -32,7 +32,16 @@ const styles = {
 	}
 }
 
+
+
 class SinglePost extends Component {
+	
+	handleLike = () => {
+		const { handleFunction, user, post} = this.props
+		handleFunction(user, post._id)
+	}
+
+
 	render() {
 		const { post, liked } = this.props;
 

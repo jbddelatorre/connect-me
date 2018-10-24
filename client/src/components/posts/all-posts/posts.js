@@ -5,7 +5,7 @@ import SaySomethingForm from './say-something';
 import SinglePost from './single-post-card';
 import isEmpty from '../../../validation/is-empty';
 
-import { getAllPosts } from '../../../actions/postActions';
+import { getAllPosts, likePost, unlikePost } from '../../../actions/postActions';
 
 // Component Imports
 import Loading from '../../layout/modal-spinner'
@@ -52,11 +52,14 @@ class Posts extends Component {
 					stateposts.map(p => {
 						
 						let liked = false;
+						let handleFunction = this.props.likePost
 						// console.log(p.likes.user)						
 						const likeFilter = p.likes.filter(likes => likes.user === auth.user.id)
-						if(likeFilter.length > 0) liked = true;
-
-						return <SinglePost key={p._id} post = {p} liked = {liked}/>
+						if(likeFilter.length > 0) {
+							liked = true;
+							handleFunction = this.props.unlikePost
+						}
+						return <SinglePost key={p._id} user = { auth.user.id } post = {p} liked = {liked} handleFunction={handleFunction}/>
 					})
 					:
 					<div style={{display:'flex', justifyContent:'center'}}>
@@ -74,4 +77,4 @@ const mapStateToProps = (state) => ({
 	auth: state.auth
 })
 
-export default connect(mapStateToProps, { getAllPosts })(Posts);
+export default connect(mapStateToProps, { getAllPosts, likePost, unlikePost })(Posts);
