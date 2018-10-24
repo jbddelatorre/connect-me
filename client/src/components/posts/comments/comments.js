@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import SaySomethingForm from '../all-posts/say-something';
+import PostComment from './post-comment';
 import SingleComment from './single-comment';
 
 
 import { getComments } from '../../../actions/postActions';
 
 // Component Imports
+import Loading from '../../layout/modal-spinner'
 
 // Material UI Imports
 
@@ -36,27 +37,29 @@ class Comments extends Component {
 	}
 
 	render() {
-		const { auth } = this.props
+		const { auth, posts } = this.props
 		const { current } = this.state
-		console.log(current.comments)
 		return (
 			<Fragment>
+				<Loading loading={posts.loading} />
 				<SingleComment 
 					avatar = { current.avatar }
 					text = { current.text }
 					name = { current.name }
 				/>
 				<div style={{marginTop:32, marginBottom:32}}>
-					<SaySomethingForm
+					<PostComment
 					head="Comment on the post!"
-					name={ auth.name }
-					avatar={ auth.avatar }
-					user={ auth.id }
+					name={ auth.user.name }
+					avatar={ auth.user.avatar }
+					user={ auth.user.id }
+					post_id = { this.props.match.params.post_id }
 					/>
 					{
 						current.comments != undefined && current.comments.length > 0 ?
 						current.comments.map(c => (
 							<SingleComment 
+								key = { c._id }
 								avatar = { c.avatar }
 								text = { c.text }
 								name = { c.name }

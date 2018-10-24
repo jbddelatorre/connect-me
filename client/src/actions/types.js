@@ -14,3 +14,4 @@ export const GET_ALL_POSTS = 'GET_ALL_POSTS';
 export const SUBMIT_POST = 'SUBMIT_POST';
 export const POST_LOADING = 'POST_LOADING';
 export const GET_COMMENTS = 'GET_COMMENTS';
+export const ADD_COMMENT = 'ADD_COMMENT';
