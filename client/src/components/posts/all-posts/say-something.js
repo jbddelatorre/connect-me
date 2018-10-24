@@ -43,15 +43,15 @@ class SaySomethingFrom extends Component {
 	render() {
 		return (
 			<Grid container justify="center">
-				<Grid item xs={10}>
+				<Grid item xs={8}>
 					<Card>
-						<CardHeader 
+						<CardHeader style={{paddingBottom:0}} 
 							title={
 							<Typography align="left" color="primary" variant="h6">
 				           		Say Something!
 				          	</Typography>}
 						/>
-						<CardContent>
+						<CardContent style={{paddingTop:0}} >
 							<TextField 
 								fullWidth
 								multiline

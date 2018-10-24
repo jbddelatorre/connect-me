@@ -23,11 +23,15 @@ class Posts extends Component {
 	render() {
 		const { auth } = this.props
 		return (
-			<SaySomethingForm 
+			<Fragment>
+				<SaySomethingForm 
 				name={ auth.name }
 				avatar={ auth.avatar }
 				user={ auth.id }
-			/>
+				/>
+				<SinglePost />
+			</Fragment>
+
 		);
 	}
 }
