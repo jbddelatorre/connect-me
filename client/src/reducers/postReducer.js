@@ -1,6 +1,5 @@
 import { 
 	GET_ALL_POSTS,
-	SUBMIT_POST,
 	POST_LOADING,
 	GET_COMMENTS } from '../actions/types';
 // import isEmpty from '../validation/is-empty';

@@ -123,7 +123,7 @@ class DeveloperProfile extends Component {
 						<Grid item xs={12}>
 							<Typography style={{marginTop:20}} align="left" variant="h5" color="inherit">
 									My Github Repository
-								</Typography>
+							</Typography>
 						</Grid>
 						<Grid item xs={12}>
 							{this.state.githubusername ? <GithubCard data={this.state.githubusername}/> : ''}

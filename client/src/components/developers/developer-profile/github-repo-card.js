@@ -60,7 +60,7 @@ class GithubCard extends Component {
 		const { data } = this.props
 		const { count, sort, clientId, clientSecret } = this.state;
 
-		fetch(`https://api.github.com/users/${data}/repos?per_page=${count}&sort={sort}&client_id=${clientId}&client_secret=${clientSecret}`)
+		fetch(`https://api.github.com/users/${data}/repos?per_page=${count}&sort=${sort}&client_id=${clientId}&client_secret=${clientSecret}`)
 			.then(res => res.json())
 			.then(data => {
 				this.setState({repos: data})
@@ -68,7 +68,7 @@ class GithubCard extends Component {
 	}
 
 	render() {
-		const { classes, data } = this.props
+		const { classes } = this.props
 		const { repos } = this.state;
 		const repoItems = repos.length > 0 ?
 			repos.map(r => (

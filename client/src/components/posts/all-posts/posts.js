@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import SaySomethingForm from './say-something';
 import SinglePost from './single-post-card';
@@ -11,9 +11,8 @@ import { getAllPosts, likePost, unlikePost } from '../../../actions/postActions'
 import Loading from '../../layout/modal-spinner'
 // Material UI Imports
 
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
+
+
 
 
 class Posts extends Component {

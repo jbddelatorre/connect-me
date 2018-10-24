@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import PostComment from './post-comment';
 import SingleComment from './single-comment';
@@ -11,10 +11,6 @@ import { getComments } from '../../../actions/postActions';
 import Loading from '../../layout/modal-spinner'
 
 // Material UI Imports
-
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
 
 
 class Comments extends Component {
@@ -56,7 +52,7 @@ class Comments extends Component {
 					post_id = { this.props.match.params.post_id }
 					/>
 					{
-						current.comments != undefined && current.comments.length > 0 ?
+						current.comments !== undefined && current.comments.length > 0 ?
 						current.comments.map(c => (
 							<SingleComment 
 								key = { c._id }
