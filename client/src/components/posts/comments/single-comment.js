@@ -9,11 +9,7 @@ import Avatar from '@material-ui/core/Avatar';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 
-
-export default (props) => {
-	const { styleFromParent } = props;
-
-	let styles = {
+const styles = {
 	card:{
 		marginTop:40,
 		paddingTop:16,
@@ -22,6 +18,7 @@ export default (props) => {
 		}
 	}
 
+export default (props) => {
 	return (
 		<Grid container justify="center">
 			<Grid item xs={8}>
