@@ -20,11 +20,9 @@ app.use(logger('dev'));
 
 
 //DB Config
-
 const db = require('./config/keys').mongoURI;
 
 //Connect to MongoDB
-
 mongoose
 	.connect(db, { useNewUrlParser: true })
 	.then(() => console.log('MongoDB connected'))
@@ -42,7 +40,6 @@ app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 
 //Server static assets if in production
-
 if(process.env.NODE_ENV === 'production') {
 	// Set static folder
 	app.use(express.static('client/build'))

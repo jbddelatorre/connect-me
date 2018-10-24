@@ -30,6 +30,7 @@ export const getCurrentProfile = () => (dispatch) => {
 }
 
 export const updateProfile = (userData) => (dispatch) => {
+	dispatch(setProfileLoading());
 	axios.post('/api/profile', userData)
 		.then(res => {
 			dispatch({
