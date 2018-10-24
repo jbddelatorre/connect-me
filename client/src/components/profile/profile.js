@@ -14,7 +14,7 @@ import { withRouter } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-
+import axios from 'axios';
 
 
 const styles = (theme) => ({
@@ -36,15 +36,12 @@ const styles = (theme) => ({
 
 class Profile extends Component {
 	componentDidMount() {
-		// if(!this.props.auth.isAuthenticated) {
-		// 	this.props.history.push('/')
-		// }
 		this.props.getCurrentProfile();
 	}
 
 	render() {
 		const { classes, auth } = this.props
-		const { profile, profiles, loading } = this.props.profile;
+		const { profile, loading } = this.props.profile;
 		// console.log(profile.experience)
 		return (
 			<Grid className={classes.root} container>
@@ -105,11 +102,13 @@ class Profile extends Component {
 					    title = "Experience Credentials"
 						header={['Company', 'Title', 'Years', 'Action']}
 						data = {profile.experience}
+						type="EXPERIENCE"
 					/>
 					<ProfileTable 
 					    title = "Education Credentials"
 						header={['School', 'Degree', 'Years', 'Action']}
 						data = {profile.education}
+						type="EDUCATION"
 					/>
 					<Grid item xs={4}>
 						{!!Object.keys(profile).length ? 
@@ -118,7 +117,7 @@ class Profile extends Component {
 		        		size="large"
 		        		variant="contained" 
 		        		color="default">
-        				Delete my account
+        				Delete my profile
       					</Button>
 						:
 						""
@@ -134,6 +133,20 @@ const mapStateToProps = state => ({
 	auth: state.auth,
 	profile: state.profile
 })
+
+// const mapDispatchToProps = (dispatch) => {
+// 	return {
+// 		getCurrentProfile2: () => {
+// 			axios.get('/api/profile')
+// 				.then(res => {
+// 					dispatch({
+// 						type:'GET_CURRENT_PROFILE',
+// 						payload: res.data
+// 						})
+// 					})
+// 		}
+// 	}
+// }
 
 Profile.propTypes = {
 	getCurrentProfile: PropTypes.func.isRequired,

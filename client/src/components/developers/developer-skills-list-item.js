@@ -14,7 +14,7 @@ const style = {
 	},
 }
 const ListItemSkills = (props) => {
-	const {skill, nb} = props;
+	const {skill} = props;
 	// const liststyle = nb ? 'none': 'solid'
 
 	return (

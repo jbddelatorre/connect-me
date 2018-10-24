@@ -33,11 +33,14 @@ const styles = (theme) => ({
 	},
 	mB: {
 		marginBottom: 30
+	},
+	link: {
+		color:'white',
 	}
 })
 
 const LandingCard = (props) => {
-	const {classes, img, name, job, company, social} = props;
+	const {classes, img, name, job, company, social, website} = props;
 	return (
 		<Grid container className={classes.mB}>
 			<Grid item xs={12}>
@@ -47,43 +50,43 @@ const LandingCard = (props) => {
 							<Grid container justify="center">
 								<Avatar
 								className={classNames(classes.avatar, classes.bigAvatar)}
-								src=""
-								alt="">
-								IMAGE
+								src={img}
+								alt="Profile Image">
+								
 								</Avatar>
 							</Grid>	
 						</Grid>
 						<Grid item xs={12}>
 							<Typography className={classes.labels} align="center" color="inherit" variant="h2">
-				           		Name
+				           		{name}
 				        	</Typography>
 						</Grid>
 						<Grid item xs={12}>
 							<Typography className={classes.labels} align="center" color="inherit" variant="body1">
-				           		Job Desc
+				           		{job}
 				        	</Typography>
 						</Grid>
 						<Grid item xs={12}>
 							<Typography className={classes.labels} align="center" color="inherit" variant="body1">
-				           		Company
+				           		{company}
 				        	</Typography>
 						</Grid>
 						<Grid item xs={12}>
 							<Grid container justify="center">
 								<div className={classes.icon}>
-									<i className="fas fa-globe"></i>
+									<a className={ classes.link } rel="noopener noreferrer" href={'https://'+website} target="_blank" ><i className="fas fa-globe"></i></a>
 								</div>
 								<div className={classes.icon}>
-									<i className="fab fa-twitter"></i>
+									<a className={ classes.link } rel="noopener noreferrer" href={'https://'+social.twitter} target="_blank" ><i className="fab fa-twitter"></i></a>
 								</div>
 								<div className={classes.icon}>
-									<i className="fab fa-facebook-f"></i>
+									<a className={ classes.link } rel="noopener noreferrer" href={'https://'+social.facebook} target="_blank" ><i className="fab fa-facebook-f"></i></a>
 								</div>
 								<div className={classes.icon}>
-									<i className="fab fa-linkedin-in"></i>
+									<a className={ classes.link } rel="noopener noreferrer" href={'https://'+social.linkedin} target="_blank" ><i className="fab fa-linkedin-in"></i></a>
 								</div>
 								<div className={classes.icon}>
-									<i className="fab fa-instagram"></i>
+									<a className={ classes.link } rel="noopener noreferrer" href={'https://'+social.instagram} target="_blank" ><i className="fab fa-instagram"></i></a>
 								</div>
 							</Grid>
 						</Grid>        

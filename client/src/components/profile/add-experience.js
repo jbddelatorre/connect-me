@@ -69,8 +69,7 @@ class AddExperience extends Component {
 
 	handleCurrentJob = () => {
 		const checkbox = !this.state.current
-		const emptyToDate = ''
-		if(checkbox == true) {
+		if(checkbox === true) {
 			this.setState({todate: '', current: checkbox })
 		} else {
 			this.setState({current: checkbox })

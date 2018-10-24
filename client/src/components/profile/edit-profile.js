@@ -80,14 +80,32 @@ class EditProfile extends Component {
 
 	componentDidMount() {
 		this.props.getCurrentProfile();
-		const { profile } = this.props.profile;
-		console.log(profile)
-		
 	}
 
-	componentDidUpdate(prevProps, prevState) {
-		const { profile } = this.props.profile;
-		if(prevProps.profile.profile !== profile) {
+	// componentDidUpdate(prevProps, prevState) {
+	// 	const { profile } = this.props.profile;
+	// 	if(prevProps.profile.profile !== profile) {
+	// 		this.setState({
+	// 			handle:profile.handle,
+	// 			bio:profile.bio,
+	// 			status:profile.status,
+	// 			company:profile.company,
+	// 			website:profile.website,
+	// 			location:profile.location,
+	// 			skills:profile.skills.toString(),
+	// 			github:profile.githubusername,
+	// 			twitter:profile.social.twitter,
+	// 			facebook:profile.social.facebook,
+	// 			linkedin:profile.social.linkedin,
+	// 			youtube:profile.social.youtube,
+	// 			instagram:profile.social.instagram
+	// 		})
+	// 	} 
+	// }
+	
+	componentWillReceiveProps(newProps) {
+		const { profile } = newProps.profile
+		if(!isEmpty(profile)) {
 			this.setState({
 				handle:profile.handle,
 				bio:profile.bio,
@@ -103,11 +121,7 @@ class EditProfile extends Component {
 				youtube:profile.social.youtube,
 				instagram:profile.social.instagram
 			})
-		} 
-	}
-
-	componentWillUnmount() {
-		console.log('UNMOUNT')
+		}
 	}
 
 
@@ -196,6 +210,16 @@ class EditProfile extends Component {
 					value={this.state.github}
 					handleChange = {(e) => this.handleChangeEditProfile(e, 'github')}
 					subtitle="If you want to include your github"
+				/>
+				<TextInput 
+					id="bio"
+					name="bio"
+					label="Bio"
+					value={this.state.bio}
+					handleChange = {(e) => this.handleChangeEditProfile(e, 'bio')}
+					subtitle="Tell us about yourself"
+					textfield
+					rows={2}
 				/>
 				<SocialMedia 
 					id="twitter"
