@@ -57,7 +57,7 @@ export default (props) => {
 				        		color="primary"
 				        		component = {Link}
 				        		to = {{
-				        			pathname:'/comments'
+				        			pathname:`/comments/${post._id}`
 				        		}}
 				       			>
 		        				{`Comments (${post.comments.length})`}

@@ -19,6 +19,7 @@ const styles = {
 	}
 
 export default (props) => {
+	const { avatar, text, name } = props;
 	return (
 		<Grid container justify="center">
 			<Grid item xs={8}>
@@ -28,18 +29,18 @@ export default (props) => {
 							<Grid container justify="center">
 								<Avatar
 								style={{height:100, width:100}} 
-								src=""
+								src={ avatar }
 								alt="Profile Image"
 								/>
 							</Grid>
 							<Typography align="center" color="inherit" variant="subtitle1">
-					           		Name
+					           		{ name }
 					        </Typography>
 						</Grid>
 						<Grid item xs={5}>
 							<CardContent>
 								<Typography align="left" color="inherit" variant="body1">
-					           		Say Something!
+					           		{ text }
 					          	</Typography>
 							</CardContent>
 						</Grid>

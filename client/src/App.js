@@ -118,7 +118,7 @@ class App extends Component {
 		      				<Route path="/developers" exact component={Developers} />
 		      				<Route path="/developers/:id" exact component={DeveloperProfile} />
 		      				<Route path="/posts" exact component={Posts} />
-		      				<Route path="/comments" exact component={Comments} />
+		      				<Route path="/comments/:post_id" exact component={Comments} />
 		      			</Switch>
 		      			</div>
 		      		</div>

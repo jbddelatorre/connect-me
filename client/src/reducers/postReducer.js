@@ -1,7 +1,8 @@
 import { 
 	GET_ALL_POSTS,
 	SUBMIT_POST,
-	POST_LOADING } from '../actions/types';
+	POST_LOADING,
+	GET_COMMENTS } from '../actions/types';
 // import isEmpty from '../validation/is-empty';
 
 
@@ -22,6 +23,12 @@ export default (state=initialState, actions) => {
 			return {
 				...state,
 				posts: actions.payload,
+				loading:false
+			}
+		case GET_COMMENTS:
+			return {
+				...state,
+				currentPost: actions.payload,
 				loading:false
 			}
 		default:
