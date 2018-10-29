@@ -40,11 +40,10 @@ class Profile extends Component {
 
 	render() {
 		const { classes, auth } = this.props
-		const { profile, loading } = this.props.profile;
-		console.log(profile)
+		const { user_profile, isFetching } = this.props.profile;
 		return (
 			<Grid className={classes.root} container>
-				<Loading loading={loading}/>
+				<Loading loading={isFetching}/>
 				<Grid className={classes.container} container spacing={24}>
 					<Grid item xs={12}>
 						<Typography align="left" color="primary" variant="h4">
@@ -65,9 +64,9 @@ class Profile extends Component {
 			        		size="large"
 			        		variant="outlined" 
 			        		color="primary">
-	        				{!isEmpty(profile) ? 'Edit' : 'Add' } Profile
+	        				{!isEmpty(user_profile) ? 'Edit' : 'Add' } Profile
 	      				</Button>
-	      				{!isEmpty(profile) ? 
+	      				{!isEmpty(user_profile) ? 
 	      					<Fragment>
 			      				<Button
 			      					component={Link}
@@ -97,20 +96,26 @@ class Profile extends Component {
 					</Grid>
 				</Grid>
 				<Grid className={classes.container} container spacing={24}>
-					<ProfileTable 
-					    title = "Experience Credentials"
-						header={['Company', 'Title', 'Years', 'Action']}
-						data = {profile.experience}
-						type="EXPERIENCE"
-					/>
-					<ProfileTable 
-					    title = "Education Credentials"
-						header={['School', 'Degree', 'Years', 'Action']}
-						data = {profile.education}
-						type="EDUCATION"
-					/>
+					{!isEmpty(user_profile) ?
+						<Fragment>
+							<ProfileTable 
+							    title = "Experience Credentials"
+								header={['Company', 'Title', 'Years', 'Action']}
+								data = {user_profile.experience}
+								type="EXPERIENCE"
+							/>
+							<ProfileTable 
+							    title = "Education Credentials"
+								header={['School', 'Degree', 'Years', 'Action']}
+								data = {user_profile.education}
+								type="EDUCATION"
+							/>
+						</Fragment>
+						:
+						""
+					}
 					<Grid item xs={4}>
-						{!!Object.keys(profile).length ? 
+						{!isEmpty(user_profile) ? 
 						<Button
 						style={{backgroundColor:'pink'}}
 		        		size="large"
@@ -133,19 +138,6 @@ const mapStateToProps = state => ({
 	profile: state.profile
 })
 
-// const mapDispatchToProps = (dispatch) => {
-// 	return {
-// 		getCurrentProfile2: () => {
-// 			axios.get('/api/profile')
-// 				.then(res => {
-// 					dispatch({
-// 						type:'GET_CURRENT_PROFILE',
-// 						payload: res.data
-// 						})
-// 					})
-// 		}
-// 	}
-// }
 
 Profile.propTypes = {
 	getCurrentProfile: PropTypes.func.isRequired,

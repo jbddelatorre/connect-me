@@ -1,14 +1,13 @@
 import axios from 'axios';
 
 import { 
-	GET_CURRENT_PROFILE, 
-	PROFILE_LOADING, 
+	FETCH_USER_PROFILE_REQUEST,
+	FETCH_USER_PROFILE_SUCCESS,
+	FETCH_USER_PROFILE_ERROR,
 	GET_ERRORS, 
-	UPDATE_PROFILE, 
 	ADD_EXPERIENCE, 
 	ADD_EDUCATION, 
-	GET_ALL_PROFILE,
-	GET_DEVELOPER_PROFILE } from './types';
+} from './types';
 
 //Get current profile
 
@@ -17,14 +16,13 @@ export const getCurrentProfile = () => (dispatch) => {
 	axios.get('/api/profile')
 		.then(res => {
 			dispatch({
-				type:GET_CURRENT_PROFILE,
+				type:FETCH_USER_PROFILE_SUCCESS,
 				payload: res.data
 				})
 			})
-			
 		.catch(err => 
 			dispatch({
-				type:GET_CURRENT_PROFILE,
+				type:FETCH_USER_PROFILE_SUCCESS,
 				payload: {}
 			}))
 }
@@ -34,7 +32,7 @@ export const updateProfile = (userData) => (dispatch) => {
 	axios.post('/api/profile', userData)
 		.then(res => {
 			dispatch({
-				type: UPDATE_PROFILE,
+				type: FETCH_USER_PROFILE_SUCCESS,
 				payload: res.data
 			})
 		})
@@ -86,7 +84,7 @@ export const deleteExperience = (id) => (dispatch) => {
 	axios.delete(`/api/profile/experience/${id}`)
 		.then(res => {
 			dispatch({
-				type: GET_CURRENT_PROFILE,
+				type: FETCH_USER_PROFILE_SUCCESS,
 				payload: res.data
 			})
 		})
@@ -103,7 +101,7 @@ export const deleteEducation = (id) => (dispatch) => {
 	axios.delete(`/api/profile/education/${id}`)
 		.then(res => {
 			dispatch({
-				type: GET_CURRENT_PROFILE,
+				type: FETCH_USER_PROFILE_SUCCESS,
 				payload: res.data
 			})
 		})
@@ -153,6 +151,6 @@ export const deleteEducation = (id) => (dispatch) => {
 
 export const setProfileLoading = () => {
 	return {
-		type: PROFILE_LOADING
+		type: FETCH_USER_PROFILE_REQUEST
 	}
 }

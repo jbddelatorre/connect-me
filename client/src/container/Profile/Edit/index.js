@@ -81,45 +81,24 @@ class EditProfile extends Component {
 	componentDidMount() {
 		this.props.getCurrentProfile();
 	}
-
-	// componentDidUpdate(prevProps, prevState) {
-	// 	const { profile } = this.props.profile;
-	// 	if(prevProps.profile.profile !== profile) {
-	// 		this.setState({
-	// 			handle:profile.handle,
-	// 			bio:profile.bio,
-	// 			status:profile.status,
-	// 			company:profile.company,
-	// 			website:profile.website,
-	// 			location:profile.location,
-	// 			skills:profile.skills.toString(),
-	// 			github:profile.githubusername,
-	// 			twitter:profile.social.twitter,
-	// 			facebook:profile.social.facebook,
-	// 			linkedin:profile.social.linkedin,
-	// 			youtube:profile.social.youtube,
-	// 			instagram:profile.social.instagram
-	// 		})
-	// 	} 
-	// }
 	
 	componentWillReceiveProps(newProps) {
-		const { profile } = newProps.profile
-		if(!isEmpty(profile)) {
+		const { user_profile } = newProps.profile
+		if(!isEmpty(user_profile)) {
 			this.setState({
-				handle:profile.handle,
-				bio:profile.bio,
-				status:profile.status,
-				company:profile.company,
-				website:profile.website,
-				location:profile.location,
-				skills:profile.skills.toString(),
-				github:profile.githubusername,
-				twitter:profile.social.twitter,
-				facebook:profile.social.facebook,
-				linkedin:profile.social.linkedin,
-				youtube:profile.social.youtube,
-				instagram:profile.social.instagram
+				handle:user_profile.handle,
+				bio:user_profile.bio,
+				status:user_profile.status,
+				company:user_profile.company,
+				website:user_profile.website,
+				location:user_profile.location,
+				skills:user_profile.skills.toString(),
+				github:user_profile.githubusername,
+				twitter:user_profile.social.twitter,
+				facebook:user_profile.social.facebook,
+				linkedin:user_profile.social.linkedin,
+				youtube:user_profile.social.youtube,
+				instagram:user_profile.social.instagram
 			})
 		}
 	}

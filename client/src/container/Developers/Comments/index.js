@@ -26,9 +26,9 @@ class Comments extends Component {
 	}
 
 	componentWillReceiveProps(newProps) {
-		const { currentPost } = newProps.posts
-		if(currentPost) {
-			this.setState({current: currentPost})
+		const { current } = newProps.posts.current_post
+		if(current) {
+			this.setState({current: current})
 		}
 	}
 
@@ -64,7 +64,6 @@ class Comments extends Component {
 						:
 						null
 					}
-					
 				</div>
 			</Fragment>
 
