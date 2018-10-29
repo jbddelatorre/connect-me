@@ -67,7 +67,6 @@ const theme = createMuiTheme({
 	},
 });
 
-
 if(localStorage.jwtToken) {
 	//Set auth token header auth
 	setAuthToken(localStorage.jwtToken);
@@ -86,7 +85,6 @@ if(localStorage.jwtToken) {
 		window.location.href = '/login';
 	}
 }
-
 
 class App extends Component {
   render() {

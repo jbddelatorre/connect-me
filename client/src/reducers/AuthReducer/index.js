@@ -3,10 +3,10 @@ import {
 	FETCH_USER_LOGIN_REQUEST, 
 	FETCH_USER_LOGIN_ERROR,
 	LOGOUT_SUCCESS 
-} from '../actions/types';
+} from '../../actions/types';
 
 
-import isEmpty from '../validation/is-empty';
+import isEmpty from '../../validation/is-empty';
 import { combineReducers } from 'redux'
 
 // const initialState = {

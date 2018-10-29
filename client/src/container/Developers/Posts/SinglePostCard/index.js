@@ -32,16 +32,26 @@ const styles = {
 
 
 class SinglePost extends Component {
-	
+	state = {
+		liked: false,
+		// likes: 0
+	}
+
 	handleLike = () => {
 		const { handleFunction, user, post} = this.props
 		handleFunction(user, post._id)
 	}
 
+	componentWillReceiveProps(newProps) {
+		const { liked, post } = newProps
+		this.setState({ liked: liked })
+	}
+
 
 	render() {
-		const { post, liked } = this.props;
-
+		const { post } = this.props;
+		const { liked, likes } = this.state
+		// console.log(post)
 		return (
 			<Grid container justify="center">
 				<Grid item xs={8}>

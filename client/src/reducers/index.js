@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import authReducer from './authReducer';
+import authReducer from './AuthReducer';
 import errorReducer from './errorReducer';
 import profileReducer from './ProfileReducer';
 import postReducer from './PostReducer';
