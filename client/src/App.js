@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 import store from './store';
-import jwt_decode from 'jwt-decode';
-import setAuthToken from './utils/setAuthToken';
-import { setCurrentUser, logoutUser } from './actions/authActions';
+
 
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import blue from '@material-ui/core/colors/blue';
@@ -12,6 +10,11 @@ import pink from '@material-ui/core/colors/pink';
 import red from '@material-ui/core/colors/red';
 
 import { BrowserRouter } from 'react-router-dom';
+
+import jwt_decode from 'jwt-decode';
+import { setCurrentUser, logoutUser } from './actions/authActions';
+import setAuthToken from './utils/setAuthToken';
+
 
 //Import Components
 import Navbar from './components/layout/Navbar';
@@ -64,7 +67,6 @@ const theme = createMuiTheme({
 	},
 });
 
-//Check for Token
 
 if(localStorage.jwtToken) {
 	//Set auth token header auth
