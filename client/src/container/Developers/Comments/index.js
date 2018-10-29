@@ -8,7 +8,7 @@ import SingleComment from './SingleComment';
 import { getComments } from '../../../actions/postActions';
 
 // Component Imports
-import Loading from '../../../components/layout/modal-spinner'
+import Loading from '../../../components/Layout/ModalSpinner'
 
 // Material UI Imports
 

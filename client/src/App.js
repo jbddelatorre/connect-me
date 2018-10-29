@@ -17,8 +17,8 @@ import setAuthToken from './utils/setAuthToken';
 
 
 //Import Components
-import Navbar from './components/layout/Navbar';
-import Routes from './container'
+import Navbar from './components/Layout/Navbar';
+import Container from './container'
 
 
 const primary = blue
@@ -96,7 +96,7 @@ class App extends Component {
 		    	<MuiThemeProvider theme={theme}>
 	      			<Navbar />
 	     			<div style={{marginTop: 50, paddingTop:'40px'}}>
-	      				<Routes />
+	      				<Container />
 	      			</div>
 		    	</MuiThemeProvider>
 		    </BrowserRouter>

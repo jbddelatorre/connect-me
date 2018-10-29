@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { logoutUser } from '../../actions/authActions';
+import { logoutUser } from '../../../actions/authActions';
 import Avatar from '@material-ui/core/Avatar';
 
 import AppBar from '@material-ui/core/AppBar';

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { getAllProfile } from '../../../actions/profileActions'
 //Components
 import DeveloperCard from './DeveloperCard'
-import Loading from '../../../components/layout/modal-spinner'
+import Loading from '../../../components/Layout/ModalSpinner'
 
 //Material UI
 import Grid from '@material-ui/core/Grid';

@@ -4,7 +4,7 @@ import { getCurrentProfile } from '../../../actions/profileActions';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Loading from '../../../components/layout/modal-spinner'
+import Loading from '../../../components/Layout/ModalSpinner'
 import ProfileTable from './ExperienceEducationTable';
 import isEmpty from '../../../validation/is-empty';
 

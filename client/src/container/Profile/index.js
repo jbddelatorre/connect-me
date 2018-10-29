@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import PrivateRoute from '../../components/common/PrivateRoute';
+import PrivateRoute from '../../components/Common/PrivateRoute';
 
 import EditProfile from './Edit';
 import AddExperience from './AddExperience';

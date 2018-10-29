@@ -8,7 +8,7 @@ import isEmpty from '../../../validation/is-empty';
 import { getAllPosts, likePost, unlikePost } from '../../../actions/postActions';
 
 // Component Imports
-import Loading from '../../../components/layout/modal-spinner'
+import Loading from '../../../components/Layout/ModalSpinner'
 // Material UI Imports
 
 
