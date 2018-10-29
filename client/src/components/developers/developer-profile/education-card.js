@@ -22,11 +22,10 @@ const styles = {
 
 const EducationCardList = (props) => {
 	const {data} = props;
-
 	return (
 		<Grid item xs={12}>
 			{data.map(d => (data.length > 0 ? 
-			<Card key={d.id} style={styles.root}>
+			<Card key={d._id} style={styles.root}>
 				<Grid item xs={12}>
 					<Typography align="left" variant="h6">
 						{d.school}

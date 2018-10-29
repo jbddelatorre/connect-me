@@ -22,11 +22,10 @@ const styles = {
 
 const ExperienceCardList = (props) => {
 	const {data} = props;
-	console.log(data)
 	return (
 		<Grid item xs={12}>
 			{data.map(d => (data.length > 0 ? 
-			<Card style={styles.root}>
+			<Card style={styles.root} key={d._id}>
 				<Grid item xs={12}>
 					<Typography align="left" variant="h6">
 						{d.company}

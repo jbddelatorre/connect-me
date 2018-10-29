@@ -70,6 +70,7 @@ class GithubCard extends Component {
 	render() {
 		const { classes } = this.props
 		const { repos } = this.state;
+		console.log(repos.length)
 		const repoItems = repos.length > 0 ?
 			repos.map(r => (
 			<Grid  className={classes.container} key={r.id} container spacing={8}>	
@@ -101,7 +102,8 @@ class GithubCard extends Component {
 			</Grid>
 		))
 			: 
-			null
+			null;
+		console.log(repoItems)
 
 		return (
 			<Card className={classes.card}>
