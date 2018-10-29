@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { addComment } from '../../../actions/postActions';
+import { addComment } from '../../../../actions/postActions';
 import { connect } from 'react-redux';
 
 //Material UI

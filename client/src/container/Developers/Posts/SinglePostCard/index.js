@@ -47,7 +47,7 @@ class SinglePost extends Component {
 				<Grid item xs={8}>
 					<Card style={styles.card}>
 						<Grid container>
-							<Grid item xs={2}>
+							<Grid item xs={3}>
 								<Grid container justify="center">
 									<Avatar
 									style={{height:100, width:100, marginLeft:16, marginRight:16}} 
@@ -59,7 +59,7 @@ class SinglePost extends Component {
 						           		{ post.name }
 						        </Typography>
 							</Grid>
-							<Grid item xs={5}>
+							<Grid item xs={9}>
 								<CardContent>
 									<Typography align="left" color="inherit" variant="body1">
 						           		{ post.text }
