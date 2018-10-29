@@ -4,7 +4,7 @@ import React from 'react';
 //Components
 // import LandingCard from './landing-card';
 // import ListItemSkills from '../developer-skills-list-item';
-import IndividualSkill from './individual-skill';
+import IndividualSkill from './IndividualSkill';
 //Material UI
 import Grid from '@material-ui/core/Grid';
 // import Button from '@material-ui/core/Button';

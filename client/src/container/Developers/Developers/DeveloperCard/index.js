@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 //Component
-import ListItemSkills from './developer-skills-list-item';
+import ListItemSkills from './ListSkillItem';
 
 //Material UI
 import Card from '@material-ui/core/Card';

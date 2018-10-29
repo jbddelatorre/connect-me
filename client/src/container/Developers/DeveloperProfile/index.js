@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { getDeveloperProfile } from '../../../actions/profileActions';
 import isEmpty from '../../../validation/is-empty';
 //Components
-import LandingCard from './landing-card';
-import BioSkillsCard from './bio-skills-card';
+import LandingCard from './HeadCard';
+import BioSkillsCard from './BioSkillsCard';
 // import WEcard from './educ-experience.js'
-import EducationCardList from './education-card.js'
-import ExperienceCardList from './experience-card.js'
-import GithubCard from './github-repo-card.js'
+import EducationCardList from './EducationCard'
+import ExperienceCardList from './ExperienceCard'
+import GithubCard from './GithubRepoCard'
 //Material UI
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllProfile } from '../../actions/profileActions'
+import { getAllProfile } from '../../../actions/profileActions'
 //Components
-import DeveloperCard from './developers-card.js'
-import Loading from '../layout/modal-spinner'
+import DeveloperCard from './DeveloperCard'
+import Loading from '../../../components/layout/modal-spinner'
 
 //Material UI
 import Grid from '@material-ui/core/Grid';
@@ -24,15 +24,6 @@ class Developers extends Component {
 	componentWillReceiveProps(newProps) {
 		this.setState({profiles: newProps.profile.profiles})
 	}
-
-	// componentDidUpdate(prevProps, prevState) {
-	// 	const { profiles } = this.props.profile.profiles
-	// 	if(prevProps.profile.profiles !== profiles) {
-	// 		console.log('1' + profiles)
-	// 		console.log('2' + prevProps.profile.profiles)
-	// 	}
-	// }
-
 
 	render() {
 		const { profiles } = this.state
