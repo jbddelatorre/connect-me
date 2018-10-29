@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getAllProfile } from '../../../actions/profileActions'
+import { getAllProfile } from '../../../actions/developerActions'
 //Components
 import DeveloperCard from './DeveloperCard'
 import Loading from '../../../components/Layout/ModalSpinner'
@@ -22,15 +22,15 @@ class Developers extends Component {
 	}
 
 	componentWillReceiveProps(newProps) {
-		this.setState({profiles: newProps.profile.profiles})
+		this.setState({profiles: newProps.developers.all_developers.profiles})
 	}
 
 	render() {
 		const { profiles } = this.state
-		const { loading } = this.props.profile
+		// const { loading } = this.props.profile
 		return (
 		<Grid>
-			<Loading loading={loading}/>
+			{/*<Loading loading={loading}/>*/}
 			<Grid container justify="center">
 				<Grid item xs={8}>
 					<Typography align="center" color="primary" variant="h4">
@@ -53,7 +53,7 @@ class Developers extends Component {
 };
 
 const mapStateToProps = (state) => ({
-	profile: state.profile
+	developers: state.developers
 })
 
 export default connect(mapStateToProps, { getAllProfile })(Developers);

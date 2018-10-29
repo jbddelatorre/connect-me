@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getDeveloperProfile } from '../../../actions/profileActions';
+import { getDeveloperProfile } from '../../../actions/developerActions';
 import isEmpty from '../../../validation/is-empty';
 //Components
 import LandingCard from './HeadCard';
@@ -41,22 +41,22 @@ class DeveloperProfile extends Component {
 	}
 
 	componentWillReceiveProps(newProps) {
-		const { current } = newProps.profile
-		if(!isEmpty(current)) {
+		const { profile } = newProps.developers.single_profile
+		if(!isEmpty(profile)) {
 			this.setState({
-				_id:current._id,
-				user:current.user,
-				status:current.status,
-				company:current.company,
-				handle:current.handle,
-				website:current.website,
-				location: current.location,
-				githubusername:current.githubusername,
-				experience:current.experience,
-				education:current.education,
-				social:current.social,
-				bio:current.bio,
-				skills: current.skills
+				_id:profile._id,
+				user:profile.user,
+				status:profile.status,
+				company:profile.company,
+				handle:profile.handle,
+				website:profile.website,
+				location: profile.location,
+				githubusername:profile.githubusername,
+				experience:profile.experience,
+				education:profile.education,
+				social:profile.social,
+				bio:profile.bio,
+				skills: profile.skills
 			})
 		}
 	}
@@ -136,7 +136,7 @@ class DeveloperProfile extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	profile: state.profile
+	developers: state.developers
 })
 
 export default connect(mapStateToProps, { getDeveloperProfile })(DeveloperProfile);

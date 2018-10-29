@@ -3,10 +3,12 @@ import authReducer from './authReducer';
 import errorReducer from './errorReducer';
 import profileReducer from './profileReducer';
 import postReducer from './postReducer';
+import developerReducer from './DeveloperReducer';
 
 export default combineReducers({
 	auth: authReducer,
 	errors: errorReducer,
 	profile: profileReducer,
 	posts: postReducer,
+	developers: developerReducer
 });

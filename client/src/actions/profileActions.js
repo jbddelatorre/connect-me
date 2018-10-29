@@ -115,39 +115,39 @@ export const deleteEducation = (id) => (dispatch) => {
 		})
 }
 
-export const getAllProfile = () => (dispatch) => {
-	dispatch(setProfileLoading());
-	axios.get(`/api/profile/all`)
-		.then(res => {
-			dispatch({
-				type: GET_ALL_PROFILE,
-				payload: res.data
-			})
-		})
-		.catch(err => {
-		dispatch({
-			type: GET_ERRORS,
-			payload: err.response.data
-			})
-		})
-}
+// export const getAllProfile = () => (dispatch) => {
 
-export const getDeveloperProfile = (id) => (dispatch) => {
-	dispatch(setProfileLoading());
-	axios.get(`/api/profile/user/${id}`)
-		.then(res => {
-			dispatch({
-				type: GET_DEVELOPER_PROFILE,
-				payload: res.data
-			})
-		})
-		.catch(err => {
-		dispatch({
-			type: GET_ERRORS,
-			payload: err.response.data
-			})
-		})
-}
+// 	axios.get(`/api/profile/all`)
+// 		.then(res => {
+// 			dispatch({
+// 				type: GET_ALL_PROFILE,
+// 				payload: res.data
+// 			})
+// 		})
+// 		.catch(err => {
+// 		dispatch({
+// 			type: GET_ERRORS,
+// 			payload: err.response.data
+// 			})
+// 		})
+// }
+
+// export const getDeveloperProfile = (id) => (dispatch) => {
+
+// 	axios.get(`/api/profile/user/${id}`)
+// 		.then(res => {
+// 			dispatch({
+// 				type: GET_DEVELOPER_PROFILE,
+// 				payload: res.data
+// 			})
+// 		})
+// 		.catch(err => {
+// 		dispatch({
+// 			type: GET_ERRORS,
+// 			payload: err.response.data
+// 			})
+// 		})
+// }
 
 //Profile loading
 
