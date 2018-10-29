@@ -1,4 +1,11 @@
-import { GET_ERRORS, SET_CURRENT_USER } from './types';
+import { 
+	GET_ERRORS,
+	FETCH_USER_LOGIN_SUCCESS,
+	FETCH_USER_LOGIN_REQUEST, 
+	FETCH_USER_LOGIN_ERROR,
+	LOGOUT_SUCCESS
+} from './types';
+
 import axios from 'axios';
 import setAuthToken from '../utils/setAuthToken';
 import jwt_decode from 'jwt-decode';
@@ -23,6 +30,10 @@ export const registerUser = (userData, history) => (dispatch) => {
 //Login User - get Token
 
 export const loginUser = (userData, history) => (dispatch) => {
+	dispatch({
+		type: FETCH_USER_LOGIN_REQUEST
+	})
+
 	axios
 	.post('/api/users/login', userData)
 	.then(res => {
@@ -55,14 +66,16 @@ export const logoutUser = () => dispatch => {
 	//Remove auth header for future request
 	setAuthToken(false);
 	// Set current user to {} which will set isAuthenticated to false
-	dispatch(setCurrentUser({}))
+	dispatch({
+		type: LOGOUT_SUCCESS
+	})
 }
 
 //Set logged in user
 
 export const setCurrentUser = (decoded) => {
 	return {
-		type: SET_CURRENT_USER,
+		type: FETCH_USER_LOGIN_SUCCESS,
 		payload: decoded
 	}
 }
