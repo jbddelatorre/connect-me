@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import authReducer from './authReducer';
 import errorReducer from './errorReducer';
 import profileReducer from './profileReducer';
-import postReducer from './postReducer';
+import postReducer from './PostReducer';
 import developerReducer from './DeveloperReducer';
 
 export default combineReducers({

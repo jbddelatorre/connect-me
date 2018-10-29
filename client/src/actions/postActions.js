@@ -1,19 +1,31 @@
-import { GET_ALL_POSTS, GET_ERRORS, POST_LOADING, GET_COMMENTS} from './types';
+import { 
+	FETCH_CURRENT_POST_REQUEST,
+	FETCH_CURRENT_POST_SUCCESS,
+	FETCH_CURRENT_POST_ERROR,
+	FETCH_ALL_POSTS_REQUEST,
+	FETCH_ALL_POSTS_SUCCESS,
+	FETCH_ALL_POSTS_ERROR,
+	GET_ERRORS, 
+	POST_LOADING, 
+	GET_COMMENTS
+} from './types';
+
+
+
 import axios from 'axios';
 
 export const getAllPosts = () => (dispatch) => {
 	dispatch({
-		type: POST_LOADING
+		type: FETCH_ALL_POSTS_REQUEST
 	})
 	axios.get('/api/posts')
 		.then(res => (
 			dispatch({
-				type: GET_ALL_POSTS,
+				type: FETCH_ALL_POSTS_SUCCESS,
 				payload: res.data
 			})
 		))
 		.catch(err => {
-			console.log(err)
 		dispatch({
 			type: GET_ERRORS,
 			payload: err.response.data
@@ -49,7 +61,7 @@ export const addPost = (newPost) => (dispatch) => {
 			axios.get('/api/posts')
 				.then(res => (
 					dispatch({
-						type: GET_ALL_POSTS,
+						type: FETCH_ALL_POSTS_SUCCESS,
 						payload: res.data
 					})
 				))
@@ -105,7 +117,7 @@ export const likePost = (userId, post_id) => (dispatch) => {
 			axios.get('/api/posts')
 				.then(res => (
 					dispatch({
-						type: GET_ALL_POSTS,
+						type: FETCH_ALL_POSTS_SUCCESS,
 						payload: res.data
 					})
 				))
@@ -134,7 +146,7 @@ export const unlikePost = (userId, post_id) => (dispatch) => {
 			axios.get('/api/posts')
 				.then(res => (
 					dispatch({
-						type: GET_ALL_POSTS,
+						type: FETCH_ALL_POSTS_SUCCESS,
 						payload: res.data
 					})
 				))

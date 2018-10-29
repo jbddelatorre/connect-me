@@ -11,10 +11,6 @@ import { getAllPosts, likePost, unlikePost } from '../../../actions/postActions'
 import Loading from '../../../components/Layout/ModalSpinner'
 // Material UI Imports
 
-
-
-
-
 class Posts extends Component {
 	constructor(props) {
 		super(props);
@@ -28,19 +24,20 @@ class Posts extends Component {
 	}
 
 	componentWillReceiveProps(newProps) {
-		const { posts } = newProps.posts
-		
-		if(!isEmpty(posts)) {
-			this.setState({ stateposts: posts })
+		const { data } = newProps.posts.posts
+		if(!isEmpty(data)) {
+			this.setState({ stateposts: data })
 		}
 	}
 
 	render() {
-		const { auth, posts } = this.props
+		const { auth } = this.props
+		const { posts } = this.props.posts
 		const { stateposts } = this.state
+
 		return (
 			<Fragment>
-				<Loading loading={posts.loading} />
+				<Loading loading={posts.isFetching} />
 				<SaySomethingForm
 				head = "Say something!" 
 				name={ auth.user.name }
