@@ -25,11 +25,11 @@ class Login extends Component {
 		errors: {}
 	}
 	
-	componentDidMount() {
-		if(this.props.auth.isAuthenticated) {
-			this.props.history.push('/');
-		}
-	}
+	// componentDidMount() {
+	// 	if(this.props.auth.isAuthenticated) {
+	// 		this.props.history.push('/');
+	// 	}
+	// }
 
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.auth.isAuthenticated) {
@@ -49,12 +49,12 @@ class Login extends Component {
 			email: this.state.email,
 			password: this.state.password
 		}
-		this.props.loginUser(userData)
+		// this.props.loginUser(userData)
+		loginUser(userData, this.props.dispatch)
 	}
 
 	render() {
 		const { errors } = this.state;
-
 		return (
 			<Grid container justify="center" style={styles.root}>
 				<Grid container justify="center">
@@ -120,4 +120,10 @@ const mapStateToProps = (state) => ({
 	errors: state.errors
 })
 
-export default connect(mapStateToProps, {loginUser})(Login);
+// const mapDispatchToProps = (dispatch) => ({
+// 	loginUserrr: () => dispatch({
+// 		type:'FETCH_LOGIN_USER_REQUEST'
+// 	})
+// })
+
+export default connect(mapStateToProps)(Login);

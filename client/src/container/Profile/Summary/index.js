@@ -35,7 +35,8 @@ const styles = (theme) => ({
 
 class Profile extends Component {
 	componentDidMount() {
-		this.props.getCurrentProfile();
+		// this.props.getCurrentProfile();
+		getCurrentProfile(this.props.dispatch)
 	}
 
 	render() {
@@ -145,4 +146,4 @@ Profile.propTypes = {
 	profile: PropTypes.object.isRequired
 }
 
-export default  connect(mapStateToProps, { getCurrentProfile })(withRouter(withStyles(styles)(Profile)));
+export default  connect(mapStateToProps)(withRouter(withStyles(styles)(Profile)));

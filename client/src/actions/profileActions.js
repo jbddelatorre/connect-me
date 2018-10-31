@@ -11,8 +11,7 @@ import {
 
 //Get current profile
 
-export const getCurrentProfile = () => (dispatch) => {
-	dispatch(setProfileLoading());
+export const getCurrentProfile = (dispatch) => {
 	axios.get('/api/profile')
 		.then(res => {
 			dispatch({
@@ -26,6 +25,22 @@ export const getCurrentProfile = () => (dispatch) => {
 				payload: {}
 			}))
 }
+
+// export const getCurrentProfile = () => (dispatch) => {
+// 	dispatch(setProfileLoading());
+// 	axios.get('/api/profile')
+// 		.then(res => {
+// 			dispatch({
+// 				type:FETCH_USER_PROFILE_SUCCESS,
+// 				payload: res.data
+// 				})
+// 			})
+// 		.catch(err => 
+// 			dispatch({
+// 				type:FETCH_USER_PROFILE_SUCCESS,
+// 				payload: {}
+// 			}))
+// }
 
 export const updateProfile = (userData) => (dispatch) => {
 	dispatch(setProfileLoading());

@@ -28,12 +28,7 @@ export const registerUser = (userData, history) => (dispatch) => {
 }
 
 //Login User - get Token
-
-export const loginUser = (userData, history) => (dispatch) => {
-	dispatch({
-		type: FETCH_USER_LOGIN_REQUEST
-	})
-
+export const loginUser = (userData, dispatch) => {
 	axios
 	.post('/api/users/login', userData)
 	.then(res => {
@@ -56,6 +51,35 @@ export const loginUser = (userData, history) => (dispatch) => {
 		}
 	)
 }
+
+// export const loginUser = (userData, history) => (dispatch) => {
+// 	console.log('asdasd')
+// 	dispatch({
+// 		type: FETCH_USER_LOGIN_REQUEST
+// 	})
+
+// 	axios
+// 	.post('/api/users/login', userData)
+// 	.then(res => {
+// 		//Save to localStorage
+// 		const { token } = res.data;
+// 		//Set toke to localStorage
+// 		localStorage.setItem('jwtToken', token);
+// 		//set to AuthHeader
+// 		setAuthToken(token);
+// 		//Decode token to get user data
+// 		const decoded = jwt_decode(token);
+// 		//Set current user
+// 		dispatch(setCurrentUser(decoded))
+// 	})
+// 	.catch(err => {
+// 		dispatch({
+// 			type: GET_ERRORS,
+// 			payload: err.response.data
+// 			})
+// 		}
+// 	)
+// }
 
 //Logout User - destroy Token
 

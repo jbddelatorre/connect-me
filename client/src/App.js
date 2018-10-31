@@ -94,7 +94,7 @@ class App extends Component {
 		    	<MuiThemeProvider theme={theme}>
 	      			<Navbar />
 	     			<div style={{marginTop: 50, paddingTop:'40px'}}>
-	      				<Container />
+	      				<Container store={store} />
 	      			</div>
 		    	</MuiThemeProvider>
 		    </BrowserRouter>
