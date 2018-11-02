@@ -108,4 +108,8 @@ class SinglePost extends Component {
 	}
 };
 
+SinglePost.propTypes = {
+	handleFunction: PropTypes.func.isRequired,
+}
+
 export default SinglePost;

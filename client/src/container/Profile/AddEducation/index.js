@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { addEducation } from '../../../actions/profileActions'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
+
 // Component Imports
 import TextInput from '../Layout/InputField';
 
@@ -38,7 +40,7 @@ const styles = (theme) => ({
 	checked: {},
 })
 
-class AddExperience extends Component {
+class AddEducation extends Component {
 	state = {
 		school:'',
 		degree:'',
@@ -189,4 +191,8 @@ class AddExperience extends Component {
 	}
 }
 
-export default connect(null, { addEducation })(withStyles(styles)(AddExperience));
+AddEducation.propTypes = {
+	addEducation: PropTypes.func.isRequired,
+}
+
+export default connect(null, { addEducation })(withStyles(styles)(AddEducation));

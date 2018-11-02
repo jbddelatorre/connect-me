@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateProfile, getCurrentProfile } from '../../../actions/profileActions';
 import isEmpty from '../../../validation/is-empty';
+import PropTypes from 'prop-types';
 
 // Component Imports
 import TextInput from '../Layout/InputField';
@@ -275,5 +276,12 @@ class EditProfile extends Component {
 const mapStateToProps = (state) => ({
 	profile: state.profile
 })
+
+EditProfile.propTypes = {
+	updateProfile: PropTypes.func.isRequired,
+	getCurrentProfile: PropTypes.func.isRequired,
+	profile: PropTypes.object.isRequired,
+	errors: PropTypes.object.isRequired
+}
 
 export default connect(mapStateToProps, { updateProfile, getCurrentProfile })(withStyles(styles)(EditProfile));

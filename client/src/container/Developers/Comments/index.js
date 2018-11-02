@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PostComment from './PostComment';
 import SingleComment from './SingleComment';
-
+import PropTypes from 'prop-types';
 
 import { getComments } from '../../../actions/postActions';
 
@@ -75,6 +75,12 @@ const mapStateToProps = (state) => ({
 	posts: state.posts,
 	auth: state.auth
 })
+
+Login.propTypes = {
+	getComments: PropTypes.func.isRequired,
+	posts: PropTypes.object.isRequired,
+	auth: PropTypes.object.isRequired
+}
 
 export default connect(mapStateToProps, { getComments })(Comments);
 

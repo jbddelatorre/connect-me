@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { addPost } from '../../../../actions/postActions';
 import { connect } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 //Material UI
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -77,6 +79,10 @@ class SaySomethingFrom extends Component {
 			</Grid>
 		);
 	}
+}
+
+SaySomethingFrom.propTypes = {
+	addPost: PropTypes.func.isRequired,
 }
 
 export default connect(null, { addPost })(SaySomethingFrom);

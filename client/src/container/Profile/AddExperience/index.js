@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-
+import PropTypes from 'prop-types';
 import { addExperience } from '../../../actions/profileActions'
 // Component Imports
 import TextInput from '../Layout/InputField';
@@ -189,6 +189,10 @@ class AddExperience extends Component {
 			</Grid>
 		);
 	}
+}
+
+AddExperience.propTypes = {
+	addExperience: PropTypes.func.isRequired,
 }
 
 export default connect(null, { addExperience })(withStyles(styles)(AddExperience));
