@@ -124,7 +124,7 @@ class NavBar extends Component {
           <People />
           </IconButton>
           <Typography color="inherit" variant="h4">
-          DevConn
+          ConnectMe
           </Typography>
           <Button
           component={Link}
