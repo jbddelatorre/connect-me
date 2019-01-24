@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import PrivateRoute from '../components/common/PrivateRoute';
+
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Landing from '../components/layout/Landing';
@@ -20,7 +20,7 @@ export default () => (
 		<Route path="/" exact component={Landing} />
 		<Route path="/login" exact component={Login} />
 		<Route path="/signup" exact component={Signup} />
-		<PrivateRoute path="/profile" exact component={Profile} />
+		<Route path="/profile" exact component={Profile} />
 		<Route path="/profile/edit-profile" exact component={EditProfile} />
 		<Route path="/profile/add-experience" exact component={AddExperience} />
 		<Route path="/profile/add-education" exact component={AddEducation} />
