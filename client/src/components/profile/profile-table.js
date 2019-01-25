@@ -83,7 +83,7 @@ class ProfileTable extends Component {
                   :
                   <TableRow>
                     <TableCell colSpan={4}>
-                    <Typography align="center" color="secondary" variant="body1">
+                    <Typography align="center" color="primary" variant="body1">
                       No information provided                  
                     </Typography>
                     </TableCell>

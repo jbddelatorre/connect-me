@@ -28,7 +28,10 @@ const styles = (theme) => ({
   button: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit
-  }
+  },
+  header: {
+    fontFamily:'Montserrat',
+  },
 });
 
 const style = {
@@ -112,7 +115,7 @@ class NavBar extends Component {
               </span>
     return(
       <AppBar position="absolute">
-        <Toolbar variant="regular">
+        <Toolbar variant="dense">
           <IconButton 
           component={Link}
           to={{
@@ -121,25 +124,28 @@ class NavBar extends Component {
           className={classes.menuButton} 
           color="inherit" 
           aria-label="Menu">
-          <People />
+            <People />
           </IconButton>
-          <Typography color="inherit" variant="h4">
-          ConnectMe
+          <Typography color="inherit" variant="h3" className={classes.header}>
+            ConnectMe
           </Typography>
+
+          
+
+          <div className={classes.grow} />
+          <div>
           <Button
           component={Link}
           to={{
             pathname:'/developers'
           }}
           className={classes.button}
-          size="large"
-          variant="outlined" 
-          color="inherit">
+          size="large" 
+          color="secondary">
           Find Developers
           </Button>
-          <div className={classes.grow} />
-          <div>
-          {this.props.auth.isAuthenticated ? logout:login}
+
+          {this.props.auth.isAuthenticated ? logout:null}
           </div>
         </Toolbar>
       </AppBar>

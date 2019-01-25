@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
+import {Link} from 'react-router-dom';
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
@@ -12,8 +13,11 @@ const styles = {
 	textfield: {
 		color:'white'
 	}, 
-	button: {
-		marginTop: 30
+	button2: {
+		marginTop: '12px'
+	},
+	button1: {
+		marginTop: '24px'
 	}
 }
 
@@ -58,9 +62,9 @@ class Login extends Component {
 		return (
 			<Grid container justify="center" style={styles.root}>
 				<Grid container justify="center">
-					<Grid item xs={8}>
+					<Grid item xs={10} md={8} lg={4}>
 						<Typography align="center" color="primary" variant="h6">
-		           				Log in your account
+		           				Sign In
 		          		</Typography>
 						<TextField
 							fullWidth
@@ -92,8 +96,8 @@ class Login extends Component {
 			        </Grid>
 		        </Grid>
 		        <Grid container justify="center">
-		        	<Grid item xs={2}>
-				        <Button style={styles.button}
+		        	<Grid item xs={6} md={4} lg={2}>
+				        <Button style={styles.button1}
 				        	size="large" 
 				        	variant="extendedFab" 
 				        	color="primary"
@@ -101,6 +105,22 @@ class Login extends Component {
 				        	onClick = {this.handleSubmit}
 				        	>
 		        			Login
+		      			</Button>
+	      			</Grid>
+      			</Grid>
+      			<Grid container justify="center">
+		        	<Grid item xs={6} md={4} lg={2}>
+				        <Button style={styles.button2}
+				        	size="large" 
+				        	variant="extendedFab" 
+				        	color="primary"
+				        	fullWidth
+				        	component={Link} 
+			                to={{
+			                  pathname: '/signup',
+			                }} 
+				        	>
+		        			Register an Account
 		      			</Button>
 	      			</Grid>
       			</Grid>

@@ -10,16 +10,18 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import blue from '@material-ui/core/colors/blue';
 import pink from '@material-ui/core/colors/pink';
 import red from '@material-ui/core/colors/red';
+import purple from '@material-ui/core/colors/purple';
+import yellow from '@material-ui/core/colors/yellow';
 
 import { BrowserRouter } from 'react-router-dom';
 
 //Import Components
 import Navbar from './components/layout/Navbar';
 import Routes from './container'
+import Footer from './components/layout/Footer';
 
-
-const primary = blue
-const secondary = pink
+const primary = purple
+const secondary = yellow
 const tertiary = red
 
 const theme = createMuiTheme({
@@ -43,26 +45,33 @@ const theme = createMuiTheme({
   	},
 	palette: {
 		primary: {
-	    light: primary[300],
-	    main: primary[500],
-	    dark: primary[700],
+	    light: primary[500],
+	    main: '#563d7c',
+	    dark: '#322348',
 	    contrastThreshold:3,
 	  },
 	  secondary: {
-	    light: secondary.A200,
+	    light: '#ffe484',
 	    main: secondary.A400,
 	    dark: secondary.A700,
 	    contrastThreshold:3,
 	  },
 	  error: {
-	    light: tertiary[300],
-	    main: tertiary[500],
-	    dark: tertiary[700],
+	    light: primary[500],
+	    main: '#563d7c',
+	    dark: '#322348',
 	    contrastThreshold:3,
-	    tonalOffset: 0.2,
 	  },
 	},
 });
+
+// error: {
+// 	    light: tertiary[300],
+// 	    main: tertiary[500],
+// 	    dark: tertiary[700],
+// 	    contrastThreshold:3,
+// 	    tonalOffset: 0.2,
+// 	  },
 
 //Check for Token
 
@@ -93,9 +102,8 @@ class App extends Component {
     		<BrowserRouter>
 		    	<MuiThemeProvider theme={theme}>
 	      			<Navbar />
-	     			<div style={{marginTop: 50, paddingTop:'40px'}}>
-	      				<Routes />
-	      			</div>
+	      			<Routes />
+	      			<Footer />
 		    	</MuiThemeProvider>
 		    </BrowserRouter>
 	    </Provider>

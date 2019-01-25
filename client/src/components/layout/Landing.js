@@ -6,81 +6,76 @@ import { connect } from 'react-redux';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
-import Image from '../../img/showcase.jpg';
+import Image from '../../img/bgimage.png';
 import { Link } from 'react-router-dom';
 
 const style = (theme) => ({
 	landing: {
-		backgroundImage: `url(${Image})`,
-		minHeight: '100vh',
-		backgroundPosition: 'center',
-		backgroundRepeat: 'norepeat',
+		background: `linear-gradient(
+      rgba(0, 0, 0, 0.8), 
+      rgba(0, 0, 0, 0.8)
+    ), url(${Image}) `,
+    width:'100%',
+		/*backgroundPosition: 'center',*/
 		backgroundSize: 'cover',
-    marginTop:-50
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems:'center',
+    justifyContent: 'center',
 	},
-	content: {
-    	height: '100vh',
-   		width: '100%',
-    	backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    	color: 'white',
-    	display:'flex',
-    	justifyContent: 'center'
-  	},
-  	center: {
-		paddingTop: theme.spacing.unit*20,
-		display: 'flex',
-		flexDirection:'column',
-		textAlign: 'center'
-  	},
-  	button: {
-  		marginLeft: theme.spacing.unit * 2,
-  		marginRight: theme.spacing.unit * 2
-  	}
+	button: {
+		marginLeft: theme.spacing.unit * 2,
+		marginRight: theme.spacing.unit * 2,
+    minWidth: '240px',
+    backgroundColor: theme.palette.secondary.dark,
+    '&:hover': {
+      backgroundColor: theme.palette.secondary.main,
+    }
+	},
+  text: {
+    marginTop: '24px',
+    color: theme.palette.secondary.dark,
+    fontFamily: 'Open Sans',
+    fontSize: '24px'
+  }
 })
 
 const Landing = (props) => {
 	const { classes } = props;
 	return (
 		<div className = {classes.landing}>
-			<div className = {classes.content}>
-				<div className = {classes.center}>
-					<Typography style={{marginBottom: 20}}color="inherit" variant="h1">
-           				Developer Connector
-          			</Typography>
-          			<Typography color="inherit" variant="h6" gutterBottom>
-           				Create a developer profile/portfolio, share posts and get help from other developers.
-          			</Typography>
-          			{props.auth.isAuthenticated ?
-                  <div>
-                    <Button component={Link} 
-                      to={{
-                        pathname: '/profile',
-                      }} 
-                      variant="extendedFab" size="large" color="primary" className={classes.button}>
-                    My Profile 
-                    </Button>
-                  </div>
-                  :
-                <div>
-                  <Button component={Link} 
-                    to={{
-                      pathname: '/signup',
-                    }} 
-                    variant="extendedFab" size="large" color="primary" className={classes.button}>
-                  Signup 
-                  </Button>
-                  <Button 
-                    component={Link} 
-                    to={{
-                      pathname: '/login',
-                    }} 
-                    variant="extendedFab" size="large" color="secondary"className={classes.button}>
-                    Login
+        <Typography color="inherit" variant="h6" gutterBottom className={classes.text}>
+            A social network platform for developers to share their skills and expertise.
+        </Typography>
+        {props.auth.isAuthenticated ?
+              <div>
+                <Button component={Link} 
+                  to={{
+                    pathname: '/profile',
+                  }} 
+                  variant="extendedFab" size="large"className={classes.button}>
+                My Profile 
                 </Button>
-                </div>
-              }
-				</div>
-			</div>
+              </div>
+              :
+            <div>
+              <Button component={Link} 
+                to={{
+                  pathname: '/signup',
+                }} 
+                variant="contained" size="large" className={classes.button}>
+              Signup 
+              </Button>
+              <Button 
+                component={Link} 
+                to={{
+                  pathname: '/login',
+                }} 
+                variant="contained" size="large" className={classes.button}>
+                Login
+            </Button>
+            </div>
+          }
 		</div>
 	)
 };

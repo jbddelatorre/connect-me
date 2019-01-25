@@ -4,13 +4,12 @@ import { connect } from 'react-redux';
 import SaySomethingForm from './say-something';
 import SinglePost from './single-post-card';
 import isEmpty from '../../../validation/is-empty';
-
+import Typography from '@material-ui/core/Typography';
 import { getAllPosts, likePost, unlikePost } from '../../../actions/postActions';
 
 // Component Imports
 import Loading from '../../layout/modal-spinner'
 // Material UI Imports
-
 
 
 
@@ -61,9 +60,9 @@ class Posts extends Component {
 						return <SinglePost key={p._id} user = { auth.user.id } post = {p} liked = {liked} handleFunction={handleFunction}/>
 					})
 					:
-					<div style={{display:'flex', justifyContent:'center'}}>
-						<h6>No posts found</h6>
-					</div>
+					<Typography align="center" color="primary" variant="h4" style={{marginTop: '36px'}}>
+		           		No posts found
+		          	</Typography>
 				}
 			</Fragment>
 

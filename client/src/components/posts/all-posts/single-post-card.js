@@ -59,7 +59,7 @@ class SinglePost extends Component {
 						           		{ post.name }
 						        </Typography>
 							</Grid>
-							<Grid item xs={5}>
+							<Grid item xs={10}>
 								<CardContent>
 									<Typography align="left" color="inherit" variant="body1">
 						           		{ post.text }

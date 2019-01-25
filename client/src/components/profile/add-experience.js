@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import green from '@material-ui/core/colors/green';
+import purple from '@material-ui/core/colors/purple';
 import Checkbox from '@material-ui/core/Checkbox';
 
 
@@ -31,9 +31,9 @@ const styles = (theme) => ({
 		paddingBottom: theme.spacing.unit*4,
 	},
 	root: {
-	    color: green[600],
+	    color: purple[900],
 	    '&$checked': {
-	      color: green[500],
+	      color: purple[700],
 	    },
 	},
 	checked: {},
@@ -81,7 +81,7 @@ class AddExperience extends Component {
 		
 		return (
 			<Grid container>
-				<Grid className={classes.margin}  container justify="center">
+				<Grid className={classes.margin} container justify="center">
 					<Grid item xs={6}>
 						<Grid item xs={4}>
 							<Button
@@ -92,7 +92,7 @@ class AddExperience extends Component {
 							fullWidth
 			        		size="large"
 			        		variant="outlined" 
-			        		color="secondary">
+			        		color="primary">
 	        				Return to Profile
 	      					</Button>
 	      				</Grid>
@@ -171,7 +171,6 @@ class AddExperience extends Component {
 					value={this.state.desc}
 					handleChange = {(e) => this.handleChangeEditProfile(e, 'desc')}
 					textfield
-					subtitle="Some of your responsibilities"
 					justifysub="left"
 				/>
 				<Grid container justify="center">

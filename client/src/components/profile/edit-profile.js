@@ -81,27 +81,6 @@ class EditProfile extends Component {
 	componentDidMount() {
 		this.props.getCurrentProfile();
 	}
-
-	// componentDidUpdate(prevProps, prevState) {
-	// 	const { profile } = this.props.profile;
-	// 	if(prevProps.profile.profile !== profile) {
-	// 		this.setState({
-	// 			handle:profile.handle,
-	// 			bio:profile.bio,
-	// 			status:profile.status,
-	// 			company:profile.company,
-	// 			website:profile.website,
-	// 			location:profile.location,
-	// 			skills:profile.skills.toString(),
-	// 			github:profile.githubusername,
-	// 			twitter:profile.social.twitter,
-	// 			facebook:profile.social.facebook,
-	// 			linkedin:profile.social.linkedin,
-	// 			youtube:profile.social.youtube,
-	// 			instagram:profile.social.instagram
-	// 		})
-	// 	} 
-	// }
 	
 	componentWillReceiveProps(newProps) {
 		const { profile } = newProps.profile
@@ -141,7 +120,7 @@ class EditProfile extends Component {
 							fullWidth
 			        		size="large"
 			        		variant="outlined" 
-			        		color="secondary">
+			        		color="primary">
 	        				Return to Profile
 	      					</Button>
 	      				</Grid>
@@ -152,7 +131,7 @@ class EditProfile extends Component {
 	           				Edit Your Profile
 	          		</Typography>
 	          		<Typography align="center" color="primary" variant="h6">
-	           				Let's get some information to make your profile stand out
+	           				Tell everyone something about yourself
 	          		</Typography>
 				</Grid>
 				<TextInput 
@@ -166,7 +145,7 @@ class EditProfile extends Component {
 				<TextInput 
 					id="status"
 					name="status"
-					label="status"
+					label="Status"
 					value={this.state.status}
 					handleChange = {(e) => this.handleChangeEditProfile(e, 'status')}
 					subtitle="Your job position"
@@ -276,7 +255,7 @@ class EditProfile extends Component {
 						<i className="fab fa-instagram"></i>
 					</div>
 				</SocialMedia>
-				<Grid container justify="center" style={{marginTop: 32}}>
+				<Grid container justify="center" style={{marginTop: 32,  marginBottom: 32}}>
 					<Grid item xs={6}>
 						<Button
 						fullWidth

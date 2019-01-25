@@ -41,7 +41,7 @@ export const updateProfile = (userData) => (dispatch) => {
 		.catch(err => {
 		dispatch({
 			type: GET_ERRORS,
-			payload: err.response.data
+			payload: err.response
 			})
 		})
 }
@@ -58,7 +58,7 @@ export const addExperience = (workExperience, history) => (dispatch) => {
 		.catch(err => {
 		dispatch({
 			type: GET_ERRORS,
-			payload: err.response.data
+			payload: err.response
 			})
 		})
 }
@@ -76,7 +76,7 @@ export const addEducation = (education, history) => (dispatch) => {
 		.catch(err => {
 		dispatch({
 			type: GET_ERRORS,
-			payload: err.response.data
+			payload: err.response
 			})
 		})
 }
