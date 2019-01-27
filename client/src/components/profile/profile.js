@@ -32,7 +32,6 @@ const styles = (theme) => ({
 })
 
 
-
 class Profile extends Component {
 	componentDidMount() {
 		this.props.getCurrentProfile();

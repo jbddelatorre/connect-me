@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
@@ -16,10 +16,18 @@ import IconButton from '@material-ui/core/IconButton';
 import People from '@material-ui/icons/People';
 
 import Button from '@material-ui/core/Button';
+import MediaQuery from 'react-responsive';
+import MenuButton from './MenuButton'
 
 const styles = (theme) => ({
   grow: {
     flexGrow: 1,
+  },
+  title:{
+    display:'inline-block',
+    [theme.breakpoints.down('sm')]: {
+      display:'none !important'
+    },
   },
   type: {
     marginLeft: theme.spacing.unit*2,
@@ -27,7 +35,11 @@ const styles = (theme) => ({
   },
   button: {
     marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit
+    marginRight: theme.spacing.unit,
+    [theme.breakpoints.down('lg')]: {
+      marginLeft: 0,
+      marginRight: 0,
+    },
   },
   header: {
     fontFamily:'Montserrat',
@@ -52,8 +64,9 @@ class NavBar extends Component {
   render() {
     const { classes } = this.props;
     const logout =  
-                <span>
-                <Button
+                <Fragment>
+                <MediaQuery query="(min-device-width:1000px)">
+                  <Button
                 component={Link}
                 to={{
                   pathname:'/posts'
@@ -87,9 +100,14 @@ class NavBar extends Component {
                   style={style.avatar}/>
                 Log Out
                 </Button>
-                </span>
+                </MediaQuery>
+                <MediaQuery query="(max-device-width: 1001px)">
+                  <MenuButton signedIn={true} handleLogout={this.onLogoutClick}/>  
+                </MediaQuery>
+                </Fragment>
     const login = 
-              <span>
+              <Fragment>
+                <MediaQuery query="(min-device-width:1000px)">
                 <Button
                 component={Link}
                 to={{
@@ -111,8 +129,12 @@ class NavBar extends Component {
                 color="primary"
                 className={classes.button}>
                 Log In
-                </Button>           
-              </span>
+                </Button>
+                </MediaQuery>
+                <MediaQuery query="(max-device-width: 1001px)">
+                  <MenuButton signedIn={false}/>  
+                </MediaQuery>           
+              </Fragment>
     return(
       <AppBar position="absolute">
         <Toolbar variant="dense">
@@ -126,14 +148,12 @@ class NavBar extends Component {
           aria-label="Menu">
             <People />
           </IconButton>
-          <Typography color="inherit" variant="h3" className={classes.header}>
+          <Typography color="inherit" variant="h3" classes={{root:classes.title}}>
             ConnectMe
           </Typography>
 
-          
-
           <div className={classes.grow} />
-          <div>
+          <div style={{display:'flex', flexWrap:'nowrap'}}>
           <Button
           component={Link}
           to={{
@@ -144,8 +164,7 @@ class NavBar extends Component {
           color="secondary">
           Find Developers
           </Button>
-
-          {this.props.auth.isAuthenticated ? logout:null}
+          {this.props.auth.isAuthenticated ? logout:login}
           </div>
         </Toolbar>
       </AppBar>
