@@ -57,7 +57,6 @@ class Signup extends Component {
 			
 			this.props.registerUser(newUser, this.props.history)
 		}
-		console.log(this.state)
 	}
 
 	componentDidMount() {
@@ -140,23 +139,6 @@ class Signup extends Component {
 			          	helperText={this.state.errors.password}
 			          	FormHelperTextProps = {{error:true}}
 					/>
-
-
-		          {/*<TextField
-		          	error = {!!this.state.errors.password}
-		          	id="password"
-		          	label="Password"
-		          	fullWidth
-		          	type="password"
-		          	// className={classes.textField}
-		         	value={this.state.password}
-		         	onChange={(e) => this.handleChange(e, 'password')}
-		          	margin="normal"
-		          	helperText={this.state.errors.password}
-		          	FormHelperTextProps = {{error:true}}
-		        	/>*/}
-
-
 		        </ListItem>
 		        <ListItem>
 		          <ListItemIcon>
@@ -175,25 +157,10 @@ class Signup extends Component {
 			          	helperText={this.state.errors.password2}
 			          	FormHelperTextProps = {{error:true}}
 					/>
-
-
-		          {/*<TextField
-		          	error = {!!this.state.errors.password2}
-		          	id="password2"
-		          	label="Confirm Password"
-		          	fullWidth
-		          	type="password"
-		          	// className={classes.textField}
-		         	value={this.state.password2}
-		         	onChange={(e) => this.handleChange(e, 'password2')}
-		          	margin="normal"
-		          	helperText={this.state.errors.password2}
-		          	FormHelperTextProps = {{error:true}}
-		        	/>*/}
 		        </ListItem>
 		        <ListItem>
 		        	<Button
-		        		style={{width: '200px'}}
+		        		fullWidth
 		        		size="large"
 		        		variant="extendedFab" 
 		        		color="primary"

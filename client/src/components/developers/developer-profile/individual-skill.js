@@ -19,7 +19,7 @@ const style = (theme) => ({
 export default withStyles(style)((props) => {
 	const {classes, skill} = props;
 	return (
-		<Grid item xs={2} className={classes.skill}>
+		<Grid item xs={12} sm={6} md={3} lg={2} className={classes.skill}>
 			<Grid container wrap="nowrap">
 				<Build className={classes.build}/>
 				<Typography align="left" color="inherit" variant="subtitle1">

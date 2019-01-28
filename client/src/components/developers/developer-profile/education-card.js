@@ -26,9 +26,12 @@ const EducationCardList = (props) => {
 		<Grid item xs={12}>
 			{data.map(d => (data.length > 0 ? 
 			<Card key={d._id} style={styles.root}>
-				<Grid item xs={12}>
+				<Grid container item xs={12} justify="space-between">
 					<Typography align="left" variant="h6">
 						{d.school}
+					</Typography>
+					<Typography align="right" variant="body2" style={{fontStyle: 'italic'}}>
+						{'Education'}
 					</Typography>
 				</Grid>
 				<Grid item xs={12}>

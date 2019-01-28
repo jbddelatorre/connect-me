@@ -42,8 +42,8 @@ class PostComment extends Component {
 
 	render() {
 		return (
-			<Grid container justify="center">
-				<Grid item xs={8}>
+			<Grid container justify="center" style={{paddingLeft: '16px', paddingRight:'16px'}}>
+				<Grid item xs={12} md={10} lg={8}>
 					<Card>
 						<CardHeader style={{paddingBottom:0}} 
 							title={

@@ -26,9 +26,12 @@ const ExperienceCardList = (props) => {
 		<Grid item xs={12}>
 			{data.map(d => (data.length > 0 ? 
 			<Card style={styles.root} key={d._id}>
-				<Grid item xs={12}>
+				<Grid container item xs={12} justify="space-between">
 					<Typography align="left" variant="h6">
 						{d.company}
+					</Typography>
+					<Typography align="right" variant="body2" style={{fontStyle: 'italic'}}>
+						{'Experience'}
 					</Typography>
 				</Grid>
 				<Grid item xs={12}>

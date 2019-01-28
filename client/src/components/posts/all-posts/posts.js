@@ -11,9 +11,6 @@ import { getAllPosts, likePost, unlikePost } from '../../../actions/postActions'
 import Loading from '../../layout/modal-spinner'
 // Material UI Imports
 
-
-
-
 class Posts extends Component {
 	constructor(props) {
 		super(props);

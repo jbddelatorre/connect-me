@@ -120,7 +120,7 @@ class Login extends Component {
 			                  pathname: '/signup',
 			                }} 
 				        	>
-		        			Register an Account
+		        			Register
 		      			</Button>
 	      			</Grid>
       			</Grid>

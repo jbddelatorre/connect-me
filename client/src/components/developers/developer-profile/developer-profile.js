@@ -64,10 +64,10 @@ class DeveloperProfile extends Component {
 	render() {
 		const { experience, education } = this.state
 		return (
-			<Grid container justify="center">
-				<Grid item xs={10}>
+			<Grid container justify="center" style={{paddingLeft:'16px', paddingRight:'16px'}}>
+				<Grid item xs={12} md={10} lg={8}>
 					<Grid container justify="flex-start">
-						<Grid item xs={3}>
+						<Grid item xs={12} sm={5} md={3}>
 							<Button
 								component={Link}
 								to={{
@@ -94,9 +94,9 @@ class DeveloperProfile extends Component {
 						skills={this.state.skills}
 					/>
 					<Grid container spacing={24}>
-						<Grid item xs={6}>
+						<Grid item xs={12} md={6}>
 							<Grid container justify="center">
-								<Typography align="center" variant="h6" color="primary">
+								<Typography align="center" variant="h6" color="primary" style={{textDecoration:'underline'}}>
 									Experience
 								</Typography>
 							</Grid>
@@ -106,9 +106,9 @@ class DeveloperProfile extends Component {
 								<ExperienceCardList data={[]}/>
 							}
 						</Grid>
-						<Grid item xs={6}>
+						<Grid item xs={12} md={6}>
 							<Grid container justify="center">
-								<Typography align="center" variant="h6" color="primary">
+								<Typography align="center" variant="h6" color="primary" style={{textDecoration:'underline'}}>
 									Education
 								</Typography>
 							</Grid>

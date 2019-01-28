@@ -13,6 +13,8 @@ import CardActions from '@material-ui/core/CardActions';
 import ThumbsUp from '@material-ui/icons/ThumbUpOutlined';
 import ThumbsDown from '@material-ui/icons/ThumbDownOutlined';
 
+import MediaQuery from 'react-responsive'
+
 const styles = {
 	card:{
 		marginTop:40,
@@ -29,8 +31,6 @@ const styles = {
 	}
 }
 
-
-
 class SinglePost extends Component {
 	
 	handleLike = () => {
@@ -38,28 +38,25 @@ class SinglePost extends Component {
 		handleFunction(user, post._id)
 	}
 
-
 	render() {
 		const { post, liked } = this.props;
 
 		return (
-			<Grid container justify="center">
-				<Grid item xs={8}>
+			<Grid container justify="center" style={{paddingLeft: '16px', paddingRight:'16px'}}>
+				<Grid item xs={12} md={10} lg={8}>
 					<Card style={styles.card}>
 						<Grid container>
-							<Grid item xs={2}>
-								<Grid container justify="center">
-									<Avatar
-									style={{height:100, width:100, marginLeft:16, marginRight:16}} 
-									src={ post.avatar }
-									alt="IMG"
-									/>
-								</Grid>
+							<Grid container item xs={12} sm={3} md={2} direction="column" alignItems="center">
+								<Avatar
+								style={{height:100, width:100, marginLeft:16, marginRight:16}} 
+								src={ post.avatar }
+								alt="IMG"
+								/>
 								<Typography align="center" color="inherit" variant="subtitle1">
 						           		{ post.name }
 						        </Typography>
 							</Grid>
-							<Grid item xs={10}>
+							<Grid item xs={12} sm={9} md={10}>
 								<CardContent>
 									<Typography align="left" color="inherit" variant="body1">
 						           		{ post.text }
@@ -90,6 +87,7 @@ class SinglePost extends Component {
 			      					</Button>
 								</CardActions>
 							</Grid>
+
 						</Grid>
 					</Card>
 				</Grid>

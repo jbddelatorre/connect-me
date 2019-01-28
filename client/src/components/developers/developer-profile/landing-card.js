@@ -36,6 +36,11 @@ const styles = (theme) => ({
 	},
 	link: {
 		color:'white',
+	},
+	name: {
+		[theme.breakpoints.down('sm')]:{
+			fontSize:'32px'
+		}
 	}
 })
 
@@ -52,12 +57,11 @@ const LandingCard = (props) => {
 								className={classNames(classes.avatar, classes.bigAvatar)}
 								src={img}
 								alt="Profile Image">
-								
 								</Avatar>
 							</Grid>	
 						</Grid>
 						<Grid item xs={12}>
-							<Typography className={classes.labels} align="center" color="inherit" variant="h2">
+							<Typography className={classes.labels} align="center" color="inherit" variant="h2" className={classes.name}>
 				           		{name}
 				        	</Typography>
 						</Grid>

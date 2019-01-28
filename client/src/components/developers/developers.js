@@ -25,15 +25,6 @@ class Developers extends Component {
 		this.setState({profiles: newProps.profile.profiles})
 	}
 
-	// componentDidUpdate(prevProps, prevState) {
-	// 	const { profiles } = this.props.profile.profiles
-	// 	if(prevProps.profile.profiles !== profiles) {
-	// 		console.log('1' + profiles)
-	// 		console.log('2' + prevProps.profile.profiles)
-	// 	}
-	// }
-
-
 	render() {
 		const { profiles } = this.state
 		const { loading } = this.props.profile
@@ -49,12 +40,15 @@ class Developers extends Component {
 	           				Browse and connect with our developers
 	          		</Typography>
 				</Grid>
-				{
+				<Grid item xs={12} style={{paddingLeft: '12px',paddingRight: '12px',
+					marginBottom: '24px'}}>
+					{
 					profiles ? 
 						profiles.map(p => <DeveloperCard key={p._id} data = {p}/>)
 						:
 						null
-				}
+					}
+				</Grid>
 			</Grid>
 		</Grid>
 		)

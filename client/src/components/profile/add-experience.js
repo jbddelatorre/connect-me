@@ -80,11 +80,10 @@ class AddExperience extends Component {
 		const {classes} = this.props
 		
 		return (
-			<Grid container>
-				<Grid className={classes.margin} container justify="center">
-					<Grid item xs={6}>
-						<Grid item xs={4}>
-							<Button
+			<Grid container justify="center" style={{paddingLeft:'16px', paddingRight:'16px'}}>
+				<Grid container item xs={12} md={10} lg={8} justify="center">
+					<Grid item xs={12} sm={8} className={classes.margin}>
+						<Button
 							component={Link}
 							to={{
 								pathname:'/profile'
@@ -94,60 +93,59 @@ class AddExperience extends Component {
 			        		variant="outlined" 
 			        		color="primary">
 	        				Return to Profile
-	      					</Button>
-	      				</Grid>
+	      				</Button>
 					</Grid>
-				</Grid>
-				<Grid item xs={12}>
-					<Typography align="center" color="primary" variant="h4">
-	           				Add Your Experience
-	          		</Typography>
-	          		<Typography align="center" color="primary" variant="h6">
-	           				Add any developer/programming experience positions that you've had
-	          		</Typography>
-				</Grid>
-				<TextInput 
-					id="title"
-					name="title"
-					label="* Job Title"
-					value={this.state.title}
-					handleChange = {(e) => this.handleChangeEditProfile(e, 'title')}
-				/>
-				<TextInput 
-					id="company"
-					name="company"
-					label="* Company"
-					value={this.state.company}
-					handleChange = {(e) => this.handleChangeEditProfile(e, 'company')}
-				/>
-				<TextInput 
-					id="location"
-					name="location"
-					label="Location"
-					value={this.state.location}
-					handleChange = {(e) => this.handleChangeEditProfile(e, 'location')}
-				/>
-				<TextInput 
-					id="fromdate"
-					name="fromdate"
-					value={this.state.fromdate}
-					handleChange = {(e) => this.handleChangeEditProfile(e, 'fromdate')}
-					subtitle="From Date"
-					type='date'
-					justifysub="left"
-				/>
-				<TextInput 
-					id="todate"
-					name="todate"
-					value={this.state.todate}
-					handleChange = {(e) => this.handleChangeEditProfile(e, 'todate')}
-					subtitle="To Date"
-					type='date'
-					justifysub="left"
-					disabled={this.state.current}
-				/>
-				<Grid container justify="center">
-					<Grid item xs={6}>
+					<Grid item xs={12}>
+						<Typography align="center" color="primary" variant="h4">
+		           				Add Your Experience
+		          		</Typography>
+		          		<Typography align="center" color="primary" variant="h6">
+		           				Add any developer/programming experience positions that you've had
+		          		</Typography>
+					</Grid>
+
+					<TextInput 
+						id="title"
+						name="title"
+						label="* Job Title"
+						value={this.state.title}
+						handleChange = {(e) => this.handleChangeEditProfile(e, 'title')}
+					/>
+					<TextInput 
+						id="company"
+						name="company"
+						label="* Company"
+						value={this.state.company}
+						handleChange = {(e) => this.handleChangeEditProfile(e, 'company')}
+					/>
+					<TextInput 
+						id="location"
+						name="location"
+						label="Location"
+						value={this.state.location}
+						handleChange = {(e) => this.handleChangeEditProfile(e, 'location')}
+					/>
+					<TextInput 
+						id="fromdate"
+						name="fromdate"
+						value={this.state.fromdate}
+						handleChange = {(e) => this.handleChangeEditProfile(e, 'fromdate')}
+						subtitle="From Date"
+						type='date'
+						justifysub="left"
+					/>
+					<TextInput 
+						id="todate"
+						name="todate"
+						value={this.state.todate}
+						handleChange = {(e) => this.handleChangeEditProfile(e, 'todate')}
+						subtitle="To Date"
+						type='date'
+						justifysub="left"
+						disabled={this.state.current}
+					/>
+
+					<Grid item xs={12} sm={10} md={8}>
 						<FormControlLabel
 				          control={
 				            <Checkbox
@@ -163,27 +161,29 @@ class AddExperience extends Component {
 				          label="Current Job"
 				        />
 					</Grid>	
-				</Grid>
-				<TextInput 
-					id="desc"
-					name="desc"
-					label="Describe your job"
-					value={this.state.desc}
-					handleChange = {(e) => this.handleChangeEditProfile(e, 'desc')}
-					textfield
-					justifysub="left"
-				/>
-				<Grid container justify="center">
-					<Grid item xs={6}  className={classes.margin} >
-						<Button
-						fullWidth
-		        		size="large"
-		        		variant="extendedFab" 
-		        		color="primary"
-		        		onClick={this.handleSubmit}>
-        				Add your experience
-      					</Button>
+
+					<TextInput 
+						id="desc"
+						name="desc"
+						label="Describe your job"
+						value={this.state.desc}
+						handleChange = {(e) => this.handleChangeEditProfile(e, 'desc')}
+						textfield
+						justifysub="left"
+					/>
+					<Grid container justify="center">
+						<Grid item xs={6}  className={classes.margin} >
+							<Button
+							fullWidth
+			        		size="large"
+			        		variant="extendedFab" 
+			        		color="primary"
+			        		onClick={this.handleSubmit}>
+	        				Add your experience
+	      					</Button>
+						</Grid>
 					</Grid>
+
 				</Grid>
 			</Grid>
 		);

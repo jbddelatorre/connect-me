@@ -65,15 +65,6 @@ const theme = createMuiTheme({
 	},
 });
 
-// error: {
-// 	    light: tertiary[300],
-// 	    main: tertiary[500],
-// 	    dark: tertiary[700],
-// 	    contrastThreshold:3,
-// 	    tonalOffset: 0.2,
-// 	  },
-
-//Check for Token
 
 if(localStorage.jwtToken) {
 	//Set auth token header auth

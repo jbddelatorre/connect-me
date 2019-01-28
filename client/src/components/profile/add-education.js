@@ -78,79 +78,75 @@ class AddExperience extends Component {
 	render() {
 		const {classes} = this.props
 		return (
-			<Grid container>
-				<Grid className={classes.margin}  container justify="center">
-					<Grid item xs={6}>
-						<Grid item xs={4}>
-							<Button
-							component={Link}
-							to={{
-								pathname:'/profile'
-							}}
-							fullWidth
-			        		size="large"
-			        		variant="outlined" 
-			        		color="primary">
-	        				Return to Profile
-	      					</Button>
-	      				</Grid>
+			<Grid container justify="center" style={{paddingLeft:'16px', paddingRight:'16px'}}>
+				<Grid container item xs={12} md={10} lg={8} justify="center">
+					<Grid item xs={12} sm={8} className={classes.margin}>
+						<Button
+						component={Link}
+						to={{
+							pathname:'/profile'
+						}}
+						fullWidth
+		        		size="large"
+		        		variant="outlined" 
+		        		color="primary">
+        				Return to Profile
+      					</Button>
 					</Grid>
-				</Grid>
-				<Grid item xs={12}>
-					<Typography align="center" color="primary" variant="h4">
-	           				Add Your Education
-	          		</Typography>
-	          		<Typography align="center" color="primary" variant="h6">
-	           				Add any school, bootcamp, etc that you have attended
-	          		</Typography>
-				</Grid>
-				<TextInput 
-					id="school"
-					name="school"
-					label="* School or Bootcamp"
-					value={this.state.school}
-					handleChange = {(e) => this.handleChangeEditProfile(e, 'school')}
-				/>
-				<TextInput 
-					id="degree"
-					name="degree"
-					label="* Degree or Certificate"
-					value={this.state.degree}
-					handleChange = {(e) => this.handleChangeEditProfile(e, 'degree')}
-				/>
-				<TextInput 
-					id="fieldofstudy"
-					name="fieldofstudy"
-					label="Field of Study"
-					value={this.state.fieldofstudy}
-					handleChange = {(e) => this.handleChangeEditProfile(e, 'fieldofstudy')}
-				/>
-				<TextInput 
-					id="fromdate"
-					name="fromdate"
-					value={this.state.fromdate}
-					handleChange = {(e) => this.handleChangeEditProfile(e, 'fromdate')}
-					subtitle="From Date"
-					type='date'
-					justifysub="left"
-				/>
-				<TextInput 
-					id="todate"
-					name="todate"
-					value={this.state.todate}
-					handleChange = {(e) => this.handleChangeEditProfile(e, 'todate')}
-					subtitle="To Date"
-					type='date'
-					justifysub="left"
-					disabled={this.state.current}
-				/>
-				<Grid container justify="center">
-					<Grid item xs={6}>
+					<Grid item xs={12}>
+						<Typography align="center" color="primary" variant="h4">
+		           				Add Your Education
+		          		</Typography>
+		          		<Typography align="center" color="primary" variant="h6">
+		           				Add any school, bootcamp, etc that you have attended
+		          		</Typography>
+					</Grid>
+					<TextInput 
+						id="school"
+						name="school"
+						label="* School or Bootcamp"
+						value={this.state.school}
+						handleChange = {(e) => this.handleChangeEditProfile(e, 'school')}
+					/>
+					<TextInput 
+						id="degree"
+						name="degree"
+						label="* Degree or Certificate"
+						value={this.state.degree}
+						handleChange = {(e) => this.handleChangeEditProfile(e, 'degree')}
+					/>
+					<TextInput 
+						id="fieldofstudy"
+						name="fieldofstudy"
+						label="Field of Study"
+						value={this.state.fieldofstudy}
+						handleChange = {(e) => this.handleChangeEditProfile(e, 'fieldofstudy')}
+					/>
+					<TextInput 
+						id="fromdate"
+						name="fromdate"
+						value={this.state.fromdate}
+						handleChange = {(e) => this.handleChangeEditProfile(e, 'fromdate')}
+						subtitle="From Date"
+						type='date'
+						justifysub="left"
+					/>
+					<TextInput 
+						id="todate"
+						name="todate"
+						value={this.state.todate}
+						handleChange = {(e) => this.handleChangeEditProfile(e, 'todate')}
+						subtitle="To Date"
+						type='date'
+						justifysub="left"
+						disabled={this.state.current}
+					/>
+
+					<Grid item xs={12} sm={10} md={8}>
 						<FormControlLabel
 				          control={
 				            <Checkbox
 				              onChange={this.handleCurrentEdu}
-				              // onChange={this.handleChange('checkedG')}
 				              value=""
 				              classes={{
 				                root: classes.root,
@@ -160,27 +156,28 @@ class AddExperience extends Component {
 				          }
 				          label="Currently Studying"
 				        />
-					</Grid>	
-				</Grid>
-				<TextInput 
-					id="desc"
-					name="desc"
-					label="Program Description"
-					value={this.state.desc}
-					handleChange = {(e) => this.handleChangeEditProfile(e, 'desc')}
-					textfield
-					justifysub="left"
-				/>
-				<Grid container justify="center">
-					<Grid item xs={6}  className={classes.margin} >
-						<Button
-						fullWidth
-		        		size="large"
-		        		variant="extendedFab" 
-		        		color="primary"
-		        		onClick={this.handleSubmit}>
-        				Add Education
-      					</Button>
+					</Grid>
+
+					<TextInput 
+						id="desc"
+						name="desc"
+						label="Program Description"
+						value={this.state.desc}
+						handleChange = {(e) => this.handleChangeEditProfile(e, 'desc')}
+						textfield
+						justifysub="left"
+					/>
+					<Grid container justify="center">
+						<Grid item xs={6}  className={classes.margin} >
+							<Button
+							fullWidth
+			        		size="large"
+			        		variant="extendedFab" 
+			        		color="primary"
+			        		onClick={this.handleSubmit}>
+	        				Add Education
+	      					</Button>
+						</Grid>
 					</Grid>
 				</Grid>
 			</Grid>
